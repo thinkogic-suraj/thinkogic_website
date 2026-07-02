@@ -3,8 +3,6 @@ const mainNav = document.querySelector(".main-nav");
 const siteHeader = document.querySelector(".site-header");
 const navItemsWithDropdown = document.querySelectorAll(".nav-item.has-dropdown");
 const hero = document.querySelector(".hero");
-const heroScene = document.querySelector("[data-hero-scene]");
-const heroLayers = document.querySelectorAll("[data-hero-layer]");
 const heroWheel = document.querySelector(".hero-scroll-wheel");
 const awardsSection = document.querySelector(".awards-section");
 const expertiseSection = document.querySelector(".expertise-section");
@@ -87,42 +85,6 @@ if (hero) {
   window.requestAnimationFrame(() => {
     hero.classList.add("is-ready");
   });
-}
-
-if (heroScene && heroLayers.length > 0) {
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
-
-  const animateLayers = () => {
-    currentX += (targetX - currentX) * 0.08;
-    currentY += (targetY - currentY) * 0.08;
-
-    heroLayers.forEach((layer) => {
-      const depth = Number(layer.getAttribute("data-hero-layer")) || 0;
-      const moveX = currentX * depth * 22;
-      const moveY = currentY * depth * 18;
-      layer.style.setProperty("--hero-x", `${moveX}px`);
-      layer.style.setProperty("--hero-y", `${moveY}px`);
-    });
-
-    heroScene.style.backgroundPosition = `${50 + currentX * 2}% ${currentY * -8}px`;
-    window.requestAnimationFrame(animateLayers);
-  };
-
-  heroScene.addEventListener("mousemove", (event) => {
-    const bounds = heroScene.getBoundingClientRect();
-    targetX = (event.clientX - bounds.left) / bounds.width - 0.5;
-    targetY = (event.clientY - bounds.top) / bounds.height - 0.5;
-  });
-
-  heroScene.addEventListener("mouseleave", () => {
-    targetX = 0;
-    targetY = 0;
-  });
-
-  window.requestAnimationFrame(animateLayers);
 }
 
 if (heroWheel) {
@@ -225,6 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const developmentTab = document.getElementById('zwc-development-tab');
   const leftCats = document.querySelectorAll('.zwc-product-category');
   const rightPanes = document.querySelectorAll('.zwc-product-details');
+  const searchWrapper = document.querySelector('.zwcg-category-search');
+  const searchField = searchWrapper?.querySelector('.zwcg-category-search-field');
+  const exploreWrapper = document.querySelector('.zwc-explore-wrapper');
 
   const isMobileMenu = () => window.matchMedia('(max-width: 860px)').matches;
 
@@ -240,6 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
     globalMenuContainer.classList.add('active');
     developmentTab?.classList.add('active');
     setDevelopmentExpanded(true);
+    const activeCategory = Array.from(leftCats).find((cat) => cat.classList.contains('active')) ?? leftCats[0];
+    if (activeCategory) {
+      activateCategory(activeCategory);
+    }
   };
 
   let closeTimer;
@@ -256,6 +225,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }, delay);
   };
 
+  const filterPaneCards = (targetPane) => {
+    if (!targetPane) {
+      return;
+    }
+
+    const cardsList = targetPane.querySelector('.mega-sub-links');
+    if (!cardsList) {
+      return;
+    }
+
+    const query = searchField?.value.trim().toLowerCase() ?? '';
+    const cards = Array.from(cardsList.querySelectorAll(':scope > li'));
+    let visibleCount = 0;
+
+    cards.forEach((card) => {
+      const text = card.textContent?.toLowerCase() ?? '';
+      const matches = query === '' || text.includes(query);
+      card.classList.toggle('is-search-hidden', !matches);
+      if (matches) {
+        visibleCount += 1;
+      }
+    });
+
+    let emptyState = targetPane.querySelector('.zwc-search-empty');
+    if (!emptyState) {
+      emptyState = document.createElement('p');
+      emptyState.className = 'zwc-search-empty';
+      emptyState.textContent = 'No services match your search.';
+      cardsList.after(emptyState);
+    }
+
+    emptyState.classList.toggle('is-visible', query !== '' && visibleCount === 0);
+  };
+
+  const syncPaneHeader = (targetPane) => {
+    if (!targetPane) {
+      return;
+    }
+
+    const title = targetPane.querySelector('.zwc-category-title');
+    if (!title) {
+      return;
+    }
+
+    let header = targetPane.querySelector('.zwc-category-header');
+    if (!header) {
+      header = document.createElement('div');
+      header.className = 'zwc-category-header';
+      title.before(header);
+    }
+
+    header.appendChild(title);
+    filterPaneCards(targetPane);
+  };
+
   const activateCategory = (category) => {
     const targetClass = category?.getAttribute('data-class');
     if (!targetClass) {
@@ -269,9 +293,16 @@ document.addEventListener('DOMContentLoaded', () => {
       item.setAttribute('aria-selected', String(isActive));
     });
 
+    let activePane = null;
     rightPanes.forEach((pane) => {
-      pane.classList.toggle('active', pane.classList.contains(targetClass));
+      const isActive = pane.classList.contains(targetClass);
+      pane.classList.toggle('active', isActive);
+      if (isActive) {
+        activePane = pane;
+      }
     });
+
+    syncPaneHeader(activePane);
   };
 
   if (globalMenuBtns.length > 0 && globalMenuContainer && developmentNavItem) {
@@ -293,13 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     globalMenuBtns.forEach((btn) => {
-      btn.addEventListener('focusin', () => {
-        if (!isMobileMenu()) {
-          clearTimeout(closeTimer);
-          openMenu();
-        }
-      });
-
       btn.addEventListener('click', (event) => {
         event.preventDefault();
         const shouldOpen = !globalMenuContainer.classList.contains('active');
@@ -342,4 +366,16 @@ document.addEventListener('DOMContentLoaded', () => {
     cat.addEventListener('focus', () => activateCategory(cat));
     cat.addEventListener('click', () => activateCategory(cat));
   });
+
+  searchField?.addEventListener('input', () => {
+    const activePane = Array.from(rightPanes).find((pane) => pane.classList.contains('active'));
+    if (activePane) {
+      filterPaneCards(activePane);
+    }
+  });
+
+  const initialCategory = Array.from(leftCats).find((cat) => cat.classList.contains('active')) ?? leftCats[0];
+  if (initialCategory) {
+    activateCategory(initialCategory);
+  }
 });

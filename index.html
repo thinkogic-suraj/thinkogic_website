@@ -90,13 +90,7 @@
     <div class="zwc-tab-category-list active" role="tabpanel" id="zwc-development-tab">
       <div class="zwc-all-products-list">
         <div class="zwc-product-categories">
-          <!-- Search Bar -->
-          <div class="zwcg-category-search">
-            <div class="zwcg-search-category-inner">
-              <input class="zwcg-category-search-field" autocomplete="off" placeholder="I’m looking for…" type="text">
-            </div>
-          </div>
-          
+
           <!-- Left Sidebar Categories -->
           <div class="zwc-product-category-section" role="tablist" aria-label="Development categories">
             <button type="button" class="zwc-product-category zwc-launch-menu active" role="tab" aria-selected="true" aria-expanded="true" data-class="zwc-category-pane-mobile">
@@ -139,6 +133,17 @@
               <span class="zwc-product-category-label">Analytics</span>
               <span class="zwc-product-category-arrow" aria-hidden="true"></span>
             </button>
+          </div>
+        </div>
+        <div class="zwc-category-toolbar">
+          <div class="zwcg-category-search">
+            <div class="zwcg-search-category-inner">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6"></circle>
+                <path d="M20 20L16.2 16.2"></path>
+              </svg>
+              <input class="zwcg-category-search-field" autocomplete="off" placeholder="I’m looking for…" type="text">
+            </div>
           </div>
           <div class="zwc-explore-wrapper">
             <a class="mega-explore-btn zwc-explore-btn" href="#expertise">
@@ -1156,26 +1161,29 @@
 
     <main id="top">
       <section class="hero" aria-label="Hero">
-        <div class="hero-scene" data-hero-scene>
+        <div class="hero-scene">
         <div class="container hero-grid">
-          <div class="hero-copy hero-reveal" data-hero-layer="0.07">
+          <div class="hero-copy hero-reveal">
             <p class="hero-pill">
               <span class="pill-icon">â†’</span>
               New : Our AI Integration is Done with Systems
             </p>
             <h1>From Technologies to Products.</h1>
           </div>
-          <div class="hero-side hero-reveal" data-hero-layer="0.12">
-            <p>
-              Our innovative approach, fueled by originality and skill, addresses complex problems
-              with confidence &amp; determination.
+          <div class="hero-side hero-reveal">
+            <p class="hero-side-copy">
+              Our innovative approach, fueled by<br />
+              originality and skill, addresses complex problems with confidence &amp;
+              determination.
             </p>
             <div class="hero-actions">
               <a class="button button-light hero-cta" href="#contact">Get Started</a>
-              <div class="callout">
-                <span>Have a question?</span>
-                <a href="#contact">Schedule a Call</a>
-              </div>
+              <p class="hero-question">Have a question?</p>
+              <p class="hero-call-link">
+                <a href="https://calendly.com/thinkogic/15mins" target="_blank" rel="noopener"
+                  >Schedule a Call</a
+                >
+              </p>
             </div>
           </div>
         </div>
