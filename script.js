@@ -243,14 +243,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   let closeTimer;
-  let openTimer;
   const closeMenu = (delay = 140) => {
     if (!globalMenuContainer) {
       return;
     }
 
     clearTimeout(closeTimer);
-    clearTimeout(openTimer);
     closeTimer = window.setTimeout(() => {
       globalMenuContainer.classList.remove('active');
       developmentTab?.classList.remove('active');
@@ -268,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isActive = item === category;
       item.classList.toggle('active', isActive);
       item.setAttribute('aria-expanded', String(isActive));
+      item.setAttribute('aria-selected', String(isActive));
     });
 
     rightPanes.forEach((pane) => {
@@ -276,30 +275,20 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   if (globalMenuBtns.length > 0 && globalMenuContainer && developmentNavItem) {
-    globalMenuContainer.addEventListener('mouseenter', () => {
-      clearTimeout(closeTimer);
-      clearTimeout(openTimer);
-      openMenu();
-    });
+    developmentTrigger?.addEventListener('click', (event) => {
+      event.preventDefault();
 
-    globalMenuContainer.addEventListener('mouseleave', () => {
-      if (!isMobileMenu()) {
-        closeMenu();
+      const clickedInteractiveChild = event.target.closest('.global-menu-btn');
+      if (clickedInteractiveChild) {
+        return;
       }
-    });
 
-    developmentNavItem.addEventListener('mouseenter', () => {
-      if (!isMobileMenu()) {
+      const shouldOpen = !globalMenuContainer.classList.contains('active');
+      if (shouldOpen) {
         clearTimeout(closeTimer);
-        clearTimeout(openTimer);
-        openTimer = setTimeout(openMenu, 150);
-      }
-    });
-
-    developmentNavItem.addEventListener('mouseleave', () => {
-      if (!isMobileMenu()) {
-        clearTimeout(openTimer);
-        closeMenu();
+        openMenu();
+      } else {
+        closeMenu(0);
       }
     });
 
@@ -312,16 +301,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       btn.addEventListener('click', (event) => {
-        if (!isMobileMenu()) {
-          event.preventDefault();
-          clearTimeout(closeTimer);
-          openMenu();
-          return;
-        }
-
         event.preventDefault();
         const shouldOpen = !globalMenuContainer.classList.contains('active');
         if (shouldOpen) {
+          clearTimeout(closeTimer);
           openMenu();
         } else {
           closeMenu(0);
