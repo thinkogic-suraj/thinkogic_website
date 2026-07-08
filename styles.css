@@ -691,7 +691,7 @@ textarea {
   min-height: 56px;
   padding: 0 24px;
   border: 0;
-  border-radius: 16px;
+  border-radius: 0px;
   background: linear-gradient(135deg, #3678ff, #5ca4ff);
   color: #fff;
   font-weight: 700;
@@ -714,7 +714,15 @@ textarea {
 }
 
 .button-coral {
-  background: linear-gradient(135deg, #ff5f54, #ec6b3d);
+  background: #ea4335;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-transform: none;
+  line-height: 1.3em;
+  letter-spacing: 0.1px;
+  fill: #fafafa;
+  color: #fafafa;
 }
 
 .hero-side .hero-side-copy {
@@ -918,6 +926,10 @@ textarea {
   color: var(--muted-dark);
 }
 
+.dark-copy h2 {
+  color: #0e1b56;
+}
+
 .awards-row {
   display: flex;
   align-items: center;
@@ -1107,7 +1119,33 @@ textarea {
 }
 
 .partners-section {
+  position: relative;
+  overflow: hidden;
   padding: 92px 0 88px;
+}
+
+.partners-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://thinkogic.com/wp-content/uploads/2024/01/background-1.png");
+  background-position: -25vw 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.15;
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+  pointer-events: none;
+}
+
+.partners-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1025px) {
+  .partners-section::before {
+    background-attachment: fixed;
+  }
 }
 
 .partner-grid {
@@ -1138,12 +1176,29 @@ textarea {
 }
 
 .work-section,
-.market-section,
 .story-highlight,
 .industries-section,
 .privacy-section,
 .contact-section {
   padding: 90px 0;
+}
+
+.market-section {
+  padding: 60px 0 74px;
+}
+
+.market-section .section-heading {
+  margin-bottom: 42px;
+}
+
+.market-section .section-heading h2 {
+  color: #0e1b56;
+  letter-spacing: -0.9px;
+  line-height: 54px;
+}
+
+.market-section .section-heading p {
+  color: #373737;
 }
 
 .featured-work {
@@ -1208,39 +1263,102 @@ textarea {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.recognition-grid {
+.market-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 46px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.market-logo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.market-logo-button img {
+  display: block;
+  width: 200px;
+  height: 69px;
+  object-fit: contain;
+}
+
+.market-logo-button[data-story="mcgm"] img {
+  height: 36px;
+}
+
+.market-logo-button.is-active,
+.market-logo-button:hover,
+.market-logo-button:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.market-showcase {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;
+  grid-template-columns: minmax(240px, 0.32fr) minmax(0, 0.68fr);
+  gap: 36px;
+  align-items: start;
 }
 
-.recognition-card {
+.market-facts {
+  display: grid;
+  gap: 32px;
+  padding-top: 8px;
+}
+
+.market-featured-card {
+  position: relative;
   overflow: hidden;
-  border-radius: 20px;
-  background: #fff;
-  box-shadow: var(--shadow);
+  border-radius: 10px;
+  border: 1px solid rgba(16, 25, 54, 0.08);
+  box-shadow: 0 1px 8px rgba(210, 210, 210, 0.31);
 }
 
-.recognition-card img {
+.market-featured-card img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  display: block;
+  border-radius: 10px;
 }
 
-.recognition-copy {
-  padding: 22px;
+.market-featured-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 34px 20px 20px;
+  background: linear-gradient(180deg, rgba(196, 77, 72, 0.06) 20%, rgba(196, 77, 72, 0.62) 100%);
 }
 
-.recognition-copy h3 {
-  margin: 0 0 14px;
-  color: var(--text-dark);
-  font-size: 1.18rem;
-  line-height: 1.38;
+.market-featured-overlay h3 {
+  margin: 0;
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 27px;
+  letter-spacing: 0.1px;
+  max-width: 700px;
 }
 
-.recognition-copy a {
-  color: #3f86ff;
-  font-weight: 700;
+.market-featured-overlay a {
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 15px;
 }
 
 .story-split {
@@ -1667,6 +1785,7 @@ textarea {
 
   .ideals-grid,
   .industry-grid,
+  .market-showcase,
   .recognition-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1780,6 +1899,39 @@ textarea {
     flex: 0 1 auto;
     margin-left: auto;
     justify-content: flex-end;
+  }
+
+  .market-section {
+    padding: 52px 0 60px;
+  }
+
+  .market-logos {
+    gap: 28px;
+    margin-bottom: 28px;
+  }
+
+  .market-logo-button img {
+    max-width: 110px;
+    height: 36px;
+  }
+
+  .market-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .market-facts {
+    gap: 26px;
+    order: 2;
+  }
+
+  .market-featured-overlay {
+    gap: 12px;
+    padding: 22px 22px 20px;
+  }
+
+  .market-featured-overlay h3 {
+    font-size: 22px;
+    line-height: 24px;
   }
 
   .main-nav {
@@ -1941,6 +2093,30 @@ textarea {
 
   .zwc-all-products-list {
     width: min(100vw - 30px, 420px);
+  }
+
+  .market-logos {
+    justify-content: space-between;
+    gap: 20px 14px;
+  }
+
+  .market-logo-button img {
+    max-width: 96px;
+    height: 30px;
+  }
+
+  .market-featured-overlay {
+    padding: 18px 18px 16px;
+  }
+
+  .market-featured-overlay h3 {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .market-featured-overlay a {
+    font-size: 14px;
+    line-height: 14px;
   }
 
   .zwc-product-category-section {
