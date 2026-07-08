@@ -224,11 +224,9 @@ textarea {
   color: #ffffff;
 }
 
-.nav-item.has-dropdown:hover > .nav-toggle::before,
-.nav-item.has-dropdown:focus-within > .nav-toggle::before,
+.nav-item.has-dropdown.is-open > .nav-toggle::before,
 .nav-item-development:hover .nav-toggle::before,
 .nav-item-development:focus-within .nav-toggle::before,
-.nav-item.has-dropdown.is-open > .nav-toggle::before,
 .nav-item-development.is-open .nav-toggle::before {
   transform: translate(-50%, -35%) rotate(225deg);
 }
@@ -236,7 +234,7 @@ textarea {
 .nav-dropdown {
   position: absolute;
   top: calc(100% - 0.5px);
-  background: #ffffff;
+  background: #f8f9fb;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -248,8 +246,6 @@ textarea {
   z-index: 1000;
 }
 
-.nav-item:hover > .nav-dropdown,
-.nav-item:focus-within > .nav-dropdown,
 .nav-item.is-open > .nav-dropdown {
   opacity: 1;
   visibility: visible;
@@ -265,8 +261,6 @@ textarea {
   transform: translate3d(0, -10px, 0);
 }
 
-.nav-item:hover > .nav-dropdown-mega,
-.nav-item:focus-within > .nav-dropdown-mega,
 .nav-item.is-open > .nav-dropdown-mega {
   transform: translate3d(0, 0, 0);
 }
@@ -274,7 +268,8 @@ textarea {
 .nav-dropdown-compact {
   left: 0;
   width: 215px;
-  padding: 12px 0;
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 .nav-dropdown-panel {
@@ -307,7 +302,7 @@ textarea {
 
 .nav-dropdown-links-compact a {
   display: block;
-  padding: 10px 15px;
+  padding: 12px 19px;
   color: #000000;
   font-size: 15px;
   font-weight: 300;
@@ -2498,8 +2493,8 @@ textarea {
 
 .zwc-tab-category-wrap {
   width: min(1362px, calc(100vw - 44px));
-  height: calc(93vh - 112px);
-  max-height: calc(100vh - 112px);
+  height: calc(100vh - 112px);
+  max-height: calc(100vh - 128px);
   margin: 0 auto;
   border: 1px solid rgba(7, 25, 77, 0.08);
   border-radius: 14px;
@@ -2574,10 +2569,7 @@ textarea {
   color: #132457;
   text-align: left;
   cursor: pointer;
-  transition:
-    border-color 180ms ease,
-    color 180ms ease,
-    background-color 180ms ease;
+  transition: none;
   font-family: "DM Sans", sans-serif;
   font-size: 15px;
   font-weight: 500;
@@ -2594,9 +2586,7 @@ textarea {
   height: 14px;
   flex: 0 0 14px;
   opacity: 0;
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease;
+  transition: none;
 }
 
 .zwc-product-category-arrow::before {
@@ -2641,7 +2631,7 @@ textarea {
   max-height: 100%;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 30px 30px 0 34px;
+  padding: 30px 30px 30px 34px;
   scrollbar-width: thin;
   scrollbar-color: rgba(66, 141, 255, 0.38) rgba(12, 31, 90, 0.08);
 }
@@ -2649,7 +2639,7 @@ textarea {
 .zwc-product-details::after {
   content: "";
   display: block;
-  height: 30px;
+  height: 0;
 }
 
 .zwc-product-details.active {
@@ -2787,7 +2777,7 @@ textarea {
 }
 
 .mega-infobox-card {
-  min-height: 188px;
+  min-height: 177px;
   padding: 22px 20px 20px;
   border: 1px solid rgba(10, 30, 92, 0.08);
   border-radius: 8px;
@@ -2821,7 +2811,7 @@ textarea {
 }
 
 .mega-info-box-desc {
-  margin-top: 10px;
+  margin-top: 3px;
   color: #53627f;
   font-family: "Red Hat Display", sans-serif;
   font-size: 14px;

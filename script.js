@@ -12,6 +12,10 @@ navItemsWithDropdown.forEach((item) => {
 });
 
 if (menuToggle && mainNav) {
+  const companyNavItem = mainNav.querySelector(".nav-item-company");
+  const companyLink = mainNav.querySelector(".nav-link-company");
+  const companyToggle = mainNav.querySelector(".nav-toggle-company");
+
   menuToggle.addEventListener("click", () => {
     const isOpen = mainNav.classList.toggle("is-open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
@@ -28,6 +32,16 @@ if (menuToggle && mainNav) {
       }
 
       const isMobile = window.matchMedia("(max-width: 860px)").matches;
+
+      if (!isMobile && item === companyNavItem) {
+        navItemsWithDropdown.forEach((navItem) => {
+          if (navItem !== item) {
+            navItem.classList.remove("is-open");
+            navItem.querySelector(".nav-toggle")?.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
       const isOpen = item.classList.toggle("is-open");
       toggle.setAttribute("aria-expanded", String(isOpen));
 
@@ -44,6 +58,10 @@ if (menuToggle && mainNav) {
 
   mainNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
+      if (!window.matchMedia("(max-width: 860px)").matches && link === companyLink) {
+        return;
+      }
+
       mainNav.classList.remove("is-open");
       menuToggle.setAttribute("aria-expanded", "false");
       navItemsWithDropdown.forEach((item) => {
@@ -62,13 +80,23 @@ if (menuToggle && mainNav) {
     }
   });
 
-  navItemsWithDropdown.forEach((item) => {
-    item.addEventListener("mouseleave", () => {
-      if (!window.matchMedia("(max-width: 860px)").matches) {
-        item.classList.remove("is-open");
-        item.querySelector(".nav-toggle")?.setAttribute("aria-expanded", "false");
+  companyLink?.addEventListener("click", (event) => {
+    if (window.matchMedia("(max-width: 860px)").matches || !companyNavItem || !companyToggle) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    navItemsWithDropdown.forEach((navItem) => {
+      if (navItem !== companyNavItem) {
+        navItem.classList.remove("is-open");
+        navItem.querySelector(".nav-toggle")?.setAttribute("aria-expanded", "false");
       }
     });
+
+    const isOpen = companyNavItem.classList.toggle("is-open");
+    companyToggle.setAttribute("aria-expanded", String(isOpen));
   });
 }
 
