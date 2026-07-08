@@ -415,6 +415,44 @@ textarea {
   fill: none;
 }
 
+.header-search-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header-search-input {
+  width: 0;
+  opacity: 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  color: #fff;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  transition: width 300ms ease, opacity 300ms ease, padding 300ms ease, border-color 300ms ease, margin 300ms ease;
+  pointer-events: none;
+}
+
+.header-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.header-search-input:focus {
+  outline: none;
+}
+
+.header-search-wrapper.search-active .header-search-input {
+  width: 200px;
+  opacity: 1;
+  padding: 0 8px 4px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  pointer-events: auto;
+  margin-left: 8px;
+}
+
 .nav-cta {
   display: inline-flex;
   align-items: center;

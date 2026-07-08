@@ -407,3 +407,33 @@ document.addEventListener('DOMContentLoaded', () => {
     activateCategory(initialCategory);
   }
 });
+
+// Header Search Logic
+document.addEventListener("DOMContentLoaded", () => {
+  const headerSearchWrapper = document.querySelector(".header-search-wrapper");
+  const headerSearchBtn = document.querySelector(".header-search-wrapper .search-button");
+  const headerSearchInput = document.querySelector(".header-search-input");
+
+  if (headerSearchWrapper && headerSearchBtn && headerSearchInput) {
+    headerSearchBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isActive = headerSearchWrapper.classList.toggle("search-active");
+      if (isActive) {
+        headerSearchInput.focus();
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!headerSearchWrapper.contains(e.target)) {
+        headerSearchWrapper.classList.remove("search-active");
+      }
+    });
+
+    headerSearchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        headerSearchWrapper.classList.remove("search-active");
+        headerSearchBtn.focus();
+      }
+    });
+  }
+});
