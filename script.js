@@ -553,56 +553,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const marketButtons = Array.from(document.querySelectorAll(".market-logo-button"));
+  const marketCopy = document.getElementById("market-panel-copy");
+  const marketMedia = document.getElementById("market-panel-media");
   const marketImage = document.getElementById("market-feature-image");
   const marketTitle = document.getElementById("market-feature-title");
+  const marketDescription = document.getElementById("market-feature-description");
   const marketLink = document.getElementById("market-feature-link");
-  const statOneLabel = document.getElementById("market-stat-one-label");
-  const statOneText = document.getElementById("market-stat-one-text");
-  const statTwoLabel = document.getElementById("market-stat-two-label");
-  const statTwoText = document.getElementById("market-stat-two-text");
-  const statThreeLabel = document.getElementById("market-stat-three-label");
-  const statThreeText = document.getElementById("market-stat-three-text");
+  const marketHighlights = document.getElementById("market-highlights");
 
-  if (!marketButtons.length || !marketImage || !marketTitle || !marketLink) {
+  if (!marketButtons.length || !marketCopy || !marketMedia || !marketImage || !marketTitle || !marketDescription || !marketLink || !marketHighlights) {
     return;
   }
 
-  const applyMarketStory = (button) => {
+  let transitionTimer;
+
+  const renderMarketStory = (button) => {
     marketButtons.forEach((item) => {
       const isActive = item === button;
       item.classList.toggle("is-active", isActive);
       item.setAttribute("aria-selected", String(isActive));
     });
 
+    const highlights = [
+      button.dataset.highlightOne,
+      button.dataset.highlightTwo,
+      button.dataset.highlightThree,
+    ].filter(Boolean);
+
     marketImage.src = button.dataset.image || marketImage.src;
     marketImage.alt = button.dataset.alt || marketImage.alt;
     marketTitle.textContent = button.dataset.title || marketTitle.textContent;
+    marketDescription.textContent = button.dataset.description || marketDescription.textContent;
     marketLink.href = button.dataset.href || "#";
+    marketHighlights.innerHTML = highlights.map((item) => `<li>${item}</li>`).join("");
+  };
 
-    if (statOneLabel && statOneText) {
-      statOneLabel.textContent = button.dataset.statOneLabel || "";
-      statOneText.textContent = button.dataset.statOneText || "";
-    }
+  const animateMarketStory = (button) => {
+    clearTimeout(transitionTimer);
+    marketCopy.classList.add("is-transitioning");
+    marketMedia.classList.add("is-transitioning");
 
-    if (statTwoLabel && statTwoText) {
-      statTwoLabel.textContent = button.dataset.statTwoLabel || "";
-      statTwoText.textContent = button.dataset.statTwoText || "";
-    }
-
-    if (statThreeLabel && statThreeText) {
-      statThreeLabel.textContent = button.dataset.statThreeLabel || "";
-      statThreeText.textContent = button.dataset.statThreeText || "";
-    }
+    transitionTimer = window.setTimeout(() => {
+      renderMarketStory(button);
+      marketCopy.classList.remove("is-transitioning");
+      marketMedia.classList.remove("is-transitioning");
+    }, 170);
   };
 
   marketButtons.forEach((button) => {
     button.addEventListener("mouseenter", () => {
-      if (window.matchMedia("(min-width: 861px)").matches) {
-        applyMarketStory(button);
+      if (window.matchMedia("(min-width: 861px)").matches && !button.classList.contains("is-active")) {
+        animateMarketStory(button);
       }
     });
 
-    button.addEventListener("focus", () => applyMarketStory(button));
-    button.addEventListener("click", () => applyMarketStory(button));
+    button.addEventListener("focus", () => animateMarketStory(button));
+    button.addEventListener("click", () => animateMarketStory(button));
   });
 });
