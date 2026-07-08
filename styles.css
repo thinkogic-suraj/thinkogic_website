@@ -910,7 +910,7 @@ textarea {
     font-weight: 500;
     line-height: 1.2em;
     letter-spacing: -0.02em;
-    color: #FFFFFF;
+    color: #0E1B56;
 }
 
 .section-heading p {
@@ -1688,33 +1688,105 @@ textarea {
 }
 
 .ideals-section {
-  padding: 92px 0 112px;
-  background:
-    radial-gradient(circle at 20% 12%, rgba(255, 248, 196, 0.85), transparent 22%),
-    radial-gradient(circle at 80% 88%, rgba(185, 255, 244, 0.7), transparent 24%),
-    linear-gradient(180deg, #faffed, #d8fff6);
+  padding: 0 0 32px;
+  background: url("https://thinkogic.com/wp-content/uploads/2024/01/lightbluely-1.png")
+    center center / cover no-repeat;
+}
+
+.ideals-heading {
+  max-width: 615px;
+  margin-bottom: 36px;
 }
 
 .ideals-section .section-heading h2 {
-  color: var(--text-dark);
+  color: #0e1b56;
+  font-family: "DM Sans", sans-serif;
+  font-size: 45px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.ideals-section .section-heading p {
+  width: min(817.75px, 100%);
+  max-width: 100%;
+  margin: 18px auto 0;
+  color: #373737;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .ideals-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-  align-items: start;
+  gap: 0;
+  align-items: center;
+  min-height: 147px;
+  padding: 0;
 }
 
 .ideal-card {
-  padding: 34px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 12px 34px rgba(17, 40, 90, 0.08);
+  min-height: 331.56px;
+  margin: 35px 0;
+  padding: 32px 32px 0;
+  border: 0;
+  border-radius: 0;
+  background: #ffffff;
+  box-shadow: 0 3px 3px rgba(183, 183, 183, 0.1);
+}
+
+.ideal-card:first-child {
+  margin-left: 10px;
+  border-radius: 8px 0 0 8px;
+}
+
+.ideal-card:last-child {
+  margin-right: 10px;
+  border-radius: 0 8px 8px 0;
+}
+
+.ideal-icon {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 19px;
+}
+
+.ideal-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ideals-section .ideal-card h3 {
+  margin: 0 0 20px;
+  color: #be9244;
+  font-family: "DM Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.ideals-section .ideal-card p {
+  margin: 16px 0;
+  color: #000000;
+  font-family: "Hind Madurai", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25.6px;
 }
 
 .ideal-card.raised {
-  transform: translateY(-36px);
+  position: relative;
+  z-index: 1;
+  min-height: 401.56px;
+  margin: 0;
+  padding: 16px 32px 48px;
+  border: 1px solid rgba(66, 133, 244, 0.17);
+  border-radius: 8px;
+  box-shadow: 0 3px 3px rgba(183, 183, 183, 0.1);
 }
 
 .contact-shell {
@@ -1793,7 +1865,7 @@ textarea {
 }
 
 .site-footer {
-  padding: 60px 0 24px;
+  padding: 0px 0 24px;
   background: #ffffff;
   color: #7e819b;
   border-top: 1px solid #eef1f6;
@@ -1828,7 +1900,8 @@ textarea {
 }
 
 .site-footer h3 {
-  font-size: 20px;
+  font-size: 16px;
+  font-family: "DM Sans", Sans-serif;
   font-weight: 600;
   line-height: 25.6px;
   color:#000000
@@ -1840,9 +1913,7 @@ textarea {
   margin: 0 0 10px;
   color: #000000;
   font-family: "DM Sans", sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  line-height: 20.8px;
+  font-size: 13px
 }
 
 .footer-contact p {
@@ -1887,23 +1958,25 @@ textarea {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 14px;;
 }
+
+
 
 .footer-social {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   margin-bottom: 0 !important;
   border-radius: 2px;
   color: #ffffff !important;
 }
 
 .footer-social svg {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .footer-social-linkedin { background: #0077b5; }
@@ -1913,12 +1986,13 @@ textarea {
 .footer-social-github { background: #111111; }
 
 .footer-services {
-  padding: 30px 0 22px;
+  padding: 37px 0 22px;
   border-top: 1px solid #eef1f6;
 }
 
 .footer-services h2 {
-  margin-bottom: 22px;
+  font-family:"DM Sans", Sans-serif;
+  margin-bottom: 31px;
   color: #000000;
   font-size: 26px;
   font-weight: 700;
@@ -1927,47 +2001,102 @@ textarea {
 
 .footer-services-grid {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 26px 22px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: start;
+  gap: 42px 34px;
+}
+
+.footer-service-group {
+  min-width: 0;
 }
 
 .footer-service-group h3 {
-  margin-top: 18px;
+  margin-top: 0;
   margin-bottom: 12px;
 }
 
-.footer-service-group h3:first-child {
-  margin-top: 0;
+.footer-service-group a {
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.footer-service-group a:hover,
+.footer-service-group a:focus-visible {
+  color: #356ff7;
 }
 
 .footer-certifications {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   padding: 0 0 32px;
 }
 
 .footer-certifications img {
   width: min(474px, 100%);
   height: auto;
+  margin-bottom: 40px;
 }
 
 .footer-bottom {
+  position: relative;
+  margin-top: 0px;
+  background: #1b266a;
+  margin-bottom: -25px;
+}
+
+.footer-bottom-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding-top: 18px;
-  border-top: 1px solid #eef1f6;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 40px;
+  padding-bottom: 26px;
 }
 
 .footer-brand-image {
-  width: 203px;
+  width: 210px;
   height: auto;
 }
 
-.footer-bottom p {
+.footer-bottom-inner p {
   margin: 0;
-  color: #7e819b;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.footer-scroll-top {
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border-radius: 0;
+  background: #4d86ff;
+  color: #ffffff !important;
+  transform: translateY(-50%);
+}
+
+.footer-scroll-top span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.footer-scroll-top:hover,
+.footer-scroll-top:focus-visible {
+  background: #356ff7;
 }
 
 @media (max-width: 1180px) {
@@ -2022,8 +2151,25 @@ textarea {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .ideals-section .section-heading h2 {
+    font-size: 40px;
+  }
+
+  .ideals-section .section-heading p {
+    max-width: 88%;
+    font-size: 17px;
+  }
+
+  .ideal-card,
+  .ideal-card:first-child,
+  .ideal-card:last-child {
+    min-height: auto;
+    margin: 18px 0 0;
+    border-radius: 8px;
+  }
+
   .ideal-card.raised {
-    transform: none;
+    margin-top: 0;
   }
 }
 
@@ -2176,9 +2322,8 @@ textarea {
     min-height: 360px;
   }
 
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
+  .footer-bottom-inner {
+    min-height: 132px;
   }
 
   .main-nav {
@@ -2322,6 +2467,42 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .ideals-section {
+    padding-bottom: 24px;
+  }
+
+  .ideals-section .section-heading h2 {
+    font-size: 38px;
+  }
+
+  .ideals-section .section-heading p {
+    max-width: 100%;
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+
+  .ideal-card,
+  .ideal-card.raised {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2em 1.5em 1.25em;
+  }
+
+  .ideal-card,
+  .ideal-card:first-child,
+  .ideal-card:last-child,
+  .ideal-card.raised {
+    min-height: auto;
+    margin-top: 16px;
+    border-radius: 8px;
+  }
+
+  .ideal-icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 16px;
+  }
+
   .hero-side {
     margin-left: 0;
     margin-top: 0;
@@ -2395,13 +2576,19 @@ textarea {
   .footer-top,
   .footer-services,
   .footer-certifications,
-  .footer-bottom {
+  .footer-bottom-inner {
     padding-left: 0;
     padding-right: 0;
   }
 
   .footer-brand-image {
     width: 180px;
+  }
+
+  .footer-scroll-top {
+    right: 16px;
+    width: 34px;
+    height: 34px;
   }
 
   .zwc-product-category-section {
@@ -2570,6 +2757,16 @@ textarea {
   .story-overlay,
   .recognition-copy {
     padding: 24px;
+  }
+
+  .ideal-card.raised {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .ideal-icon {
+    width: 46px;
+    height: 46px;
   }
 }
 
