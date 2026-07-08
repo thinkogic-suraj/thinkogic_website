@@ -414,24 +414,137 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerSearchBtn = document.querySelector(".header-search-wrapper .search-button");
   const headerSearchInput = document.querySelector(".header-search-input");
 
+  const searchTerms = ["Services", "Tools", "Blogs"];
+  let termIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingTimeout;
+
+  function typeWriter() {
+    if (!headerSearchWrapper.classList.contains("search-active")) return;
+
+    const currentTerm = searchTerms[termIndex];
+    
+    if (isDeleting) {
+      headerSearchInput.placeholder = "Search " + currentTerm.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      headerSearchInput.placeholder = "Search " + currentTerm.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentTerm.length) {
+      typeSpeed = 1500;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      termIndex = (termIndex + 1) % searchTerms.length;
+      typeSpeed = 300;
+    }
+
+    typingTimeout = setTimeout(typeWriter, typeSpeed);
+  }
+
+  function stopTypeWriter() {
+    clearTimeout(typingTimeout);
+    headerSearchInput.placeholder = "Search...";
+    termIndex = 0;
+    charIndex = 0;
+    isDeleting = false;
+  }
+
+  // Global Search Logic
+  const globalSearchIndex = [];
+  const resultsContainer = document.querySelector('.header-search-results');
+
+  // Build index from DOM
+  const serviceCards = document.querySelectorAll('.mega-infobox-link');
+  serviceCards.forEach(link => {
+    const title = link.querySelector('.mega-info-box-title')?.textContent.trim() || '';
+    const desc = link.querySelector('.mega-info-box-desc')?.textContent.trim() || '';
+    if (title) {
+      globalSearchIndex.push({
+        title: title,
+        desc: desc,
+        href: link.getAttribute('href') || '#',
+        type: 'Service'
+      });
+    }
+  });
+
+  // Hardcode specific pages
+  globalSearchIndex.push({ title: 'AI Business Tools', desc: 'Explore our latest AI-powered business tools.', href: '#contact', type: 'Tools' });
+  globalSearchIndex.push({ title: 'Blog', desc: 'Read our latest articles and insights.', href: '#', type: 'Blog' });
+  globalSearchIndex.push({ title: 'Contact Us', desc: 'Get in touch with our team today.', href: '#contact', type: 'Page' });
+
+  headerSearchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    if (!resultsContainer) return;
+    
+    resultsContainer.innerHTML = '';
+    
+    if (query.length < 2) {
+      resultsContainer.classList.remove('has-results');
+      return;
+    }
+
+    const matches = globalSearchIndex.filter(item => 
+      item.title.toLowerCase().includes(query) || 
+      item.desc.toLowerCase().includes(query) ||
+      item.type.toLowerCase().includes(query)
+    );
+
+    if (matches.length > 0) {
+      resultsContainer.classList.add('has-results');
+      matches.forEach(match => {
+        const a = document.createElement('a');
+        a.href = match.href;
+        a.className = 'search-result-item';
+        a.innerHTML = `<span class="search-result-title">${match.title}</span><span class="search-result-desc">${match.desc}</span>`;
+        a.addEventListener('click', () => {
+          closeSearch();
+        });
+        resultsContainer.appendChild(a);
+      });
+    } else {
+      resultsContainer.classList.add('has-results');
+      resultsContainer.innerHTML = `<span class="search-result-item"><span class="search-result-title">No results found</span></span>`;
+    }
+  });
+
+  function closeSearch() {
+    headerSearchWrapper.classList.remove("search-active");
+    resultsContainer?.classList.remove('has-results');
+    headerSearchInput.value = '';
+    stopTypeWriter();
+  }
+
   if (headerSearchWrapper && headerSearchBtn && headerSearchInput) {
     headerSearchBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      const isActive = headerSearchWrapper.classList.toggle("search-active");
-      if (isActive) {
+      if (headerSearchWrapper.classList.contains("search-active")) {
+        closeSearch();
+      } else {
+        headerSearchWrapper.classList.add("search-active");
         headerSearchInput.focus();
+        if (headerSearchInput.value.trim().length >= 2) {
+          resultsContainer?.classList.add('has-results');
+        }
+        typeWriter();
       }
     });
 
     document.addEventListener("click", (e) => {
-      if (!headerSearchWrapper.contains(e.target)) {
-        headerSearchWrapper.classList.remove("search-active");
+      if (!headerSearchWrapper.contains(e.target) && headerSearchWrapper.classList.contains("search-active")) {
+        closeSearch();
       }
     });
 
     headerSearchInput.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        headerSearchWrapper.classList.remove("search-active");
+        closeSearch();
         headerSearchBtn.focus();
       }
     });

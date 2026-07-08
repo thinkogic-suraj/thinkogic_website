@@ -419,6 +419,13 @@ textarea {
   display: flex;
   align-items: center;
   position: relative;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 4px;
+  transition: border-color 300ms ease;
+}
+
+.header-search-wrapper.search-active {
+  border-bottom-color: rgba(255, 255, 255, 0.6);
 }
 
 .header-search-input {
@@ -426,13 +433,12 @@ textarea {
   opacity: 0;
   padding: 0;
   border: none;
-  border-bottom: 1px solid transparent;
   background: transparent;
   color: #fff;
   font-family: "Red Hat Display", sans-serif;
   font-size: 15px;
   line-height: 1.5;
-  transition: width 300ms ease, opacity 300ms ease, padding 300ms ease, border-color 300ms ease, margin 300ms ease;
+  transition: width 300ms ease, opacity 300ms ease, padding 300ms ease, margin 300ms ease;
   pointer-events: none;
 }
 
@@ -447,10 +453,70 @@ textarea {
 .header-search-wrapper.search-active .header-search-input {
   width: 200px;
   opacity: 1;
-  padding: 0 8px 4px 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 0 8px;
   pointer-events: auto;
   margin-left: 8px;
+}
+
+.header-search-results {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 280px;
+  max-height: 350px;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(8, 22, 61, 0.16);
+  margin-top: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+  z-index: 50;
+  scrollbar-width: thin;
+}
+
+.header-search-wrapper.search-active .header-search-results.has-results {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.search-result-item {
+  display: block;
+  padding: 12px 16px;
+  color: #132457;
+  text-decoration: none;
+  font-family: "Red Hat Display", sans-serif;
+  border-bottom: 1px solid rgba(19, 36, 87, 0.06);
+  transition: background 150ms ease;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover,
+.search-result-item:focus {
+  background: rgba(66, 141, 255, 0.08);
+  outline: none;
+}
+
+.search-result-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.search-result-desc {
+  display: block;
+  font-size: 12px;
+  color: #6c7b96;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .nav-cta {
@@ -831,15 +897,21 @@ textarea {
 
 .section-heading h2 {
   margin: 0;
-  font-size: clamp(2.3rem, 5vw, 3.7rem);
-  line-height: 1.08;
-  letter-spacing: -0.05em;
+  font-family: "DM Sans", Sans-serif;
+    font-size: 45px;
+    font-weight: 500;
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
 }
 
 .section-heading p {
   margin: 18px auto 0;
-  color: rgba(255, 255, 255, 0.84);
-  font-size: 1.05rem;
+  text-align: center;
+    font-family: "Red Hat Display", Sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #FFFFFF;
 }
 
 .dark-copy p {
@@ -901,7 +973,7 @@ textarea {
 
 .expertise-section .section-heading p {
   max-width: 897px;
-  margin-top: 16px;
+  margin-top: 18px;
   color: #373737;
   font-family: "Red Hat Display", sans-serif;
   font-size: 18px;
@@ -945,7 +1017,7 @@ textarea {
 .accent {
   position: absolute;
   left: 0;
-  top: 20px;
+  top: 98px;
   width: 3px;
   height: 24px;
   border-radius: 999px;
@@ -956,29 +1028,37 @@ textarea {
 .accent-red { background: rgb(234, 67, 53); }
 .accent-green { background: rgb(52, 168, 83); }
 
-.expertise-card img {
+.expertise-card-icon {
   width: 58px;
   height: 58px;
-  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expertise-card-icon svg {
+  width: 58px;
+  height: 58px;
+  display: block;
 }
 
 .expertise-card h3 {
   margin: 22px 0 13px;
-  color: #101936;
+  color: #0E1B56;
   font-family: "DM Sans", sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 19.8px;
-  letter-spacing: 0;
+  letter-spacing: -0.36px;
 }
 
 .expertise-card p {
-  margin: 0;
+  margin: 16px 0 0;
   max-width: 243px;
   color: #7e819b;
   font-family: "Red Hat Display", sans-serif;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 25.6px;
 }
 
@@ -989,55 +1069,35 @@ textarea {
   color: #8a93a8;
   font-size: 19px;
   line-height: 1;
-  transition:
-    transform 220ms ease,
-    color 220ms ease;
+  transition: none;
 }
 
 .expertise-card:hover,
 .expertise-card:focus-within {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 36px rgba(17, 25, 54, 0.08);
+  transform: none;
+  box-shadow: none;
 }
 
 .expertise-card:hover::before,
 .expertise-card:focus-within::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .expertise-card:hover .card-arrow,
 .expertise-card:focus-within .card-arrow {
-  transform: translateX(4px);
-  color: #566177;
+  transform: none;
+  color: #8a93a8;
 }
 
 .expertise-card {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 1;
+  transform: none;
 }
 
 .expertise-section.is-visible .expertise-card {
-  animation: expertise-fade-up 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: none;
 }
 
-.expertise-section.is-visible .expertise-card:nth-child(2) { animation-delay: 60ms; }
-.expertise-section.is-visible .expertise-card:nth-child(3) { animation-delay: 120ms; }
-.expertise-section.is-visible .expertise-card:nth-child(4) { animation-delay: 180ms; }
-.expertise-section.is-visible .expertise-card:nth-child(5) { animation-delay: 240ms; }
-.expertise-section.is-visible .expertise-card:nth-child(6) { animation-delay: 300ms; }
-.expertise-section.is-visible .expertise-card:nth-child(7) { animation-delay: 360ms; }
-.expertise-section.is-visible .expertise-card:nth-child(8) { animation-delay: 420ms; }
-
-@keyframes expertise-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 .partners-section,
 .clients-section {
