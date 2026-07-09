@@ -1733,49 +1733,93 @@ textarea {
 }
 
 .clients-section {
-  padding: 92px 0;
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0 86px;
+  background: #0e1b56;
+}
+
+.clients-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://thinkogic.com/wp-content/uploads/2024/01/background-1-768x747.png");
+  background-position: -436px -218px;
+  background-repeat: no-repeat;
+  background-size: auto;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.clients-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .client-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-  gap: 36px;
-  align-items: center;
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  gap: 30px;
+  align-items: start;
+}
+
+.client-copy {
+  max-width: 560px;
 }
 
 .client-copy h2 {
- font-family: "DM Sans", Sans-serif;
-    font-size: 46px;
-    font-weight: 500;
-    line-height: 1.2em;
-    letter-spacing: -0.02em;
-    color: #FFFFFF;
+  margin: 0 0 22px;
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 46px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .client-copy blockquote {
-  margin: 0 0 20px;
-  max-width: 560px;
+  max-width: 540px;
+  margin: 0;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+.client-copy blockquote::before {
+  content: "\"They helped me identify and address the key challenges I was facing, implemented effective strategies that led to remarkable results. Thanks to their dedication and expertise.\"";
+  display: block;
   color: rgba(255, 255, 255, 0.88);
-  font-size: 1.06rem;
+  font-family: "DM Sans", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.75;
 }
 
 .stars {
-  margin-bottom: 18px;
+  margin: 16px 0 22px;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+.stars::before {
+  content: "★★★★★";
+  display: block;
   color: #f6c23d;
-  font-size: 1.6rem;
+  font-size: 23px;
   letter-spacing: 0.14em;
+  line-height: 1;
 }
 
 .founder {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .founder img {
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -1785,16 +1829,31 @@ textarea {
   display: block;
 }
 
+.founder strong {
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 .founder span,
 .review-score span {
-  color: rgba(255, 255, 255, 0.78);
+  color: #FFA23E;
+}
+
+.founder span {
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .reviews-line {
   display: flex;
   align-items: center;
-  gap: 28px;
-  margin-top: 28px;
+  gap: 24px;
+  margin-top: 24px;
   flex-wrap: wrap;
 }
 
@@ -1805,8 +1864,8 @@ textarea {
 
 .review-avatars img,
 .review-avatars span {
-  width: 58px;
-  height: 58px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: 3px solid #0a1f6a;
   margin-left: -12px;
@@ -1821,21 +1880,73 @@ textarea {
   place-items: center;
   background: #458dff;
   color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
   font-weight: 800;
 }
 
-.client-app {
+.review-score span {
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+.review-score span::before {
+  content: "★★★★★ 5/5";
+  display: block;
+  color: #FFA23E;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.review-score strong {
+  margin-top: 4px;
+  color: #ffffff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.stars::before {
+  content: "\2605\2605\2605\2605\2605";
+}
+
+.review-score span::before {
+  content: "\2605\2605\2605\2605\2605 5/5";
+}
+
+.client-visual {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  justify-self: end;
   width: 100%;
+}
+
+.client-device-stack {
+  display: grid;
+  place-items: center;
+  width: min(100%, 540px);
+  min-height: 0;
+}
+
+.client-app {
+  width: min(100%, 520px);
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.26));
 }
 
 .store-badges {
   display: flex;
-  gap: 16px;
-  margin-top: 24px;
+  gap: 18px;
+  margin-top: 30px;
 }
 
 .store-badges img {
-  width: calc(50% - 8px);
+  width: 180px;
+  max-width: 100%;
 }
 
 .privacy-grid {
@@ -3428,6 +3539,24 @@ textarea {
   .nav-cta,
   .store-badges img {
     width: 100%;
+  }
+
+  .client-device-stack {
+    width: min(100%, 420px);
+  }
+
+  .client-app {
+    width: min(100%, 420px);
+  }
+
+  .store-badges {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .store-badges img {
+    max-width: 154px;
   }
 
   .review-brand {
