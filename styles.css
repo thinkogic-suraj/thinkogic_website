@@ -1905,17 +1905,17 @@ textarea {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .stat-card {
   display: grid;
-  gap: 12px;
-  min-height: 95px;
-  padding: 20px;
+  gap: 10px;
+  min-height: 88px;
+  padding: 16px 14px;
   border: 1px solid transparent;
-  border-radius: 7px;
+  border-radius: 2px;
   background: #f6dede;
   backdrop-filter: blur(10px);
   transition:
@@ -1949,7 +1949,7 @@ textarea {
   margin: 0;
   color: #000000;
   font-family: "DM Sans", sans-serif;
-  font-size: clamp(1rem, 1vw, 2.5rem);
+  font-size: clamp(0.95rem, 0.95vw, 2rem);
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.05em;
@@ -1958,9 +1958,9 @@ textarea {
 .stat-card span:last-child {
   color:#000000;
   font-family: "Red Hat Display", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.45;
 }
 
 .stat-card:hover {
@@ -1978,8 +1978,7 @@ textarea {
 .stat-icon svg,
 .contact-upload-icon svg,
 .contact-submit svg {
-  width: 18px;
-  height: 18px;
+  height: 30px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -1990,8 +1989,8 @@ textarea {
 .review-brands {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 37px;
-  margin-top: -21px;
+  gap: 26px;
+  margin-top: 0px;
 }
 
 .review-brand {
@@ -2125,7 +2124,7 @@ textarea {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 16px;
-  padding: 16px 18px;
+  padding: 3px 18px;
   border: 1px solid #bfd0ed;
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(77, 134, 255, 0.04), rgba(255, 255, 255, 0.96));
@@ -2157,9 +2156,6 @@ textarea {
   justify-content: center;
   width: 48px;
   height: 48px;
-  border-radius: 14px;
-  background: #f5f9ff;
-  border: 1px solid #d9e7fb;
   color: #4d86ff;
 }
 
@@ -2174,20 +2170,20 @@ textarea {
 }
 
 .contact-upload-copy strong {
-  color: #0e1b56;
+  color: #000000;
   font-family: "DM Sans", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .contact-upload-copy span {
   color: #7282a2;
   font-family: "Red Hat Display", sans-serif;
-  font-size: 13px;
+  font-size: 10px;
   line-height: 1.55;
 }
 
-.contact-upload-action {
+/*.contact-upload-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2200,7 +2196,7 @@ textarea {
   font-family: "DM Sans", sans-serif;
   font-size: 12px;
   font-weight: 700;
-}
+}*/
 
 .contact-form-footer {
   display: flex;
