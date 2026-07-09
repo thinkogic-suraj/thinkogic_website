@@ -1848,11 +1848,10 @@ textarea {
   line-height: 1.02;
   letter-spacing: -0.05em;
 }
-
 .contact-intro {
   max-width: 600px;
   margin: 18px 0 0;
-  color: #000000
+  color: #000000;
   font-family: "Red Hat Display", sans-serif;
   font-size: 17px;
   font-weight: 400;
@@ -1915,9 +1914,9 @@ textarea {
   gap: 12px;
   min-height: 95px;
   padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid transparent;
   border-radius: 7px;
-  background: #EA433566;
+  background: #f6dede;
   backdrop-filter: blur(10px);
   transition:
     border-color 0.2s ease,
@@ -1925,10 +1924,30 @@ textarea {
     background-color 0.2s ease;
 }
 
+.stat-card:nth-child(1) {
+  background: #f6dede;
+  border-color: #f29a9a;
+}
+
+.stat-card:nth-child(2) {
+  background: #d8f7df;
+  border-color: #89d69c;
+}
+
+.stat-card:nth-child(3) {
+  background: #fff2cf;
+  border-color: #f2cb66;
+}
+
+.stat-card:nth-child(4) {
+  background: #d5e5ff;
+  border-color: #90b3f2;
+}
+
 .stat-card strong {
   display: block;
   margin: 0;
-  color: #ffffff;
+  color: #000000;
   font-family: "DM Sans", sans-serif;
   font-size: clamp(1rem, 1vw, 2.5rem);
   font-weight: 500;
@@ -1937,7 +1956,7 @@ textarea {
 }
 
 .stat-card span:last-child {
-  color: rgba(229, 238, 255, 0.74);
+  color:#000000;
   font-family: "Red Hat Display", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -1945,9 +1964,8 @@ textarea {
 }
 
 .stat-card:hover {
-  border-color: rgba(148, 190, 255, 0.38);
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.1);
+  filter: brightness(0.98);
 }
 
 .stat-icon {
@@ -1972,9 +1990,8 @@ textarea {
 .review-brands {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: -31px;
-  padding: 18px 0 0;
+  gap: 37px;
+  margin-top: -21px;
 }
 
 .review-brand {
@@ -2176,7 +2193,7 @@ textarea {
   justify-content: center;
   min-height: 42px;
   padding: 0 15px;
-  border-radius: 999px;
+  border-radius: 7px;
   border: 1px solid #d9e3f3;
   background: #ffffff;
   color: #0e1b56;
