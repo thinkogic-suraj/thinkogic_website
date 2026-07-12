@@ -191,7 +191,16 @@ textarea {
   gap: 8px;
 }
 
+.nav-trigger-company {
+  gap: 8px;
+}
+
 .nav-item-development > .nav-trigger-development > .nav-link {
+  height: auto;
+  padding: 0;
+}
+
+.nav-item-company > .nav-trigger-company > .nav-link {
   height: auto;
   padding: 0;
 }
@@ -205,7 +214,21 @@ textarea {
   flex: 0 0 14px;
 }
 
+.nav-item-company > .nav-trigger-company > .nav-toggle {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+}
+
 .nav-item-development > .nav-trigger-development > .nav-toggle::before {
+  top: 50%;
+  left: 50%;
+}
+
+.nav-item-company > .nav-trigger-company > .nav-toggle::before {
   top: 50%;
   left: 50%;
 }
@@ -228,7 +251,10 @@ textarea {
 .nav-item.has-dropdown.is-open > .nav-toggle::before,
 .nav-item-development:hover .nav-toggle::before,
 .nav-item-development:focus-within .nav-toggle::before,
-.nav-item-development.is-open .nav-toggle::before {
+.nav-item-development.is-open .nav-toggle::before,
+.nav-item-company:hover .nav-toggle::before,
+.nav-item-company:focus-within .nav-toggle::before,
+.nav-item-company.is-open .nav-toggle::before {
   transform: translate(-50%, -35%) rotate(225deg);
 }
 
@@ -1539,7 +1565,7 @@ textarea {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: opacity 1.8s ease;
+  transition: opacity 1.8s ease, filter 1.8s ease;
   will-change: opacity;
 }
 
@@ -1551,6 +1577,7 @@ textarea {
 .industry-card::after {
   background-image: var(--industry-hover-image);
   opacity: 0;
+  filter: brightness(0.72) contrast(0.88) saturate(0.92);
 }
 
 .industry-card-overlay {
@@ -1585,6 +1612,12 @@ textarea {
 .industry-card:hover::after,
 .industry-card:focus-within::after {
   opacity: 1;
+}
+
+.industry-card:hover .industry-card-overlay,
+.industry-card:focus-within .industry-card-overlay {
+  background-image: linear-gradient(rgba(15, 24, 49, 0.5) 0%, rgba(14, 27, 86, 0.94) 100%);
+  opacity: 0.92;
 }
 
 .industry-card:hover .industry-card-content,
@@ -1851,7 +1884,7 @@ textarea {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: opacity 1.8s ease;
+  transition: opacity 1.8s ease, filter 1.8s ease;
   will-change: opacity;
 }
 
@@ -1863,6 +1896,7 @@ textarea {
 .industry-card::after {
   background-image: var(--industry-hover-image);
   opacity: 0;
+  filter: brightness(0.72) contrast(0.88) saturate(0.92);
 }
 
 .industry-card-overlay {
@@ -1897,6 +1931,12 @@ textarea {
 .industry-card:hover::after,
 .industry-card:focus-within::after {
   opacity: 1;
+}
+
+.industry-card:hover .industry-card-overlay,
+.industry-card:focus-within .industry-card-overlay {
+  background-image: linear-gradient(rgba(15, 24, 49, 0.5) 0%, rgba(14, 27, 86, 0.94) 100%);
+  opacity: 0.92;
 }
 
 .industry-card:hover .industry-card-content,
@@ -3347,6 +3387,11 @@ textarea {
     padding: 10px 30px 10px 0;
   }
 
+  .nav-item-company > .nav-trigger-company > .nav-link {
+    height: auto;
+    padding: 10px 30px 10px 0;
+  }
+
   .nav-toggle {
     top: 0;
     right: 0;
@@ -3355,6 +3400,15 @@ textarea {
   }
 
   .nav-item-development > .nav-trigger-development > .nav-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 28px;
+    height: 48px;
+    flex: none;
+  }
+
+  .nav-item-company > .nav-trigger-company > .nav-toggle {
     position: absolute;
     top: 0;
     right: 0;
