@@ -597,7 +597,7 @@ textarea {
   min-height: 735px;
   background:
     linear-gradient(90deg, rgba(2, 4, 10, 0.16) 0%, rgba(2, 4, 10, 0.04) 40%, rgba(2, 4, 10, 0.04) 100%),
-    url("https://thinkogic.com/wp-content/uploads/2024/01/yrhf.png") center top / 100% auto no-repeat;
+    url("https://thinkogic.com/wp-content/uploads/2024/01/yrhf.png") center center / auto no-repeat;
 }
 
 .hero-scene::before {
@@ -3726,7 +3726,7 @@ textarea {
   }
 
   .awards-section {
-    padding: 24px 0 32px;
+    padding: 60px 0 32px;
     background-position: center top;
   }
 
@@ -3784,9 +3784,13 @@ textarea {
   }
 
   .hero-scene {
-    min-height: auto;
-    background-position: 58% top;
-    background-size: cover;
+    min-height: 725px;
+    background-image:
+      linear-gradient(90deg, rgba(2, 4, 10, 0.16) 0%, rgba(2, 4, 10, 0.04) 40%, rgba(2, 4, 10, 0.04) 100%),
+      url("https://thinkogic.com/wp-content/uploads/2024/12/Group_1160445595-transformed-1.png");
+    background-position: center center, -74px 49px;
+    background-repeat: no-repeat, no-repeat;
+    background-size: auto, cover;
   }
 
   .hero h1 {
