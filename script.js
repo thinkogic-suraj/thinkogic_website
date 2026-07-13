@@ -611,3 +611,62 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => animateMarketStory(button));
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const techShell = document.querySelector("[data-mad-tech]");
+  if (techShell) {
+    const tabs = Array.from(techShell.querySelectorAll(".mad-tech-tab"));
+    const panels = Array.from(techShell.querySelectorAll(".mad-tech-panel"));
+
+    const activateTechTab = (tab) => {
+      const target = tab.dataset.panel;
+
+      tabs.forEach((item) => {
+        const isActive = item === tab;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-selected", String(isActive));
+      });
+
+      panels.forEach((panel) => {
+        const isActive = panel.dataset.panel === target;
+        panel.classList.toggle("is-active", isActive);
+        panel.hidden = !isActive;
+      });
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => activateTechTab(tab));
+    });
+  }
+
+  const faqShell = document.querySelector("[data-mad-faq]");
+  if (faqShell) {
+    const items = Array.from(faqShell.querySelectorAll(".mad-faq-item"));
+
+    items.forEach((item) => {
+      const trigger = item.querySelector(".mad-faq-trigger");
+      const panel = item.querySelector(".mad-faq-panel");
+
+      if (!trigger || !panel) {
+        return;
+      }
+
+      trigger.addEventListener("click", () => {
+        const willOpen = trigger.getAttribute("aria-expanded") !== "true";
+
+        items.forEach((entry) => {
+          const entryTrigger = entry.querySelector(".mad-faq-trigger");
+          const entryPanel = entry.querySelector(".mad-faq-panel");
+
+          if (!entryTrigger || !entryPanel) {
+            return;
+          }
+
+          const isCurrent = entry === item && willOpen;
+          entryTrigger.setAttribute("aria-expanded", String(isCurrent));
+          entryPanel.hidden = !isCurrent;
+        });
+      });
+    });
+  }
+});
