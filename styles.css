@@ -1208,6 +1208,8 @@ textarea {
 .privacy-section,
 .contact-section {
   padding: 50px 40px;
+  background-color: #EEF6FFA6;
+  margin-top: 60px;
 }
 
 .market-section {
@@ -5302,7 +5304,7 @@ textarea {
 .mad-slider-arrows {
   display: inline-flex;
   gap: 14px;
-  padding-top: 12px;
+  padding-top: 55px;
 }
 
 .mad-slider-arrow {
@@ -5427,7 +5429,7 @@ textarea {
 .mad-why-intro h2 {
   font-family: "DM Sans", Sans-serif;
     font-size: 40px;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 50px;
     letter-spacing: -0.02em;
     color: #000000;
@@ -5455,11 +5457,10 @@ textarea {
 }
 
 .mad-why-web-image {
-  display: block;
-  width: 520px;
   max-width: 100%;
-  height: 332px;
-  object-fit: cover;
+    height: 332px;
+    object-fit: cover;
+    object-position: top center;
 }
 
 .mad-why-points {
@@ -5521,6 +5522,8 @@ textarea {
   font-size: 40px;
   font-weight: 500;
   letter-spacing: -0.02em;
+  margin-left: -86px;
+  text-align: center;
 }
 
 .mad-impact .section-heading p {
