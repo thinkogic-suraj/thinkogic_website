@@ -101,12 +101,41 @@ if (menuToggle && mainNav) {
 }
 
 if (siteHeader) {
+  let lastScrollY = window.scrollY;
+  let tickingHeader = false;
+
   const syncHeader = () => {
-    siteHeader.classList.toggle("is-sticky", window.scrollY > 12);
+    const currentScrollY = window.scrollY;
+    const isMenuOpen = mainNav?.classList.contains("is-open");
+    const isPastThreshold = currentScrollY > 12;
+    const isScrollingDown = currentScrollY > lastScrollY;
+    const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+
+    siteHeader.classList.toggle("is-sticky", isPastThreshold);
+
+    if (!isPastThreshold || currentScrollY <= 8 || isMenuOpen) {
+      siteHeader.classList.remove("is-hidden");
+    } else if (scrollDelta > 6) {
+      siteHeader.classList.toggle("is-hidden", isScrollingDown);
+    }
+
+    lastScrollY = Math.max(currentScrollY, 0);
+    tickingHeader = false;
   };
 
   syncHeader();
-  window.addEventListener("scroll", syncHeader, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (tickingHeader) {
+        return;
+      }
+
+      tickingHeader = true;
+      window.requestAnimationFrame(syncHeader);
+    },
+    { passive: true }
+  );
 }
 
 if (hero) {
