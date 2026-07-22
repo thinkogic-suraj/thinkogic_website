@@ -5174,7 +5174,7 @@ textarea {
 .mad-hero-form textarea {
   min-height: 88px;
   padding-top: 16px;
-  padding-bottom: 16px;
+  padding-bottom: 0px;
   resize: vertical;
 }
 
@@ -5664,7 +5664,7 @@ textarea {
     background-color 180ms ease,
     color 180ms ease,
     border-color 180ms ease;
-  width: 100%;
+  width: 110%;
   padding: 15px 18px;
   border-radius: 2px;
   font-family: "DM Sans", Sans-serif;
