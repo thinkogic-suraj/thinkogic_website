@@ -5208,7 +5208,7 @@ textarea {
   width: 100%;
   min-height: 32px;
   padding: 0 16px;
-  border: 3px solid rgba(244, 240, 220, 0.86);
+  border: 2px solid rgba(244, 240, 220, 0.86);
   background: rgba(19, 23, 84, 0.24);
   color: #fff;
   outline: none;
