@@ -92,9 +92,41 @@ textarea {
 
 .site-header.is-sticky {
   position: sticky;
-  background: rgba(3, 5, 11, 0.9);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(10, 30, 92, 0.1);
+  box-shadow: 0 12px 30px rgba(12, 30, 84, 0.08);
+}
+
+.site-header.is-sticky .brand img {
+  filter: brightness(0) saturate(100%);
+}
+
+.site-header.is-sticky .nav-link,
+.site-header.is-sticky .nav-toggle,
+.site-header.is-sticky .search-button,
+.site-header.is-sticky .menu-toggle {
+  color: #101936;
+}
+
+.site-header.is-sticky .menu-toggle {
+  border-color: rgba(10, 30, 92, 0.14);
+}
+
+.site-header.is-sticky .menu-toggle span {
+  background: #101936;
+}
+
+.site-header.is-sticky .header-search-wrapper.search-active {
+  border-bottom-color: rgba(16, 25, 54, 0.28);
+}
+
+.site-header.is-sticky .header-search-input {
+  color: #101936;
+}
+
+.site-header.is-sticky .header-search-input::placeholder {
+  color: rgba(16, 25, 54, 0.5);
 }
 
 .site-header.is-hidden {
@@ -262,6 +294,15 @@ textarea {
 .nav-item-company:focus-within .nav-toggle::before,
 .nav-item-company.is-open .nav-toggle::before {
   transform: translate(-50%, -35%) rotate(225deg);
+}
+
+.site-header.is-sticky .nav-item-development > .nav-trigger-development > .nav-link,
+.site-header.is-sticky .nav-item-development > .nav-trigger-development > .nav-toggle,
+.site-header.is-sticky .nav-item-development:hover > .nav-trigger-development > .nav-link,
+.site-header.is-sticky .nav-item-development:focus-within > .nav-trigger-development > .nav-link,
+.site-header.is-sticky .nav-item-development:hover > .nav-trigger-development > .nav-toggle,
+.site-header.is-sticky .nav-item-development:focus-within > .nav-trigger-development > .nav-toggle {
+  color: #101936 !important;
 }
 
 .nav-dropdown {
