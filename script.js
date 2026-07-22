@@ -984,9 +984,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const partnerStrip = document.querySelector("[data-mad-partners]");
-  if (partnerStrip) {
-    const partnerTrack = partnerStrip.querySelector(".mad-partner-track");
+  const initPartnerLoop = ({ shellSelector, trackSelector, gapVar, visibleVar, slideVar }) => {
+    const partnerStrip = document.querySelector(shellSelector);
+    if (!partnerStrip) {
+      return;
+    }
+
+    const partnerTrack = partnerStrip.querySelector(trackSelector);
     const baseSlides = partnerTrack ? Array.from(partnerTrack.children) : [];
     const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let loopWidth = 0;
@@ -1033,9 +1037,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const availableWidth = partnerStrip.clientWidth;
       const slideWidth = Math.max(86, (availableWidth - gap * (visibleSlides - 1)) / visibleSlides);
 
-      partnerStrip.style.setProperty("--mad-partner-gap", `${gap}px`);
-      partnerStrip.style.setProperty("--mad-visible-slides", String(visibleSlides));
-      partnerStrip.style.setProperty("--mad-slide-width", `${slideWidth}px`);
+      partnerStrip.style.setProperty(gapVar, `${gap}px`);
+      partnerStrip.style.setProperty(visibleVar, String(visibleSlides));
+      partnerStrip.style.setProperty(slideVar, `${slideWidth}px`);
 
       loopWidth = baseSlides.reduce((sum, slide) => sum + slide.getBoundingClientRect().width, 0);
       loopWidth += gap * Math.max(baseSlides.length - 1, 0);
@@ -1151,5 +1155,21 @@ document.addEventListener("DOMContentLoaded", () => {
         reducedMotionQuery.addListener(refreshPartnerLoop);
       }
     }
-  }
+  };
+
+  initPartnerLoop({
+    shellSelector: "[data-mad-partners]",
+    trackSelector: ".mad-partner-track",
+    gapVar: "--mad-partner-gap",
+    visibleVar: "--mad-visible-slides",
+    slideVar: "--mad-slide-width",
+  });
+
+  initPartnerLoop({
+    shellSelector: "[data-wpd-partners]",
+    trackSelector: ".wpd-partner-track",
+    gapVar: "--wpd-partner-gap",
+    visibleVar: "--wpd-visible-slides",
+    slideVar: "--wpd-slide-width",
+  });
 });
