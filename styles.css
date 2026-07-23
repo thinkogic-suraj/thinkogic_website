@@ -5898,6 +5898,59 @@ textarea {
   line-height: 26px;
 }
 
+.wpd-impact {
+  margin-bottom: 0;
+  padding-bottom: 100px;
+}
+
+.wpd-impact-patch-section {
+  position: relative;
+  z-index: 2;
+  margin-top: -72px;
+  margin-bottom: 124px;
+}
+
+.wpd-impact-grid {
+  position: relative;
+  z-index: 2;
+  gap: 0;
+  max-width: 1080px;
+  margin-top: 0;
+  padding: 15px 34px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #5927d7 0%, #532eda 48%, #4633e4 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 28px 54px rgba(6, 17, 61, 0.3);
+}
+
+.wpd-impact-grid article {
+  position: relative;
+  padding: 10px 20px;
+}
+
+.wpd-impact-grid article + article::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.wpd-impact-grid strong {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.wpd-impact-grid span {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 .mad-clients-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -6708,6 +6761,14 @@ textarea {
     gap: 38px;
   }
 
+  .wpd-impact-grid {
+    padding: 26px 20px;
+  }
+
+  .wpd-impact-grid strong {
+    font-size: 38px;
+  }
+
   .wpd-partners {
     --wpd-partner-gap: 36px;
     grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
@@ -6786,6 +6847,32 @@ textarea {
   .mad-partners {
     --mad-partner-gap: 28px;
     --mad-visible-slides: 3;
+  }
+
+  .wpd-impact {
+    padding-bottom: 116px;
+  }
+
+  .wpd-impact-patch-section {
+    margin-top: -62px;
+    margin-bottom: 108px;
+  }
+
+  .wpd-impact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 0;
+    max-width: 760px;
+    padding: 24px 18px;
+  }
+
+  .wpd-impact-grid article:nth-child(2n + 1)::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: -8px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.14);
   }
 
   .wpd-partners {
@@ -7001,6 +7088,53 @@ textarea {
   .mad-partners {
     --mad-partner-gap: 22px;
     --mad-visible-slides: 2;
+  }
+
+  .wpd-impact {
+    padding-bottom: 100px;
+  }
+
+  .wpd-impact-patch-section {
+    margin-top: -54px;
+    margin-bottom: 92px;
+  }
+
+  .wpd-impact-grid {
+    grid-template-columns: 1fr;
+    max-width: none;
+    padding: 18px 14px;
+  }
+
+  .wpd-impact-grid article {
+    padding: 12px 8px;
+  }
+
+  .wpd-impact-grid article + article::before {
+    display: none;
+  }
+
+  .wpd-impact-grid article::after,
+  .wpd-impact-grid article:nth-child(2n + 1)::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  .wpd-impact-grid article:last-child::after {
+    display: none;
+  }
+
+  .wpd-impact-grid strong {
+    font-size: 34px;
+  }
+
+  .wpd-impact-grid span {
+    font-size: 13px;
+    line-height: 1.45;
   }
 
   .wpd-partners {
