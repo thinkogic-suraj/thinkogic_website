@@ -6235,7 +6235,7 @@ textarea {
 .mad-process-list {
   --mad-process-count: 6;
   --mad-process-card-height: 341px;
-  --mad-process-card-offset: 15px;
+  --mad-process-card-offset: 24px;
   position: relative;
   z-index: 1;
   display: grid;

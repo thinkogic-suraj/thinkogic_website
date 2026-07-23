@@ -694,6 +694,8 @@ document.addEventListener("DOMContentLoaded", () => {
     processList.style.setProperty("--mad-process-count", String(processRows.length));
     processRows.forEach((row, index) => {
       row.style.zIndex = String(index + 1);
+      row.style.transform = "";
+      row.style.opacity = "";
     });
   }
 
