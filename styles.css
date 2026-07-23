@@ -7756,14 +7756,14 @@ textarea {
 .wpd-modal-dialog {
   position: relative;
   z-index: 1;
-  width: min(1040px, calc(100vw - 40px));
-  margin: min(64px, 6vh) auto;
-  display: grid;
-  grid-template-columns: minmax(270px, 0.78fr) minmax(0, 1.22fr);
+  width: min(890px, calc(100vw - 40px));
+  margin: min(72px, 8vh) auto;
+  display: block;
   background: #ffffff;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 34px 80px rgba(7, 13, 38, 0.28);
+  border-radius: 20px;
+  overflow: visible;
+  box-shadow: 0 26px 70px rgba(7, 13, 38, 0.24);
+  padding: 44px 36px 38px 405px;
 }
 
 .wpd-modal-close {
@@ -7776,10 +7776,10 @@ textarea {
   justify-content: center;
   width: 42px;
   height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(13, 29, 72, 0.16);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.16);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.96);
+  color: #15204d;
   cursor: pointer;
   transition:
     background-color 180ms ease,
@@ -7789,8 +7789,8 @@ textarea {
 
 .wpd-modal-close:hover,
 .wpd-modal-close:focus-visible {
-  background: rgba(255, 255, 255, 0.24);
-  border-color: rgba(255, 255, 255, 0.54);
+  background: #ffffff;
+  border-color: rgba(13, 29, 72, 0.28);
   transform: scale(1.04);
 }
 
@@ -7803,14 +7803,23 @@ textarea {
 }
 
 .wpd-modal-side {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  width: 385px;
+  min-height: 470px;
   display: grid;
-  gap: 28px;
+  gap: 40px;
   align-content: start;
-  padding: 48px 34px 40px;
+  padding: 34px 28px 30px;
   background:
     radial-gradient(circle at 18% 18%, rgba(79, 169, 255, 0.18), transparent 22%),
     linear-gradient(180deg, #0a2a66 0%, #07173d 100%);
   color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 16px 38px rgba(8, 18, 52, 0.28);
+  transform: translateY(-50%);
+  height: 554px;
 }
 
 .wpd-modal-kicker {
@@ -7906,11 +7915,9 @@ textarea {
 .wpd-modal-form-panel {
   display: grid;
   gap: 26px;
-  padding: 48px 34px 40px;
-  background:
-    radial-gradient(circle at 0% 100%, rgba(243, 106, 88, 0.14), transparent 22%),
-    linear-gradient(180deg, #1b1a63 0%, #141455 100%);
-  color: #ffffff;
+  padding: 0;
+  background: transparent;
+  color: #142047;
 }
 
 .wpd-modal-form-copy {
@@ -7919,7 +7926,7 @@ textarea {
 
 .wpd-modal-form-kicker {
   margin: 0 0 10px;
-  color: rgba(197, 215, 255, 0.9);
+  color: #25498c;
   font-family: "DM Sans", sans-serif;
   font-size: 13px;
   font-weight: 700;
@@ -7929,7 +7936,7 @@ textarea {
 
 .wpd-modal-form-intro {
   margin: 0;
-  color: rgba(234, 240, 255, 0.86);
+  color: #8d98af;
   font-size: 15px;
   line-height: 1.7;
 }
@@ -7945,11 +7952,11 @@ textarea {
 
 .wpd-modal-form input,
 .wpd-modal-form textarea {
-  min-height: 30px;
+  min-height: 35px;
   padding: 0 16px;
-  border: 2px solid rgba(243, 244, 255, 0.92);
-  background: transparent;
-  color: #ffffff;
+  border: 1px solid #d6def1;
+  background: #ffffff;
+  color: #16224f;
   border-radius: 0;
 }
 
@@ -7959,8 +7966,20 @@ textarea {
   padding-bottom: 16px;
 }
 
+.wpd-modal-form input::placeholder,
+.wpd-modal-form textarea::placeholder {
+  color: #9ca6bc;
+}
+
+.wpd-modal-form input:focus,
+.wpd-modal-form textarea:focus {
+  border-color: #6ca4ff;
+  box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.12);
+  background: #ffffff;
+}
+
 .wpd-modal-form .mad-country-chip {
-  color: #ffffff;
+  color: #16224f;
   gap: 0;
   left: 18px;
   font-weight: 500;
@@ -7971,7 +7990,7 @@ textarea {
 }
 
 .wpd-modal-check {
-  color: rgba(255, 255, 255, 0.88);
+  color: #4c5672;
 }
 
 .wpd-modal-check input {
@@ -7988,7 +8007,7 @@ textarea {
   min-height: 52px;
   align-self: center;
   justify-self: center;
-  box-shadow: 0 18px 32px rgba(9, 18, 58, 0.26);
+  box-shadow: 0 12px 26px rgba(66, 133, 244, 0.28);
   width: 226px;
   text-align: center;
 }
@@ -7999,22 +8018,35 @@ body.wpd-modal-open {
 
 @media (max-width: 1180px) {
   .wpd-modal-dialog {
-    grid-template-columns: minmax(240px, 0.84fr) minmax(0, 1.16fr);
+    width: min(900px, calc(100vw - 32px));
+    padding-left: 355px;
+  }
+
+  .wpd-modal-side {
+    width: 288px;
   }
 }
 
 @media (max-width: 860px) {
   .wpd-modal-dialog {
     width: min(720px, calc(100vw - 24px));
-    grid-template-columns: 1fr;
     margin: 24px auto;
     max-height: calc(100vh - 48px);
     overflow-y: auto;
+    padding: 24px;
   }
 
-  .wpd-modal-side,
+  .wpd-modal-side {
+    position: static;
+    width: auto;
+    min-height: 0;
+    margin-bottom: 22px;
+    transform: none;
+    border-radius: 14px;
+  }
+
   .wpd-modal-form-panel {
-    padding: 34px 22px 28px;
+    padding: 0;
   }
 
   .wpd-modal-form-copy {
@@ -8028,6 +8060,7 @@ body.wpd-modal-open {
     margin: 12px auto;
     max-height: calc(100vh - 24px);
     border-radius: 14px;
+    padding: 18px 16px 20px;
   }
 
   .wpd-modal-close {
@@ -8037,10 +8070,9 @@ body.wpd-modal-open {
     height: 38px;
   }
 
-  .wpd-modal-side,
-  .wpd-modal-form-panel {
+  .wpd-modal-side {
     gap: 20px;
-    padding: 24px 16px 20px;
+    padding: 22px 16px 20px;
   }
 
   .wpd-modal-form .mad-form-grid {
