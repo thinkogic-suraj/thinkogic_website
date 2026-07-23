@@ -7760,9 +7760,8 @@ textarea {
   margin: min(72px, 8vh) auto;
   display: block;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 0px;
   overflow: visible;
-  box-shadow: 0 26px 70px rgba(7, 13, 38, 0.24);
   padding: 44px 36px 38px 405px;
 }
 
@@ -7816,7 +7815,7 @@ textarea {
     radial-gradient(circle at 18% 18%, rgba(79, 169, 255, 0.18), transparent 22%),
     linear-gradient(180deg, #0a2a66 0%, #07173d 100%);
   color: #ffffff;
-  border-radius: 18px;
+  border-radius: 0px;
   box-shadow: 0 16px 38px rgba(8, 18, 52, 0.28);
   transform: translateY(-50%);
   height: 554px;
