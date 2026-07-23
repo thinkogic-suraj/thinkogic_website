@@ -5961,7 +5961,7 @@ textarea {
 }
 
 #mad-clients {
-  padding-top: 30px;
+  padding-top: 0px;
   padding-bottom: 80px;
 }
 
@@ -7269,5 +7269,786 @@ textarea {
 
   .mad-faq-trigger {
     font-size: 18px;
+  }
+}
+
+.wpd-clients-section {
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+
+.wpd-clients-heading h2 {
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.wpd-clients-heading p {
+  max-width: 920px;
+  margin-inline: auto;
+  color: #5f6368;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.wpd-clients-rows {
+  display: grid;
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.wpd-clients-row {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.wpd-clients-track {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  width: max-content;
+  will-change: transform;
+}
+
+.wpd-clients-track-forward {
+  animation: wpdClientsMarqueeForward 30s linear infinite;
+}
+
+.wpd-clients-track-reverse {
+  animation: wpdClientsMarqueeReverse 30s linear infinite;
+}
+
+.wpd-client-logo {
+  min-width: 160px;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wpd-client-logo img {
+  width: auto;
+  max-width: min(100%, 190px);
+  max-height: 150px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.wpd-clients-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.wpd-clients-button {
+  background-color: #4285F4;
+  font-family: "DM Sans", Sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 13px;
+  color: #FFFFFF;
+  border-style: none;
+  border-radius: 3px;
+  padding: 16px 30px;
+}
+
+.wpd-clients-button:hover {
+  background-color: #1c63d9;
+  transform: translateY(-1px);
+}
+
+.wpd-clients-button span {
+  font-size: 17px;
+  line-height: 1;
+}
+
+@keyframes wpdClientsMarqueeForward {
+  from {
+    transform: translate3d(calc(-50% - 21px), 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes wpdClientsMarqueeReverse {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - 21px), 0, 0);
+  }
+}
+
+@media (max-width: 860px) {
+  .wpd-clients-rows {
+    gap: 18px;
+  }
+
+  .wpd-clients-track {
+    gap: 32px;
+  }
+
+  .wpd-client-logo {
+    min-width: 140px;
+  }
+
+  .wpd-client-logo img {
+    max-width: min(100%, 190px);
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wpd-clients-heading p {
+    font-size: 16px;
+  }
+
+  .wpd-clients-rows {
+    gap: 16px;
+  }
+
+  .wpd-clients-track {
+    gap: 24px;
+  }
+
+  .wpd-clients-track-forward,
+  .wpd-clients-track-reverse {
+    animation-duration: 24s;
+  }
+
+  .wpd-client-logo {
+    min-width: 120px;
+    min-height: 46px;
+  }
+
+  .wpd-client-logo img {
+    max-width: min(100%, 190px);
+    max-height: 150px;
+  }
+
+  .wpd-clients-cta {
+    margin-top: 24px;
+  }
+}
+
+.wpd-projects-section {
+  overflow: hidden;
+  margin-top: -30px;
+}
+
+.wpd-projects-heading {
+  position: relative;
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.wpd-projects-heading .mad-heading-row {
+  align-items: center;
+  justify-content: center;
+}
+
+.wpd-projects-arrows {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  padding-top: 0;
+  flex-shrink: 0;
+  transform: translateY(-50%);
+}
+
+.wpd-projects-carousel {
+  position: relative;
+}
+
+.wpd-projects-viewport {
+  overflow: hidden;
+}
+
+.wpd-project-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 22px;
+  grid-template-columns: none;
+  transition: transform 420ms ease;
+  will-change: transform;
+}
+
+.wpd-project-card {
+  flex: 0 0 calc((100% - 66px) / 4);
+  min-width: 0;
+}
+
+@media (max-width: 1180px) {
+  .wpd-project-card {
+    flex-basis: calc((100% - 22px) / 2);
+  }
+}
+
+@media (max-width: 860px) {
+  .wpd-projects-heading {
+    margin-bottom: 22px;
+  }
+
+  .wpd-projects-heading .mad-heading-row {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wpd-projects-arrows {
+    position: static;
+    transform: none;
+    padding-top: 18px;
+  }
+
+  .wpd-project-grid {
+    gap: 18px;
+  }
+
+  .wpd-project-card {
+    flex-basis: calc((100% - 18px) / 2);
+  }
+}
+
+@media (max-width: 640px) {
+  .wpd-projects-heading {
+    margin-bottom: 18px;
+  }
+
+  .wpd-projects-heading .mad-heading-row {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wpd-projects-arrows {
+    width: 100%;
+    justify-content: flex-start;
+    position: static;
+    transform: none;
+    padding-top: 14px;
+  }
+
+  .wpd-project-grid {
+    gap: 16px;
+  }
+
+  .wpd-project-card {
+    flex-basis: 100%;
+  }
+}
+
+.wpd-contact-section {
+  padding: 0 0 72px;
+}
+
+.wpd-contact-section .wpd-contact-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.14fr) minmax(360px, 0.86fr);
+  align-items: start;
+  gap: 30px;
+  padding: 34px;
+  border: 1px solid rgba(105, 132, 201, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.08), transparent 18%),
+    radial-gradient(circle at 12% 88%, rgba(98, 175, 255, 0.1), transparent 20%),
+    linear-gradient(180deg, #ffffff, #fbfcff);
+  overflow: hidden;
+  position: relative;
+}
+
+.wpd-contact-section .wpd-contact-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 84% 14%, rgba(77, 134, 255, 0.06), transparent 18%),
+    radial-gradient(circle at 8% 92%, rgba(77, 134, 255, 0.08), transparent 22%);
+  pointer-events: none;
+}
+
+.wpd-contact-section .contact-showcase,
+.wpd-contact-section .contact-form-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.wpd-contact-section .contact-showcase {
+  display: grid;
+  gap: 26px;
+  align-content: start;
+  padding: 22px 10px 10px 6px;
+}
+
+.wpd-contact-section .contact-showcase-copy {
+  max-width: 620px;
+}
+
+.wpd-contact-section .contact-showcase h2 {
+  max-width: 12ch;
+}
+
+.wpd-contact-section .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.wpd-contact-section .stat-card {
+  min-width: 0;
+}
+
+.wpd-contact-section .review-brands {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  align-items: center;
+}
+
+.wpd-contact-section .review-brand {
+  min-width: 0;
+  min-height: 78px;
+  padding: 12px 8px;
+}
+
+.wpd-contact-section .review-brand img {
+  width: 100%;
+  max-width: 150px;
+  height: 48px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.wpd-contact-section .contact-form-panel {
+  align-self: stretch;
+  display: flex;
+}
+
+.wpd-contact-section .contact-form {
+  width: 100%;
+}
+
+.wpd-contact-section .contact-form input,
+.wpd-contact-section .contact-form textarea {
+  min-width: 0;
+}
+
+.wpd-contact-section .contact-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 2px;
+}
+
+.wpd-contact-section .contact-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  min-width: 208px;
+  padding: 16px 28px;
+  line-height: 1;
+  align-self: flex-start;
+}
+
+@media (max-width: 1180px) {
+  .wpd-contact-section .wpd-contact-shell {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .wpd-contact-section .contact-showcase {
+    padding: 8px 0 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .wpd-contact-section {
+    padding-bottom: 56px;
+  }
+
+  .wpd-contact-section .wpd-contact-shell {
+    gap: 24px;
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .wpd-contact-section .stats-grid,
+  .wpd-contact-section .review-brands,
+  .wpd-contact-section .form-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wpd-contact-section .contact-showcase h2 {
+    max-width: none;
+    font-size: 24px;
+  }
+
+  .wpd-contact-section .contact-intro {
+    font-size: 15px;
+  }
+
+  .wpd-contact-section .contact-form-panel {
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wpd-contact-section {
+    padding-bottom: 44px;
+  }
+
+  .wpd-contact-section .wpd-contact-shell {
+    gap: 20px;
+    padding: 18px;
+  }
+
+  .wpd-contact-section .stats-grid,
+  .wpd-contact-section .review-brands,
+  .wpd-contact-section .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .wpd-contact-section .review-brand img {
+    max-width: 136px;
+  }
+
+  .wpd-contact-section .contact-upload {
+    grid-template-columns: auto 1fr;
+    padding: 12px 14px;
+  }
+
+  .wpd-contact-section .contact-form {
+    padding: 20px 18px 22px;
+  }
+
+  .wpd-contact-section .contact-form-footer {
+    justify-content: stretch;
+  }
+
+  .wpd-contact-section .contact-submit {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.wpd-modal[hidden] {
+  display: none;
+}
+
+.wpd-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+}
+
+.wpd-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 11, 34, 0.68);
+  backdrop-filter: blur(6px);
+}
+
+.wpd-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, calc(100vw - 40px));
+  margin: min(64px, 6vh) auto;
+  display: grid;
+  grid-template-columns: minmax(270px, 0.78fr) minmax(0, 1.22fr);
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 34px 80px rgba(7, 13, 38, 0.28);
+}
+
+.wpd-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.wpd-modal-close:hover,
+.wpd-modal-close:focus-visible {
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.54);
+  transform: scale(1.04);
+}
+
+.wpd-modal-close span {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 0.9;
+  transform: translateY(-1px);
+}
+
+.wpd-modal-side {
+  display: grid;
+  gap: 28px;
+  align-content: start;
+  padding: 48px 34px 40px;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(79, 169, 255, 0.18), transparent 22%),
+    linear-gradient(180deg, #0a2a66 0%, #07173d 100%);
+  color: #ffffff;
+}
+
+.wpd-modal-kicker {
+  margin: 0 0 10px;
+  color: rgba(191, 220, 255, 0.88);
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.wpd-modal-side h2 {
+  margin: 0;
+  font-size: clamp(2rem, 2vw, 2.65rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.wpd-modal-intro {
+  margin: 16px 0 0;
+  color: rgba(233, 241, 255, 0.86);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.wpd-modal-contact-list {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wpd-modal-contact-list li {
+  display: grid;
+  gap: 4px;
+}
+
+.wpd-modal-contact-list strong {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.wpd-modal-contact-list span,
+.wpd-modal-contact-list a {
+  color: rgba(228, 238, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.wpd-modal-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wpd-modal-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(190, 216, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.wpd-modal-socials a:hover,
+.wpd-modal-socials a:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(190, 216, 255, 0.34);
+}
+
+.wpd-modal-socials svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wpd-modal-form-panel {
+  display: grid;
+  gap: 26px;
+  padding: 48px 34px 40px;
+  background:
+    radial-gradient(circle at 0% 100%, rgba(243, 106, 88, 0.14), transparent 22%),
+    linear-gradient(180deg, #1b1a63 0%, #141455 100%);
+  color: #ffffff;
+}
+
+.wpd-modal-form-copy {
+  padding-right: 36px;
+}
+
+.wpd-modal-form-kicker {
+  margin: 0 0 10px;
+  color: rgba(197, 215, 255, 0.9);
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wpd-modal-form-intro {
+  margin: 0;
+  color: rgba(234, 240, 255, 0.86);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.wpd-modal-form {
+  gap: 18px;
+  padding-top: 0;
+}
+
+.wpd-modal-form .mad-form-grid {
+  gap: 16px 20px;
+}
+
+.wpd-modal-form input,
+.wpd-modal-form textarea {
+  min-height: 30px;
+  padding: 0 16px;
+  border: 2px solid rgba(243, 244, 255, 0.92);
+  background: transparent;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.wpd-modal-form textarea {
+  min-height: 136px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.wpd-modal-form .mad-country-chip {
+  color: #ffffff;
+  gap: 0;
+  left: 18px;
+  font-weight: 500;
+}
+
+.wpd-modal-form .mad-phone-field input {
+  padding-left: 76px;
+}
+
+.wpd-modal-check {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.wpd-modal-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: #4285f4;
+}
+
+.wpd-modal-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 186px;
+  min-height: 52px;
+  align-self: center;
+  justify-self: center;
+  box-shadow: 0 18px 32px rgba(9, 18, 58, 0.26);
+  width: 226px;
+  text-align: center;
+}
+
+body.wpd-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 1180px) {
+  .wpd-modal-dialog {
+    grid-template-columns: minmax(240px, 0.84fr) minmax(0, 1.16fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .wpd-modal-dialog {
+    width: min(720px, calc(100vw - 24px));
+    grid-template-columns: 1fr;
+    margin: 24px auto;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+  }
+
+  .wpd-modal-side,
+  .wpd-modal-form-panel {
+    padding: 34px 22px 28px;
+  }
+
+  .wpd-modal-form-copy {
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .wpd-modal-dialog {
+    width: min(100vw - 16px, 100%);
+    margin: 12px auto;
+    max-height: calc(100vh - 24px);
+    border-radius: 14px;
+  }
+
+  .wpd-modal-close {
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .wpd-modal-side,
+  .wpd-modal-form-panel {
+    gap: 20px;
+    padding: 24px 16px 20px;
+  }
+
+  .wpd-modal-form .mad-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wpd-modal-submit {
+    width: 100%;
+    min-width: 0;
   }
 }

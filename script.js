@@ -823,6 +823,79 @@ document.addEventListener("DOMContentLoaded", () => {
     syncExpertiseSlider();
   }
 
+  const wpdProjectsShell = document.querySelector("[data-wpd-projects]");
+  if (wpdProjectsShell) {
+    const viewport = wpdProjectsShell.querySelector(".wpd-projects-viewport");
+    const track = wpdProjectsShell.querySelector(".wpd-project-grid");
+    const cards = track ? Array.from(track.querySelectorAll(".wpd-project-card")) : [];
+    const prevButton = document.querySelector('[data-wpd-project-arrows] [data-direction="prev"]');
+    const nextButton = document.querySelector('[data-wpd-project-arrows] [data-direction="next"]');
+    let currentIndex = 0;
+
+    const getVisibleCards = () => {
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        return 1;
+      }
+
+      if (window.matchMedia("(max-width: 1180px)").matches) {
+        return 2;
+      }
+
+      return 4;
+    };
+
+    const getGap = () => {
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        return 16;
+      }
+
+      if (window.matchMedia("(max-width: 860px)").matches) {
+        return 18;
+      }
+
+      return 22;
+    };
+
+    const getMaxIndex = () => Math.max(0, cards.length - getVisibleCards());
+
+    const syncWpdProjectsSlider = () => {
+      if (!viewport || !track || cards.length === 0) {
+        return;
+      }
+
+      const visibleCards = getVisibleCards();
+      const gap = getGap();
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const maxIndex = getMaxIndex();
+
+      currentIndex = Math.min(currentIndex, maxIndex);
+
+      const offset = (cardWidth + gap) * currentIndex;
+      track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+
+      if (prevButton) {
+        prevButton.disabled = currentIndex <= 0;
+      }
+
+      if (nextButton) {
+        nextButton.disabled = currentIndex >= maxIndex || cards.length <= visibleCards;
+      }
+    };
+
+    prevButton?.addEventListener("click", () => {
+      currentIndex = Math.max(0, currentIndex - 1);
+      syncWpdProjectsSlider();
+    });
+
+    nextButton?.addEventListener("click", () => {
+      currentIndex = Math.min(getMaxIndex(), currentIndex + 1);
+      syncWpdProjectsSlider();
+    });
+
+    window.addEventListener("resize", syncWpdProjectsSlider, { passive: true });
+    syncWpdProjectsSlider();
+  }
+
   const testimonialShell = document.querySelector(".mad-testimonial-row");
   if (testimonialShell) {
     const testimonialCards = [
@@ -981,6 +1054,55 @@ document.addEventListener("DOMContentLoaded", () => {
           entryPanel.hidden = !isCurrent;
         });
       });
+    });
+  }
+
+  const wpdModal = document.querySelector("[data-wpd-modal]");
+  if (wpdModal) {
+    const openers = Array.from(document.querySelectorAll("[data-wpd-modal-open]"));
+    const closers = Array.from(wpdModal.querySelectorAll("[data-wpd-modal-close]"));
+    const dialog = wpdModal.querySelector(".wpd-modal-dialog");
+    const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+    let lastActiveElement = null;
+
+    const openWpdModal = () => {
+      lastActiveElement = document.activeElement;
+      wpdModal.hidden = false;
+      document.body.classList.add("wpd-modal-open");
+
+      window.requestAnimationFrame(() => {
+        const firstFocusable = dialog?.querySelector(focusableSelector);
+        firstFocusable?.focus();
+      });
+    };
+
+    const closeWpdModal = () => {
+      wpdModal.hidden = true;
+      document.body.classList.remove("wpd-modal-open");
+      lastActiveElement?.focus?.();
+    };
+
+    openers.forEach((opener) => {
+      opener.addEventListener("click", (event) => {
+        event.preventDefault();
+        openWpdModal();
+      });
+    });
+
+    closers.forEach((closer) => {
+      closer.addEventListener("click", () => closeWpdModal());
+    });
+
+    wpdModal.addEventListener("click", (event) => {
+      if (event.target === wpdModal) {
+        closeWpdModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !wpdModal.hidden) {
+        closeWpdModal();
+      }
     });
   }
 
