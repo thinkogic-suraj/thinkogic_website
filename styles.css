@@ -7756,7 +7756,7 @@ textarea {
 .wpd-modal-dialog {
   position: relative;
   z-index: 1;
-  width: min(890px, calc(100vw - 40px));
+  width: min(886px, calc(100vw - 40px));
   margin: min(72px, 8vh) auto;
   display: block;
   background: #ffffff;
@@ -7816,7 +7816,7 @@ textarea {
     radial-gradient(circle at 18% 18%, rgba(79, 169, 255, 0.18), transparent 22%),
     linear-gradient(180deg, #0a2a66 0%, #07173d 100%);
   color: #ffffff;
-  border-radius: 8px;
+  border-radius: 18px;
   box-shadow: 0 16px 38px rgba(8, 18, 52, 0.28);
   transform: translateY(-50%);
   height: 554px;
