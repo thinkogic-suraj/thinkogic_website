@@ -908,6 +908,59 @@ document.addEventListener("DOMContentLoaded", () => {
       { stars: ["★", "★", "★", "★", "★"], rating: "5 star rating" },
       { stars: ["★", "★", "★", "★", "★"], rating: "5 star rating" }
     ];
+    const isAndroidPage = document.body.classList.contains("aad-page");
+    const renderedTestimonials = isAndroidPage
+      ? [
+          {
+            rating: "5 star rating",
+            quote:
+              "Thinkogic helped us shape an Android product that felt polished from the first release. Their team stayed fast, collaborative, and highly dependable throughout delivery.",
+            logo: "https://thinkogic.com/wp-content/uploads/2024/09/smarti_logo-1-4.png",
+            logoAlt: "Smart-i"
+          },
+          {
+            rating: "5 star rating",
+            quote:
+              "From planning to launch, the Android app development process stayed structured and transparent. We were able to move quickly without losing confidence in quality or performance.",
+            logo: "https://thinkogic.com/wp-content/uploads/2024/09/smarti_logo-1-4.png",
+            logoAlt: "Smart-i"
+          },
+          {
+            rating: "5 star rating",
+            quote:
+              "Their team balanced product thinking, UI quality, and engineering discipline very well. The result was an Android app experience our stakeholders were genuinely excited to ship.",
+            logo: "https://thinkogic.com/wp-content/uploads/2024/09/smarti_logo-1-4.png",
+            logoAlt: "Smart-i"
+          },
+          {
+            rating: "5 star rating",
+            quote:
+              "Communication stayed strong after launch too. Thinkogic kept improving the app with thoughtful updates, responsive support, and a clear focus on long-term stability.",
+            logo: "https://thinkogic.com/wp-content/uploads/2024/09/smarti_logo-1-4.png",
+            logoAlt: "Smart-i"
+          },
+          {
+            rating: "5 star rating",
+            quote:
+              "We appreciated how quickly the team understood our Android requirements and translated them into a scalable product roadmap. The execution stayed sharp from start to finish.",
+            logo: "https://thinkogic.com/wp-content/uploads/2024/09/smarti_logo-1-4.png",
+            logoAlt: "Smart-i"
+          },
+          {
+            rating: "5 star rating",
+            quote:
+              "The delivery experience felt smooth, proactive, and well managed. Thinkogic gave us an Android solution that was reliable, user-friendly, and ready for future growth.",
+            logo: "https://thinkogic.com/wp-content/uploads/2024/09/smarti_logo-1-4.png",
+            logoAlt: "Smart-i"
+          }
+        ]
+      : testimonialCards.map((card) => ({
+          rating: card.rating,
+          quote:
+            "They were very prompt in their responses and always available. Thanks to Thinkogic engineers, we were able to complete all projects on time and without any issues. The team was very prompt in terms of responding to queries and requests.",
+          logo: "https://thinkogic.com/wp-content/uploads/2024/09/smarti_logo-1-4.png",
+          logoAlt: "Smart-i"
+        }));
     const quoteSvg = '<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"/></svg>';
     const buildStars = (rating) => rating === "4.5 star rating"
       ? ["\u2605", "\u2605", "\u2605", "\u2605", "\u2606"]
@@ -919,12 +972,12 @@ document.addEventListener("DOMContentLoaded", () => {
       </button>
       <div class="mad-testimonial-viewport">
         <div class="mad-testimonial-track">
-          ${testimonialCards.map((card) => `
+          ${renderedTestimonials.map((card) => `
             <article class="mad-testimonial">
               <div class="mad-testimonial-quote" aria-hidden="true">${quoteSvg}</div>
-              <p>They were very prompt in their responses and always available. Thanks to Thinkogic engineers, we were able to complete all projects on time and without any issues. The team was very prompt in terms of responding to queries and requests.</p>
+              <p>${card.quote}</p>
               <div class="mad-testimonial-footer">
-                <img class="mad-testimonial-logo" src="https://thinkogic.com/wp-content/uploads/2024/09/smarti_logo-1-4.png" alt="Smart-i" />
+                <img class="mad-testimonial-logo" src="${card.logo}" alt="${card.logoAlt}" />
                 <ul class="mad-stars" aria-label="${card.rating}">
                   ${buildStars(card.rating).map((star) => `<li>${star}</li>`).join("")}
                 </ul>
@@ -1296,4 +1349,423 @@ document.addEventListener("DOMContentLoaded", () => {
     visibleVar: "--wpd-visible-slides",
     slideVar: "--wpd-slide-width",
   });
+
+  const initAadCounterAnimation = () => {
+    const counters = Array.from(document.querySelectorAll("[data-aad-counter]"));
+    if (counters.length === 0) {
+      return;
+    }
+
+    const animateCounter = (counter) => {
+      if (counter.dataset.animated === "true") {
+        return;
+      }
+
+      counter.dataset.animated = "true";
+
+      const target = Number.parseFloat(counter.dataset.target || "0");
+      const suffix = counter.dataset.suffix || "";
+      const decimals = Number.parseInt(counter.dataset.decimals || "0", 10);
+      const duration = 1400;
+      let startTime = null;
+
+      const updateValue = (timestamp) => {
+        if (startTime == null) {
+          startTime = timestamp;
+        }
+
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const currentValue = target * eased;
+        const formattedValue = decimals > 0
+          ? currentValue.toFixed(decimals)
+          : Math.round(currentValue).toString();
+
+        counter.textContent = `${formattedValue}${suffix}`;
+
+        if (progress < 1) {
+          window.requestAnimationFrame(updateValue);
+        } else {
+          counter.textContent = `${decimals > 0 ? target.toFixed(decimals) : target}${suffix}`;
+        }
+      };
+
+      window.requestAnimationFrame(updateValue);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.45 }
+    );
+
+    counters.forEach((counter) => observer.observe(counter));
+  };
+
+  const initAadSlider = ({
+    shellSelector,
+    viewportSelector,
+    trackSelector,
+    cardSelector,
+    arrowsSelector,
+    visible,
+    gap,
+  }) => {
+    const shell = document.querySelector(shellSelector);
+    if (!shell) {
+      return;
+    }
+
+    const viewport = shell.querySelector(viewportSelector);
+    const track = shell.querySelector(trackSelector);
+    const cards = track ? Array.from(track.querySelectorAll(cardSelector)) : [];
+    const prevButton = document.querySelector(`${arrowsSelector} [data-direction="prev"]`);
+    const nextButton = document.querySelector(`${arrowsSelector} [data-direction="next"]`);
+    let currentIndex = 0;
+
+    const getVisibleCards = () => visible();
+    const getGap = () => gap();
+    const getMaxIndex = () => Math.max(0, cards.length - getVisibleCards());
+
+    const syncSlider = () => {
+      if (!viewport || !track || cards.length === 0) {
+        return;
+      }
+
+      const visibleCards = getVisibleCards();
+      const currentGap = getGap();
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const maxIndex = getMaxIndex();
+
+      currentIndex = Math.min(currentIndex, maxIndex);
+      track.style.transform = `translate3d(-${(cardWidth + currentGap) * currentIndex}px, 0, 0)`;
+
+      if (prevButton) {
+        prevButton.disabled = currentIndex <= 0;
+      }
+
+      if (nextButton) {
+        nextButton.disabled = currentIndex >= maxIndex || cards.length <= visibleCards;
+      }
+    };
+
+    prevButton?.addEventListener("click", () => {
+      currentIndex = Math.max(0, currentIndex - 1);
+      syncSlider();
+    });
+
+    nextButton?.addEventListener("click", () => {
+      currentIndex = Math.min(getMaxIndex(), currentIndex + 1);
+      syncSlider();
+    });
+
+    window.addEventListener("resize", syncSlider, { passive: true });
+    syncSlider();
+  };
+
+  const initAadFaq = () => {
+    const faqShell = document.querySelector("[data-aad-faq]");
+    if (!faqShell) {
+      return;
+    }
+
+    const items = Array.from(faqShell.querySelectorAll(".aad-faq-item"));
+
+    items.forEach((item) => {
+      const trigger = item.querySelector(".aad-faq-trigger");
+      const panel = item.querySelector(".aad-faq-panel");
+
+      if (!trigger || !panel) {
+        return;
+      }
+
+      trigger.addEventListener("click", () => {
+        const willOpen = trigger.getAttribute("aria-expanded") !== "true";
+
+        items.forEach((entry) => {
+          const entryTrigger = entry.querySelector(".aad-faq-trigger");
+          const entryPanel = entry.querySelector(".aad-faq-panel");
+
+          if (!entryTrigger || !entryPanel) {
+            return;
+          }
+
+          const isCurrent = entry === item && willOpen;
+          entryTrigger.setAttribute("aria-expanded", String(isCurrent));
+          entryPanel.hidden = !isCurrent;
+        });
+      });
+    });
+  };
+
+  const initAadModal = () => {
+    const modal = document.querySelector("[data-aad-modal]");
+    if (!modal) {
+      return;
+    }
+
+    const openers = Array.from(document.querySelectorAll("[data-aad-modal-open]"));
+    const closers = Array.from(modal.querySelectorAll("[data-aad-modal-close]"));
+    const dialog = modal.querySelector(".aad-modal-dialog");
+    const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+    let lastActiveElement = null;
+
+    const openModal = () => {
+      lastActiveElement = document.activeElement;
+      modal.hidden = false;
+      document.body.classList.add("aad-modal-open");
+
+      window.requestAnimationFrame(() => {
+        dialog?.querySelector(focusableSelector)?.focus();
+      });
+    };
+
+    const closeModal = () => {
+      modal.hidden = true;
+      document.body.classList.remove("aad-modal-open");
+      lastActiveElement?.focus?.();
+    };
+
+    openers.forEach((opener) => {
+      opener.addEventListener("click", (event) => {
+        event.preventDefault();
+        openModal();
+      });
+    });
+
+    closers.forEach((closer) => {
+      closer.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !modal.hidden) {
+        closeModal();
+      }
+    });
+  };
+
+  const initAadPartnerLoop = () => {
+    const strip = document.querySelector("[data-aad-partners]");
+    if (!strip) {
+      return;
+    }
+
+    const track = strip.querySelector(".aad-partner-track");
+    const baseSlides = track ? Array.from(track.children) : [];
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let loopWidth = 0;
+    let offset = 0;
+    let lastFrameTime = 0;
+    let frameId = 0;
+    let paused = false;
+
+    const getVisibleSlides = () => {
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        return 2;
+      }
+
+      if (window.matchMedia("(max-width: 860px)").matches) {
+        return 3;
+      }
+
+      return 4;
+    };
+
+    const getPartnerGap = () => {
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        return 22;
+      }
+
+      if (window.matchMedia("(max-width: 860px)").matches) {
+        return 28;
+      }
+
+      if (window.matchMedia("(max-width: 1180px)").matches) {
+        return 36;
+      }
+
+      return 48;
+    };
+
+    const buildLoop = () => {
+      if (!track || baseSlides.length === 0) {
+        return;
+      }
+
+      track.innerHTML = "";
+      baseSlides.forEach((slide) => track.appendChild(slide.cloneNode(true)));
+      baseSlides.forEach((slide) => {
+        const clone = slide.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        track.appendChild(clone);
+      });
+    };
+
+    const syncMetrics = () => {
+      if (!track || baseSlides.length === 0) {
+        return;
+      }
+
+      const gap = getPartnerGap();
+      const visibleSlides = getVisibleSlides();
+      const slideWidth = baseSlides[0].getBoundingClientRect().width || 98;
+
+      strip.style.setProperty("--aad-partner-gap", `${gap}px`);
+      strip.style.setProperty("--aad-visible-slides", String(visibleSlides));
+      strip.style.setProperty("--aad-slide-width", `${slideWidth}px`);
+
+      loopWidth = (slideWidth + gap) * baseSlides.length;
+      offset %= loopWidth || 1;
+      track.style.transform = `translate3d(-${offset}px, 0, 0)`;
+    };
+
+    const tick = (timestamp) => {
+      if (!track || reducedMotionQuery.matches || loopWidth <= 0) {
+        frameId = 0;
+        return;
+      }
+
+      if (lastFrameTime === 0) {
+        lastFrameTime = timestamp;
+      }
+
+      const delta = timestamp - lastFrameTime;
+      lastFrameTime = timestamp;
+
+      if (!paused) {
+        offset = (offset + delta * 0.03) % loopWidth;
+        track.style.transform = `translate3d(-${offset}px, 0, 0)`;
+      }
+
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (frameId || reducedMotionQuery.matches) {
+        return;
+      }
+
+      lastFrameTime = 0;
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    const stop = () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+        frameId = 0;
+      }
+    };
+
+    const refresh = () => {
+      stop();
+      syncMetrics();
+
+      if (!reducedMotionQuery.matches) {
+        start();
+      } else if (track) {
+        track.style.transform = "translate3d(0, 0, 0)";
+      }
+    };
+
+    if (!track || baseSlides.length === 0) {
+      return;
+    }
+
+    buildLoop();
+    syncMetrics();
+    start();
+
+    baseSlides.forEach((slide) => {
+      slide.querySelector("img")?.addEventListener("load", syncMetrics, { once: true });
+    });
+
+    strip.addEventListener("mouseenter", () => {
+      paused = true;
+    });
+
+    strip.addEventListener("mouseleave", () => {
+      paused = false;
+    });
+
+    strip.addEventListener("focusin", () => {
+      paused = true;
+    });
+
+    strip.addEventListener("focusout", () => {
+      paused = false;
+    });
+
+    window.addEventListener("resize", refresh, { passive: true });
+
+    if (typeof reducedMotionQuery.addEventListener === "function") {
+      reducedMotionQuery.addEventListener("change", refresh);
+    } else if (typeof reducedMotionQuery.addListener === "function") {
+      reducedMotionQuery.addListener(refresh);
+    }
+  };
+
+  initAadCounterAnimation();
+  initAadSlider({
+    shellSelector: "[data-aad-expertise]",
+    viewportSelector: ".aad-expertise-viewport",
+    trackSelector: ".aad-expertise-track",
+    cardSelector: ".aad-expertise-card",
+    arrowsSelector: "[data-aad-expertise-arrows]",
+    visible: () => {
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        return 1;
+      }
+
+      if (window.matchMedia("(max-width: 860px)").matches) {
+        return 2;
+      }
+
+      if (window.matchMedia("(max-width: 1180px)").matches) {
+        return 3;
+      }
+
+      return 4;
+    },
+    gap: () => (window.matchMedia("(max-width: 640px)").matches ? 14 : 18),
+  });
+
+  initAadSlider({
+    shellSelector: "[data-aad-projects]",
+    viewportSelector: ".aad-projects-viewport",
+    trackSelector: ".aad-project-grid",
+    cardSelector: ".aad-project-card",
+    arrowsSelector: "[data-aad-project-arrows]",
+    visible: () => {
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        return 1;
+      }
+
+      if (window.matchMedia("(max-width: 1180px)").matches) {
+        return 2;
+      }
+
+      return 4;
+    },
+    gap: () => {
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        return 16;
+      }
+
+      if (window.matchMedia("(max-width: 860px)").matches) {
+        return 18;
+      }
+
+      return 22;
+    },
+  });
+
+  initAadFaq();
+  initAadModal();
+  initAadPartnerLoop();
 });
