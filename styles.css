@@ -9394,6 +9394,11 @@ body.wpd-modal-open {
   width: 100%;
 }
 
+.aad-modal-form > label.aad-check {
+  display: inline-flex;
+  width: auto;
+}
+
 .aad-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
