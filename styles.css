@@ -1255,8 +1255,7 @@ textarea {
 .privacy-section,
 .contact-section {
   padding: 50px 40px;
-  background-color: #EEF6FFA6;
-  margin-top: 60px;
+  margin-top: -30px;
 }
 
 .market-section {
@@ -2466,7 +2465,7 @@ textarea {
 }
 
 .ideals-section {
-  padding: 0 0 90px;
+  padding: 1px 0px 90px;
   background: url("https://thinkogic.com/wp-content/uploads/2024/01/lightbluely-1.png")
     center center / cover no-repeat;
 }
