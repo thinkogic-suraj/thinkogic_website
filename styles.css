@@ -5903,6 +5903,7 @@ textarea {
 .wpd-impact {
   margin-bottom: 0;
   padding-bottom: 100px;
+  margin-top: 0px;
 }
 
 .aad-page .wpd-impact {
@@ -8167,35 +8168,24 @@ body.wpd-modal-open {
 }
 
 .aad-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 54px;
-  padding: 14px 28px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background: linear-gradient(135deg, #3d71ff 0%, #2257ef 100%);
-  color: #fff;
-  font-family: "DM Sans", sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 18px 36px rgba(7, 11, 51, 0.2);
-  transition:
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease;
+  background-color: #4285F4;
+    font-family: "DM Sans", Sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0.3px;
+    fill: #FFFFFF;
+    color: #FFFFFF;
+    border-style: none;
+    border-radius: 3px 3px 3px 3px;
+    padding: 16px 30px 16px 30px;
 }
 
-.aad-button:hover,
+/*.aad-button:hover,
 .aad-button:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 22px 40px rgba(7, 11, 51, 0.26);
-}
+}*/
 
 .aad-hero {
   position: relative;
