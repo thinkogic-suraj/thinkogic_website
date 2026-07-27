@@ -7578,6 +7578,7 @@ textarea {
     linear-gradient(180deg, #ffffff, #fbfcff);
   overflow: hidden;
   position: relative;
+  margin-top:80px;
 }
 
 .wpd-contact-section .wpd-contact-shell::before {
