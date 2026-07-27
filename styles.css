@@ -6255,6 +6255,8 @@ textarea {
   --mad-process-count: 6;
   --mad-process-card-height: 341px;
   --mad-process-card-offset: 24px;
+  --mad-process-stack-offset: 18px;
+  --mad-process-enter-offset: 96px;
   position: relative;
   z-index: 1;
   display: grid;
@@ -6356,8 +6358,8 @@ textarea {
     position: sticky;
     top: 118px;
     padding-top: var(--mad-process-card-offset);
-    transform-origin: 35% 10%;
-    will-change: transform;
+    transform-origin: 50% 10%;
+    will-change: transform, opacity;
   }
 }
 

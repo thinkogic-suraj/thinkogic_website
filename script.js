@@ -688,15 +688,96 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const processList = document.querySelector(".mad-process-list");
-  const processRows = Array.from(document.querySelectorAll(".mad-process-row"));
-  if (processList && processRows.length > 0) {
-    processList.style.setProperty("--mad-process-count", String(processRows.length));
-    processRows.forEach((row, index) => {
+  const processLists = Array.from(document.querySelectorAll(".mad-process-list"));
+  const desktopProcessMedia = window.matchMedia("(min-width: 861px)");
+
+  const resetProcessRows = (rows) => {
+    rows.forEach((row, index) => {
       row.style.zIndex = String(index + 1);
       row.style.transform = "";
       row.style.opacity = "";
     });
+  };
+
+  const updateProcessStack = () => {
+    processLists.forEach((processList) => {
+      const processRows = Array.from(processList.querySelectorAll(".mad-process-row"));
+      if (processRows.length === 0) {
+        return;
+      }
+
+      processList.style.setProperty("--mad-process-count", String(processRows.length));
+
+      if (!desktopProcessMedia.matches) {
+        resetProcessRows(processRows);
+        return;
+      }
+
+      const firstRow = processRows[0];
+      const firstCard = firstRow ? firstRow.querySelector(".mad-process-card-shell") : null;
+      const listStyles = window.getComputedStyle(processList);
+      const stickyTop = parseFloat(window.getComputedStyle(firstRow).top || "118") || 118;
+      const cardHeight = firstCard ? firstCard.offsetHeight : parseFloat(listStyles.getPropertyValue("--mad-process-card-height")) || 341;
+      const stackOffset = parseFloat(listStyles.getPropertyValue("--mad-process-stack-offset")) || 18;
+      const enterOffset = parseFloat(listStyles.getPropertyValue("--mad-process-enter-offset")) || 96;
+      const scrollDistance = Math.max(0, stickyTop - processList.getBoundingClientRect().top);
+      const maxProgress = Math.max(processRows.length - 1, 0);
+      const progress = Math.min(Math.max(scrollDistance / cardHeight, 0), maxProgress);
+      const activeIndex = Math.min(Math.floor(progress), processRows.length - 1);
+      const blend = progress - activeIndex;
+
+      processRows.forEach((row, index) => {
+        let translateY = 0;
+        let scale = 1;
+        let zIndex = index + 1;
+
+        if (index < activeIndex) {
+          const depth = activeIndex - index + blend;
+          translateY = -depth * stackOffset;
+          scale = Math.max(0.93, 1 - depth * 0.015);
+          zIndex = processRows.length + index;
+        } else if (index === activeIndex) {
+          translateY = -blend * stackOffset;
+          scale = Math.max(0.96, 1 - blend * 0.015);
+          zIndex = processRows.length * 3;
+        } else if (index === activeIndex + 1) {
+          translateY = (1 - blend) * stackOffset;
+          zIndex = blend > 0 ? processRows.length * 3 + 1 : processRows.length - index;
+        } else {
+          const distance = index - activeIndex;
+          translateY = distance * stackOffset;
+          zIndex = processRows.length - distance;
+        }
+
+        row.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
+        row.style.opacity = "1";
+        row.style.zIndex = String(zIndex);
+      });
+    });
+  };
+
+  let processAnimationFrame = 0;
+  const scheduleProcessStackUpdate = () => {
+    if (processAnimationFrame !== 0) {
+      return;
+    }
+
+    processAnimationFrame = window.requestAnimationFrame(() => {
+      processAnimationFrame = 0;
+      updateProcessStack();
+    });
+  };
+
+  if (processLists.length > 0) {
+    updateProcessStack();
+    window.addEventListener("scroll", scheduleProcessStackUpdate, { passive: true });
+    window.addEventListener("resize", scheduleProcessStackUpdate);
+
+    if (typeof desktopProcessMedia.addEventListener === "function") {
+      desktopProcessMedia.addEventListener("change", scheduleProcessStackUpdate);
+    } else if (typeof desktopProcessMedia.addListener === "function") {
+      desktopProcessMedia.addListener(scheduleProcessStackUpdate);
+    }
   }
 
   const impactCounters = Array.from(document.querySelectorAll("[data-mad-counter]"));
