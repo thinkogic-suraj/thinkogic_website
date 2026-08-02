@@ -6557,7 +6557,7 @@ textarea {
 
 .mad-contact-flow {
   position: relative;
-  padding: 25px 0 92px;
+  padding: 25px 0 0px;
   background: #182455;
   margin-top:45px;
   margin-bottom: 0px;
@@ -8313,7 +8313,7 @@ body.wpd-modal-open {
 
 .aad-visual-shell::after {
   right: 27px;
-  bottom: 239px;
+  bottom: 215px;
   width: 187px;
   height: 188px;
 }
