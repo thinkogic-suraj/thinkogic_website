@@ -9922,7 +9922,7 @@ body.aad-modal-open {
   min-height: 54px;
   padding: 0 24px;
   border-radius: 4px;
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", sans-serif; 
   font-size: 15px;
   font-weight: 400;
   text-decoration: none;
@@ -10517,5 +10517,96 @@ body.aad-modal-open {
 
   .nad-visual-stage {
     width: min(100%, 380px) !important;
+  }
+}
+
+.nad-partners {
+  --aad-partner-gap: 52px;
+  --aad-visible-slides: 5;
+  --aad-slide-width: 132px;
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-top: 22px;
+  padding-top: 18px;
+}
+
+.nad-partners-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.nad-partners-title::before,
+.nad-partners-title::after {
+  content: "";
+  width: min(100%, 180px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.04));
+}
+
+.nad-partner-strip {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 6px 0 10px;
+}
+
+.nad-partners .aad-partner-slide {
+  flex: 0 0 var(--aad-slide-width);
+  width: var(--aad-slide-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+}
+
+.nad-partners .aad-partner-slide img {
+  max-width: 100%;
+  max-height: 34px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+@media (max-width: 860px) {
+  .nad-partners {
+    margin-top: 8px;
+  }
+
+  .nad-partners-title {
+    gap: 12px;
+    margin-bottom: 22px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .nad-partners-title::before,
+  .nad-partners-title::after {
+    width: 72px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nad-partners {
+    padding-top: 10px;
+  }
+
+  .nad-partners-title {
+    line-height: 1.6;
+  }
+
+  .nad-partners .aad-partner-slide img {
+    max-height: 28px;
   }
 }
