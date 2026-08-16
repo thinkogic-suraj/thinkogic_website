@@ -10933,6 +10933,8 @@ body.aad-modal-open {
   position: relative;
   overflow: hidden;
   padding: 8px 0;
+  width: 1785px;
+  margin-left: -73px
 }
 
 .ssd-brand-strip::before,
@@ -11232,7 +11234,224 @@ body.aad-modal-open {
   line-height: 1.75;
 }
 
+.awsd-hero {
+  position: relative;
+  min-height: 760px;
+  padding: 156px 0 92px;
+  background:
+    linear-gradient(90deg, rgba(16, 14, 56, 0.92) 0%, rgba(23, 22, 77, 0.84) 34%, rgba(31, 29, 93, 0.62) 64%, rgba(12, 18, 58, 0.8) 100%),
+    radial-gradient(circle at 14% 20%, rgba(111, 88, 255, 0.24), transparent 28%),
+    radial-gradient(circle at 76% 18%, rgba(94, 159, 255, 0.18), transparent 22%),
+    radial-gradient(circle at 84% 68%, rgba(164, 130, 255, 0.16), transparent 24%),
+    url("/assets/images/aws-hero-bg.png") center center / cover no-repeat;
+  overflow: hidden;
+}
+
+.awsd-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.24) 100%),
+    linear-gradient(110deg, rgba(255, 255, 255, 0.05) 12%, rgba(255, 255, 255, 0) 32%);
+  pointer-events: none;
+}
+
+.awsd-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto auto 48px 50%;
+  width: min(56vw, 860px);
+  height: min(62vw, 640px);
+  border-radius: 32px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    radial-gradient(circle at 72% 25%, rgba(255, 255, 255, 0.18), transparent 18%),
+    radial-gradient(circle at 72% 58%, rgba(255, 255, 255, 0.09), transparent 18%),
+    linear-gradient(180deg, rgba(52, 74, 156, 0.22), rgba(22, 31, 78, 0.12));
+  opacity: 0;
+  transform: translateX(-4%);
+  pointer-events: none;
+}
+
+.awsd-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 376px);
+  gap: 56px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.awsd-hero-copy {
+  max-width: 620px;
+  padding: 18px 0;
+}
+
+.awsd-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 47px;
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.awsd-hero-description {
+  max-width: 610px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 18px;
+  line-height: 1.75;
+  font-weight: 500;
+}
+
+.awsd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.awsd-actions .button {
+  min-width: 172px;
+  padding: 16px 26px;
+  text-align: center;
+  box-shadow: 0 18px 42px rgba(7, 12, 40, 0.24);
+}
+
+.awsd-hero-form-wrap {
+  justify-self: end;
+  width: min(100%, 376px);
+}
+
+.awsd-hero-form {
+  display: grid;
+  gap: 12px;
+  padding: 24px 22px 22px;
+  border: 1px solid rgba(193, 201, 230, 0.9);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 24px 54px rgba(6, 10, 32, 0.24);
+}
+
+.awsd-hero-form h2 {
+  margin: 0 0 2px;
+  color: #202436;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.awsd-hero-form input,
+.awsd-hero-form textarea {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid #e1e4ef;
+  border-radius: 2px;
+  background: #fff;
+  color: #2f3550;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.awsd-hero-form input::placeholder,
+.awsd-hero-form textarea::placeholder {
+  color: #80859a;
+}
+
+.awsd-hero-form input:focus,
+.awsd-hero-form textarea:focus {
+  border-color: #79c9ff;
+  box-shadow: 0 0 0 3px rgba(96, 195, 255, 0.18);
+}
+
+.awsd-message-field {
+  display: block;
+}
+
+.awsd-hero-form textarea {
+  min-height: 92px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  resize: vertical;
+}
+
+.awsd-hero-form .ssd-form-intro {
+  margin: 0 0 8px;
+  color: #4e566e;
+}
+
+.awsd-hero-form .ssd-phone-field {
+  position: relative;
+}
+
+.awsd-hero-form .ssd-country-chip {
+  color: #66708b;
+  left: 10px;
+  z-index: 1;
+}
+
+.awsd-hero-form .ssd-phone-field input {
+  padding-left: 56px;
+}
+
+.awsd-hero-form .ssd-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 2px;
+  color: #5b637d;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.awsd-hero-form .ssd-check input {
+  width: 12px;
+  min-width: 12px;
+  height: 12px;
+  min-height: 12px;
+  margin: 2px 0 0;
+  padding: 0;
+  border: 1px solid #c8cede;
+  box-shadow: none;
+  flex: 0 0 auto;
+}
+
+.awsd-hero-form .ssd-check span {
+  display: block;
+}
+
+.awsd-submit {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 22px;
+  font-size: 13px;
+  line-height: 1;
+}
+
 @media (max-width: 1100px) {
+  .awsd-hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+    gap: 34px;
+  }
+
+  .awsd-hero h1 {
+    font-size: clamp(3rem, 5.6vw, 4.75rem);
+  }
+
   .ssd-hero-grid {
     grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
     gap: 32px;
@@ -11261,6 +11480,38 @@ body.aad-modal-open {
 }
 
 @media (max-width: 860px) {
+  .awsd-hero {
+    min-height: auto;
+    padding: 124px 0 72px;
+  }
+
+  .awsd-hero-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .awsd-hero-copy {
+    max-width: none;
+    padding: 8px 0 0;
+  }
+
+  .awsd-hero-description {
+    max-width: none;
+  }
+
+  .awsd-hero-form-wrap {
+    justify-self: start;
+    width: min(100%, 420px);
+  }
+
+  .awsd-hero::after {
+    inset: auto -80px 34px auto;
+    width: min(72vw, 520px);
+    height: min(62vw, 420px);
+    transform: none;
+    opacity: 0.56;
+  }
+
   .ssd-hero {
     min-height: auto;
     padding: 124px 0 72px;
@@ -11350,6 +11601,35 @@ body.aad-modal-open {
 }
 
 @media (max-width: 640px) {
+  .awsd-hero {
+    padding: 112px 0 56px;
+  }
+
+  .awsd-hero h1 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+    line-height: 0.98;
+  }
+
+  .awsd-hero-description {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.72;
+  }
+
+  .awsd-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .awsd-actions .button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .awsd-hero-form {
+    padding: 20px 18px 22px;
+  }
+
   .ssd-hero {
     padding: 112px 0 56px;
     background-position: 68% center;
