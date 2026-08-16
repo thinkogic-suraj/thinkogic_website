@@ -869,6 +869,10 @@ textarea {
   margin-top: -50px;
 }
 
+.ssd-page .hero.is-ready .hero-reveal {
+  margin-top: -12px;
+}
+
 .hero-copy.hero-reveal {
   transition-delay: 60ms;
 }
@@ -10608,5 +10612,779 @@ body.aad-modal-open {
 
   .nad-partners .aad-partner-slide img {
     max-height: 28px;
+  }
+}
+
+.ssd-hero {
+  position: relative;
+  min-height: 760px;
+  padding: 156px 0 92px;
+  background:
+    linear-gradient(90deg, rgba(2, 5, 18, 0.92) 0%, rgba(5, 14, 44, 0.84) 35%, rgba(5, 17, 54, 0.55) 62%, rgba(5, 17, 54, 0.72) 100%),
+    radial-gradient(circle at 15% 28%, rgba(55, 108, 255, 0.2), transparent 20%),
+    radial-gradient(circle at 74% 18%, rgba(127, 176, 255, 0.16), transparent 18%),
+    url("/assets/images/sql-server-hero-bg.png") center center / cover no-repeat;
+  overflow: hidden;
+}
+
+.ssd-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.22) 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 0 1px,
+      transparent 1px 120px
+    );
+  pointer-events: none;
+}
+
+.ssd-hero::after {
+  content: "";
+  position: absolute;
+  right: min(10vw, 120px);
+  bottom: 72px;
+  width: min(34vw, 420px);
+  height: min(34vw, 420px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(67, 141, 255, 0.22) 0%, rgba(67, 141, 255, 0) 70%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.ssd-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 410px);
+  gap: 48px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.ssd-hero-copy {
+  max-width: 620px;
+  padding: 28px 0 18px;
+}
+
+.ssd-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 26px;
+  padding: 10px 18px;
+  border: 1px solid rgba(154, 196, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(15, 28, 72, 0.28);
+  color: rgba(255, 255, 255, 0.88);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.ssd-kicker::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #4da0ff;
+  box-shadow: 0 0 0 7px rgba(77, 160, 255, 0.14);
+}
+
+.ssd-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 47px;
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.ssd-hero-description {
+  max-width: 620px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 18px;
+  line-height: 1.75;
+  font-weight: 500;
+}
+
+.ssd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.ssd-actions .button,
+.ssd-secondary-cta {
+  min-width: 196px;
+  padding: 17px 28px;
+  text-align: center;
+  box-shadow: 0 18px 42px rgba(4, 12, 40, 0.24);
+  width: 206px;
+}
+
+.ssd-secondary-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(10px);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.ssd-secondary-cta:hover,
+.ssd-secondary-cta:focus-visible {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.ssd-hero-form-wrap {
+  justify-self: end;
+  width: min(100%, 410px);
+}
+
+.ssd-hero-form {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid rgba(77, 160, 255, 0.72);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(7, 20, 62, 0.8) 0%, rgba(5, 16, 49, 0.94) 100%);
+  box-shadow:
+    0 24px 54px rgba(4, 10, 38, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+}
+
+.ssd-hero-form h2 {
+  margin: 0;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.ssd-form-intro {
+  margin: 0 0 4px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ssd-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 10px;
+}
+
+.ssd-hero-form input,
+.ssd-hero-form textarea {
+  width: 100%;
+  min-height: 29px;
+  padding: 0 12px;
+  border: 1px solid rgba(186, 214, 255, 0.48);
+  border-radius: 2px;
+  background: rgba(8, 18, 47, 0.42);
+  color: #fff;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.ssd-hero-form input::placeholder,
+.ssd-hero-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.ssd-hero-form input:focus,
+.ssd-hero-form textarea:focus {
+  border-color: #5d9bff;
+  box-shadow: 0 0 0 3px rgba(67, 141, 255, 0.16);
+  background: rgba(11, 23, 56, 0.7);
+}
+
+.ssd-phone-field {
+  position: relative;
+}
+
+.ssd-country-chip {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 10px;
+  transform: translateY(-50%);
+}
+
+.ssd-country-chip img {
+  width: 14px;
+  height: 10px;
+  object-fit: cover;
+}
+
+.ssd-phone-field input {
+  padding-left: 54px;
+}
+
+.ssd-textarea-field {
+  display: block;
+}
+
+.ssd-hero-form textarea {
+  min-height: 72px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  resize: vertical;
+}
+
+.ssd-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.ssd-check input {
+  width: 12px;
+  height: 12px;
+  min-height: 12px;
+  margin: 0;
+  accent-color: #4285f4;
+  flex: 0 0 auto;
+}
+
+.ssd-submit {
+  width: fit-content;
+  min-width: 134px;
+  padding: 14px 22px;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.ssd-brand-marquee {
+  position: relative;
+  z-index: 1;
+  margin-top: 52px;
+}
+
+.ssd-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.76);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.ssd-brand-title::before,
+.ssd-brand-title::after {
+  content: "";
+  width: min(100%, 180px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.26),
+    rgba(255, 255, 255, 0.04)
+  );
+}
+
+.ssd-brand-strip {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 0;
+}
+
+.ssd-brand-strip::before,
+.ssd-brand-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(10vw, 100px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ssd-brand-strip::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(3, 6, 19, 0.92), rgba(3, 6, 19, 0));
+}
+
+.ssd-brand-strip::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(6, 17, 54, 0.9), rgba(6, 17, 54, 0));
+}
+
+.ssd-brand-track {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  width: max-content;
+  animation: ssdBrandMarquee 24s linear infinite;
+}
+
+.ssd-brand-slide {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 144px;
+  min-height: 50px;
+  padding: 6px 10px;
+}
+
+.ssd-brand-slide img {
+  max-width: 100%;
+  max-height: 28px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.82;
+}
+
+@keyframes ssdBrandMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - 22px), 0, 0);
+  }
+}
+
+.ssd-expertise-section {
+  padding: 86px 0 96px;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(66, 133, 244, 0.05), transparent 20%),
+    linear-gradient(180deg, #f7fbff 0%, #f1f6fc 100%);
+}
+
+.ssd-expertise-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 43%) minmax(0, 57%);
+  align-items: stretch;
+}
+
+.ssd-expertise-panel {
+  position: relative;
+  min-height: 348px;
+  background: url("/assets/images/sql-expertise-panel-bg.png") center center / cover no-repeat;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.ssd-expertise-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 26px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.ssd-expertise-panel-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  height: 100%;
+  max-width: 280px;
+  padding: 44px 42px;
+  color: #fff;
+}
+
+.ssd-expertise-panel-inner h2 {
+  margin: 0 0 18px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: black;
+}
+
+.ssd-expertise-panel-inner p {
+  margin: 0;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.ssd-expertise-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: center;
+  padding-left: 0;
+}
+
+.ssd-expertise-carousel {
+  position: relative;
+  width: 100%;
+  padding: 54px 54px 54px 0;
+  margin-left: -86px;
+}
+
+.ssd-expertise-viewport {
+  overflow: hidden;
+  padding: 0 52px 0 0;
+}
+
+.ssd-expertise-track {
+  display: flex;
+  gap: 18px;
+  transition: transform 560ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+.ssd-expertise-card {
+  flex: 0 0 calc((100% - 36px) / 3);
+  min-width: calc((114% - 104px) / 3);
+  min-height: 250px;
+  padding: 28px 24px 24px;
+  background: #fff;
+  border: 1px solid rgba(17, 35, 89, 0.08);
+  box-shadow: 0 18px 42px rgba(12, 34, 92, 0.08);
+}
+
+.ssd-expertise-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 18px;
+  color: #3a68df;
+}
+
+.ssd-expertise-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ssd-expertise-card h3 {
+  margin: 0 0 14px;
+  color: #10204f;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.ssd-expertise-card p {
+  margin: 0;
+  color: #5f6a7f;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.ssd-expertise-arrows {
+  position: absolute;
+  top: -12px;
+  right: 85px;
+  display: flex;
+  gap: 12px;
+}
+
+.ssd-expertise-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #7ab1ff, #3f70f2);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(12, 34, 92, 0.15);
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+}
+
+.ssd-expertise-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.ssd-expertise-arrow:hover:not(:disabled),
+.ssd-expertise-arrow:focus-visible:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(12, 34, 92, 0.2);
+  opacity: 1;
+}
+
+@media (max-width: 1100px) {
+  .ssd-hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    gap: 32px;
+  }
+
+  .ssd-hero h1 {
+    font-size: clamp(3rem, 5.6vw, 4.75rem);
+  }
+
+  .ssd-expertise-layout {
+    grid-template-columns: minmax(250px, 36%) minmax(0, 64%);
+  }
+
+  .ssd-expertise-card {
+    flex-basis: calc((100% - 18px) / 2);
+    min-width: calc((100% - 18px) / 2);
+  }
+}
+
+@media (max-width: 860px) {
+  .ssd-hero {
+    min-height: auto;
+    padding: 124px 0 72px;
+    background-position: 62% center;
+  }
+
+  .ssd-hero-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .ssd-hero-copy {
+    max-width: none;
+    padding: 8px 0 0;
+  }
+
+  .ssd-hero-description {
+    max-width: none;
+  }
+
+  .ssd-hero-form-wrap {
+    justify-self: start;
+    width: min(100%, 420px);
+  }
+
+  .ssd-brand-track {
+    gap: 34px;
+  }
+
+  .ssd-brand-slide {
+    min-width: 128px;
+  }
+
+  .ssd-expertise-section {
+    padding: 72px 0 82px;
+  }
+
+  .ssd-expertise-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ssd-expertise-panel {
+    min-height: 250px;
+  }
+
+  .ssd-expertise-panel-inner {
+    max-width: 320px;
+    padding: 34px 28px;
+  }
+
+  .ssd-expertise-content {
+    margin-left: 0;
+  }
+
+  .ssd-expertise-carousel {
+    padding: 28px 28px 0;
+    margin-left: -24px;
+  }
+
+  .ssd-expertise-viewport {
+    padding-right: 58px;
+  }
+
+  .ssd-expertise-card {
+    flex-basis: calc((100% - 18px) / 2);
+    min-width: calc((100% - 18px) / 2);
+  }
+}
+
+@media (max-width: 640px) {
+  .ssd-hero {
+    padding: 112px 0 56px;
+    background-position: 68% center;
+  }
+
+  .ssd-kicker {
+    margin-bottom: 20px;
+    padding: 9px 14px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .ssd-hero h1 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+    line-height: 0.98;
+  }
+
+  .ssd-hero-description {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.72;
+  }
+
+  .ssd-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ssd-actions .button,
+  .ssd-secondary-cta {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .ssd-hero-form {
+    padding: 20px 18px 22px;
+  }
+
+  .ssd-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ssd-submit {
+    width: 100%;
+  }
+
+  .ssd-brand-marquee {
+    margin-top: 40px;
+  }
+
+  .ssd-brand-title {
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .ssd-brand-title::before,
+  .ssd-brand-title::after {
+    width: 72px;
+  }
+
+  .ssd-brand-track {
+    gap: 26px;
+    animation-duration: 20s;
+  }
+
+  .ssd-brand-slide {
+    min-width: 108px;
+    min-height: 42px;
+  }
+
+  .ssd-brand-slide img {
+    max-height: 22px;
+  }
+
+  .ssd-expertise-section {
+    padding: 62px 0 70px;
+  }
+
+  .ssd-expertise-panel {
+    min-height: 220px;
+  }
+
+  .ssd-expertise-panel-inner {
+    max-width: 260px;
+    padding: 28px 18px;
+  }
+
+  .ssd-expertise-panel-inner h2 {
+    margin-bottom: 14px;
+    font-size: 34px;
+  }
+
+  .ssd-expertise-panel-inner p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .ssd-expertise-carousel {
+    padding: 22px 18px 0;
+    margin-left: 0;
+  }
+
+  .ssd-expertise-content {
+    margin-left: 0;
+  }
+
+  .ssd-expertise-viewport {
+    padding-right: 50px;
+  }
+
+  .ssd-expertise-card {
+    flex-basis: 100%;
+    min-width: 100%;
+    min-height: 0;
+    padding: 24px 20px 22px;
+  }
+
+  .ssd-expertise-card h3 {
+    font-size: 20px;
+  }
+
+  .ssd-expertise-arrows {
+    right: 50px;
+  }
+  .ssd-expertise-arrow {
+    width: 42px;
+    height: 42px;
   }
 }

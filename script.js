@@ -906,6 +906,70 @@ document.addEventListener("DOMContentLoaded", () => {
     syncExpertiseSlider();
   }
 
+  const ssdExpertiseShell = document.querySelector("[data-ssd-expertise]");
+  if (ssdExpertiseShell) {
+    const track = ssdExpertiseShell.querySelector(".ssd-expertise-track");
+    const cards = track ? Array.from(track.querySelectorAll(".ssd-expertise-card")) : [];
+    const prevButton = ssdExpertiseShell.querySelector('[data-direction="prev"]');
+    const nextButton = document.querySelector(".ssd-expertise-next");
+    let currentIndex = 0;
+
+    const getVisibleCards = () => {
+      if (window.matchMedia("(max-width: 640px)").matches) {
+        return 1;
+      }
+      if (window.matchMedia("(max-width: 860px)").matches) {
+        return 2;
+      }
+      if (window.matchMedia("(max-width: 1100px)").matches) {
+        return 2;
+      }
+      return 3;
+    };
+
+    const getMaxIndex = () => Math.max(0, cards.length - getVisibleCards());
+
+    const syncSsdExpertiseSlider = () => {
+      if (!track || cards.length === 0) {
+        return;
+      }
+
+      const visibleCards = getVisibleCards();
+      const firstCard = cards[0];
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+      const cardWidth = firstCard.getBoundingClientRect().width;
+      const maxIndex = getMaxIndex();
+
+      currentIndex = Math.min(currentIndex, maxIndex);
+      currentIndex = Math.max(currentIndex, 0);
+
+      const offset = (cardWidth + gap) * currentIndex;
+      track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+
+      if (prevButton) {
+        prevButton.disabled = currentIndex <= 0;
+      }
+
+      if (nextButton) {
+        nextButton.disabled = currentIndex >= maxIndex || cards.length <= visibleCards;
+      }
+    };
+
+    prevButton?.addEventListener("click", () => {
+      currentIndex = Math.max(0, currentIndex - 1);
+      syncSsdExpertiseSlider();
+    });
+
+    nextButton?.addEventListener("click", () => {
+      currentIndex = Math.min(getMaxIndex(), currentIndex + 1);
+      syncSsdExpertiseSlider();
+    });
+
+    window.addEventListener("resize", syncSsdExpertiseSlider, { passive: true });
+    syncSsdExpertiseSlider();
+  }
+
   const wpdProjectsShell = document.querySelector("[data-wpd-projects]");
   if (wpdProjectsShell) {
     const viewport = wpdProjectsShell.querySelector(".wpd-projects-viewport");
