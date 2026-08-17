@@ -11570,7 +11570,503 @@ body.aad-modal-open {
   }
 }
 
+.mysqld-hero {
+  position: relative;
+  min-height: 760px;
+  padding: 156px 0 92px;
+  background:
+    linear-gradient(90deg, rgba(16, 14, 56, 0.92) 0%, rgba(23, 22, 77, 0.84) 34%, rgba(31, 29, 93, 0.62) 64%, rgba(12, 18, 58, 0.8) 100%),
+    radial-gradient(circle at 14% 20%, rgba(111, 88, 255, 0.24), transparent 28%),
+    radial-gradient(circle at 76% 18%, rgba(94, 159, 255, 0.18), transparent 22%),
+    radial-gradient(circle at 84% 68%, rgba(164, 130, 255, 0.16), transparent 24%),
+    url("/assets/images/mysql-hero-bg.png") center center / cover no-repeat;
+  overflow: hidden;
+}
+
+.mysqld-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3, 4, 12, 0.7) 0%, rgba(6, 8, 20, 0.54) 30%, rgba(8, 10, 24, 0.14) 58%, rgba(8, 10, 24, 0) 74%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.24) 100%),
+    linear-gradient(110deg, rgba(255, 255, 255, 0.05) 12%, rgba(255, 255, 255, 0) 32%);
+  pointer-events: none;
+}
+
+.mysqld-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto auto 48px 50%;
+  width: min(56vw, 860px);
+  height: min(62vw, 640px);
+  border-radius: 32px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    radial-gradient(circle at 72% 25%, rgba(255, 255, 255, 0.18), transparent 18%),
+    radial-gradient(circle at 72% 58%, rgba(255, 255, 255, 0.09), transparent 18%),
+    linear-gradient(180deg, rgba(52, 74, 156, 0.22), rgba(22, 31, 78, 0.12));
+  opacity: 0;
+  transform: translateX(-4%);
+  pointer-events: none;
+}
+
+.mysqld-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 376px);
+  gap: 56px;
+  align-items: center;
+  margin-top: 28px;
+}
+
+.mysqld-hero-copy {
+  max-width: 620px;
+  padding: 18px 0;
+}
+
+.mysqld-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  font-size: 47px;
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.05em;
+}
+
+.mysqld-hero-description {
+  max-width: 610px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 18px;
+  line-height: 1.75;
+  font-weight: 500;
+}
+
+.mysqld-hero-form-wrap {
+  justify-self: end;
+  width: min(100%, 376px);
+}
+
+.mysqld-hero-form {
+  display: grid;
+  gap: 12px;
+  padding: 24px 22px 22px;
+  border: 1px solid rgba(193, 201, 230, 0.9);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 24px 54px rgba(6, 10, 32, 0.24);
+  margin-left: -56px;
+  margin-right: 56px;
+}
+
+.mysqld-hero-form input,
+.mysqld-hero-form textarea {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 12px;
+  border: 1px solid #e1e4ef;
+  border-radius: 2px;
+  background: #fff;
+  color: #2f3550;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.mysqld-hero-form input::placeholder,
+.mysqld-hero-form textarea::placeholder {
+  color: #80859a;
+}
+
+.mysqld-hero-form input:focus,
+.mysqld-hero-form textarea:focus {
+  border-color: #79c9ff;
+  box-shadow: 0 0 0 3px rgba(96, 195, 255, 0.18);
+}
+
+.mysqld-message-field {
+  display: block;
+}
+
+.mysqld-hero-form textarea {
+  min-height: 92px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  resize: vertical;
+}
+
+.mysqld-hero-form .ssd-form-intro {
+  margin: 0 0 8px;
+  color: #4e566e;
+}
+
+.mysqld-hero-form .ssd-phone-field {
+  position: relative;
+}
+
+.mysqld-hero-form .ssd-country-chip {
+  left: 10px;
+  z-index: 1;
+  color: #66708b;
+}
+
+.mysqld-hero-form .ssd-phone-field input {
+  padding-left: 56px;
+}
+
+.mysqld-hero-form .ssd-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 2px;
+  color: #5b637d;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.mysqld-hero-form .ssd-check input {
+  width: 12px;
+  min-width: 12px;
+  height: 12px;
+  min-height: 12px;
+  margin: 2px 0 0;
+  padding: 0;
+  border: 1px solid #c8cede;
+  box-shadow: none;
+  flex: 0 0 auto;
+}
+
+.mysqld-hero-form .ssd-check span {
+  display: block;
+}
+
+.mysqld-submit {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 22px;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.mysqld-brand-marquee {
+  position: relative;
+  z-index: 1;
+  margin-top: 52px;
+}
+
+.mysqld-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.76);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mysqld-brand-title::before,
+.mysqld-brand-title::after {
+  content: "";
+  width: min(100%, 180px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.26),
+    rgba(255, 255, 255, 0.04)
+  );
+}
+
+.mysqld-brand-strip {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 0;
+  width: 1785px;
+  margin-left: -73px;
+}
+
+.mysqld-brand-strip::before,
+.mysqld-brand-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(10vw, 100px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mysqld-brand-strip::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(3, 6, 19, 0.92), rgba(3, 6, 19, 0));
+}
+
+.mysqld-brand-strip::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(6, 17, 54, 0.9), rgba(6, 17, 54, 0));
+}
+
+.mysqld-brand-track {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  width: max-content;
+  animation: mysqldBrandMarquee 24s linear infinite;
+}
+
+.mysqld-brand-slide {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 144px;
+  min-height: 50px;
+  padding: 6px 10px;
+}
+
+.mysqld-brand-slide img {
+  max-width: 100%;
+  max-height: 28px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.82;
+}
+
+@keyframes mysqldBrandMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - 22px), 0, 0);
+  }
+}
+
+.mysqld-expertise-section {
+  padding: 86px 0 96px;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(66, 133, 244, 0.05), transparent 20%),
+    linear-gradient(180deg, #f7fbff 0%, #f1f6fc 100%);
+}
+
+.mysqld-expertise-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 43%) minmax(0, 57%);
+  align-items: stretch;
+}
+
+.mysqld-expertise-panel {
+  position: relative;
+  min-height: 348px;
+  background: url("/assets/images/sql-expertise-panel-bg.png") center center / cover no-repeat;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.mysqld-expertise-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0)),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 26px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.mysqld-expertise-panel-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  height: 100%;
+  max-width: 280px;
+  padding: 44px 42px;
+  color: #fff;
+}
+
+.mysqld-expertise-panel-inner h2 {
+  margin: 0 0 18px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: #000;
+}
+
+.mysqld-expertise-panel-inner p {
+  margin: 0;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.mysqld-expertise-content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-items: center;
+  padding-left: 0;
+}
+
+.mysqld-expertise-carousel {
+  position: relative;
+  width: 100%;
+  padding: 54px 54px 54px 0;
+  margin-left: -86px;
+}
+
+.mysqld-expertise-viewport {
+  overflow: hidden;
+  padding: 0 52px 0 0;
+}
+
+.mysqld-expertise-track {
+  display: flex;
+  gap: 18px;
+  transition: transform 560ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+.mysqld-expertise-card {
+  flex: 0 0 calc((100% - 36px) / 3);
+  min-width: calc((114% - 104px) / 3);
+  min-height: 250px;
+  padding: 28px 24px 24px;
+  background: #fff;
+  border: 1px solid rgba(17, 35, 89, 0.08);
+  box-shadow: 0 18px 42px rgba(12, 34, 92, 0.08);
+}
+
+.mysqld-page .mysqld-expertise-viewport {
+  padding-right: 0;
+}
+
+.mysqld-page .mysqld-expertise-card {
+  flex: 0 0 calc((100vw - 530px) / 3);
+  min-width: calc((100vw - 530px) / 3);
+  max-width: calc((100vw - 530px) / 3);
+}
+
+.mysqld-expertise-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 18px;
+  color: #3a68df;
+}
+
+.mysqld-expertise-icon svg {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: #000;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mysqld-expertise-card h3 {
+  margin: 0 0 14px;
+  color: #10204f;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.mysqld-expertise-card p {
+  margin: 0;
+  color: #5f6a7f;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.mysqld-expertise-arrows {
+  position: absolute;
+  top: -18px;
+  right: 2px;
+  display: flex;
+  gap: 12px;
+  z-index: 4;
+}
+
+.mysqld-expertise-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #7ab1ff, #3f70f2);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(12, 34, 92, 0.15);
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+}
+
+.mysqld-expertise-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.mysqld-expertise-arrow:hover:not(:disabled),
+.mysqld-expertise-arrow:focus-visible:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(12, 34, 92, 0.2);
+  opacity: 1;
+}
+
 @media (max-width: 1100px) {
+  .mysqld-expertise-layout {
+    grid-template-columns: minmax(250px, 36%) minmax(0, 64%);
+  }
+
+  .mysqld-expertise-card {
+    flex-basis: calc((100% - 18px) / 2);
+    min-width: calc((100% - 18px) / 2);
+  }
+
+  .mysqld-hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+    gap: 34px;
+  }
+
+  .mysqld-hero h1 {
+    font-size: clamp(3rem, 5.6vw, 4.75rem);
+  }
+
+  .mysqld-brand-track {
+    gap: 34px;
+  }
+
+  .mysqld-brand-slide {
+    min-width: 128px;
+  }
+
   .awsd-hero-grid {
     grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
     gap: 34px;
@@ -11608,6 +12104,81 @@ body.aad-modal-open {
 }
 
 @media (max-width: 860px) {
+  .mysqld-expertise-section {
+    padding: 72px 0 82px;
+  }
+
+  .mysqld-expertise-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mysqld-expertise-panel {
+    min-height: 250px;
+  }
+
+  .mysqld-expertise-panel-inner {
+    max-width: 320px;
+    padding: 34px 28px;
+  }
+
+  .mysqld-expertise-content {
+    margin-left: 0;
+  }
+
+  .mysqld-expertise-carousel {
+    padding: 28px 28px 0;
+    margin-left: -24px;
+  }
+
+  .mysqld-expertise-viewport {
+    padding-right: 58px;
+  }
+
+  .mysqld-expertise-card {
+    flex-basis: calc((100% - 18px) / 2);
+    min-width: calc((100% - 18px) / 2);
+  }
+
+  .mysqld-hero {
+    min-height: auto;
+    padding: 124px 0 72px;
+  }
+
+  .mysqld-hero-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .mysqld-hero-copy {
+    max-width: none;
+    padding: 8px 0 0;
+  }
+
+  .mysqld-hero-description {
+    max-width: none;
+  }
+
+  .mysqld-hero-form-wrap {
+    justify-self: start;
+    width: min(100%, 420px);
+  }
+
+  .mysqld-brand-track {
+    gap: 34px;
+  }
+
+  .mysqld-brand-slide {
+    min-width: 128px;
+  }
+
+  .mysqld-hero::after {
+    inset: auto -80px 34px auto;
+    width: min(72vw, 520px);
+    height: min(62vw, 420px);
+    transform: none;
+    opacity: 0.56;
+  }
+
   .awsd-hero {
     min-height: auto;
     padding: 124px 0 72px;
@@ -11737,6 +12308,102 @@ body.aad-modal-open {
 }
 
 @media (max-width: 640px) {
+  .mysqld-expertise-panel {
+    min-height: 220px;
+  }
+
+  .mysqld-expertise-panel-inner {
+    padding: 30px 24px;
+  }
+
+  .mysqld-expertise-panel-inner h2 {
+    font-size: 40px;
+  }
+
+  .mysqld-expertise-panel-inner p {
+    font-size: 17px;
+  }
+
+  .mysqld-expertise-carousel {
+    padding: 24px 18px 0;
+    margin-left: -16px;
+  }
+
+  .mysqld-expertise-content {
+    margin-left: 0;
+  }
+
+  .mysqld-expertise-viewport {
+    padding-right: 50px;
+  }
+
+  .mysqld-expertise-card {
+    flex-basis: 100%;
+    min-width: 100%;
+    min-height: 0;
+    padding: 24px 20px 22px;
+  }
+
+  .mysqld-expertise-card h3 {
+    font-size: 20px;
+  }
+
+  .mysqld-expertise-arrows {
+    right: 50px;
+  }
+
+  .mysqld-expertise-arrow {
+    width: 42px;
+    height: 42px;
+  }
+
+  .mysqld-hero {
+    padding: 112px 0 56px;
+  }
+
+  .mysqld-hero h1 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+    line-height: 0.98;
+  }
+
+  .mysqld-hero-description {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.72;
+  }
+
+  .mysqld-hero-form {
+    padding: 20px 18px 22px;
+  }
+
+  .mysqld-brand-marquee {
+    margin-top: 40px;
+  }
+
+  .mysqld-brand-title {
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .mysqld-brand-title::before,
+  .mysqld-brand-title::after {
+    width: min(100%, 80px);
+  }
+
+  .mysqld-brand-track {
+    gap: 28px;
+  }
+
+  .mysqld-brand-slide {
+    min-width: 112px;
+  }
+
+  .mysqld-brand-slide img {
+    max-height: 24px;
+  }
+
   .awsd-hero {
     padding: 112px 0 56px;
   }
