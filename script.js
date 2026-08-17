@@ -197,6 +197,92 @@ if (expertiseSection) {
   expertiseObserver.observe(expertiseSection);
 }
 
+document.querySelectorAll("[data-awsd-services-tabs]").forEach((section) => {
+  const tabs = Array.from(section.querySelectorAll("[data-awsd-service-tab]"));
+  const panels = Array.from(section.querySelectorAll("[data-awsd-service-panel]"));
+
+  if (!tabs.length || !panels.length) {
+    return;
+  }
+
+  const activateServiceTab = (id) => {
+    tabs.forEach((tab) => {
+      const isActive = tab.dataset.awsdServiceTab === id;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.tabIndex = isActive ? 0 : -1;
+    });
+
+    panels.forEach((panel) => {
+      const isActive = panel.dataset.awsdServicePanel === id;
+      panel.classList.toggle("is-active", isActive);
+    });
+  };
+
+  const getScrollOffset = () => (window.matchMedia("(max-width: 860px)").matches ? 92 : 138);
+
+  tabs.forEach((tab, index) => {
+    tab.tabIndex = tab.classList.contains("is-active") ? 0 : -1;
+
+    tab.addEventListener("click", () => {
+      const targetPanel = panels.find(
+        (panel) => panel.dataset.awsdServicePanel === tab.dataset.awsdServiceTab
+      );
+
+      if (targetPanel) {
+        const targetTop = targetPanel.getBoundingClientRect().top + window.scrollY - getScrollOffset();
+        window.scrollTo({ top: targetTop, behavior: "smooth" });
+        activateServiceTab(tab.dataset.awsdServiceTab);
+      }
+    });
+
+    tab.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowDown" && event.key !== "ArrowUp") {
+        return;
+      }
+
+      event.preventDefault();
+      const direction = event.key === "ArrowDown" ? 1 : -1;
+      const nextIndex = (index + direction + tabs.length) % tabs.length;
+      tabs[nextIndex].focus();
+
+      const targetPanel = panels.find(
+        (panel) => panel.dataset.awsdServicePanel === tabs[nextIndex].dataset.awsdServiceTab
+      );
+
+      if (targetPanel) {
+        const targetTop = targetPanel.getBoundingClientRect().top + window.scrollY - getScrollOffset();
+        window.scrollTo({ top: targetTop, behavior: "smooth" });
+        activateServiceTab(tabs[nextIndex].dataset.awsdServiceTab);
+      }
+    });
+  });
+
+  const panelObserver = new IntersectionObserver(
+    (entries) => {
+      const visibleEntries = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+      if (!visibleEntries.length) {
+        return;
+      }
+
+      const activePanel = visibleEntries[0].target;
+      activateServiceTab(activePanel.dataset.awsdServicePanel);
+    },
+    {
+      root: null,
+      rootMargin: "-18% 0px -55% 0px",
+      threshold: [0.2, 0.35, 0.5, 0.7]
+    }
+  );
+
+  panels.forEach((panel) => {
+    panelObserver.observe(panel);
+  });
+});
+
 // Mega Menu Dynamic Hover Logic
 const megaCategories = document.querySelectorAll("#mega-categories li");
 const megaPanes = document.querySelectorAll(".mega-content-pane");

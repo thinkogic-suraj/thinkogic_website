@@ -5810,6 +5810,11 @@ textarea {
   margin-bottom: 0px;
 }
 
+.mad-why-points article:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 22px;
+}
+
 .mad-why-points h3 {
   font-family: "DM Sans", Sans-serif;
     font-size: 28px;
@@ -11165,6 +11170,383 @@ body.aad-modal-open {
   max-width: calc((100vw - 530px) / 3);
 }
 
+.section-pd.py-80.pt-0.awsd-sovereignty-section {
+  padding: 42px 0 86px;
+  background: linear-gradient(180deg, #fbfdff 0%, #f5f9ff 100%);
+}
+
+.awsd-sovereignty-shell {
+  padding: 6px 0 0;
+}
+
+.awsd-sovereignty-copy {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.awsd-sovereignty-copy h2 {
+  max-width: 780px;
+  margin: 0 auto 18px;
+  color: #000000;
+  font-family: "DM Sans", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.awsd-sovereignty-copy h2 span {
+  color: #4285f4;
+}
+
+.awsd-sovereignty-copy p {
+  max-width: 930px;
+  margin: 0 auto;
+  color: #111111;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.awsd-sovereignty-points {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 26px 36px;
+  margin-top: 42px;
+  align-items: start;
+}
+
+.awsd-sovereignty-point {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.awsd-sovereignty-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid blue;
+  border-radius: 50%;
+  color: blue;
+  margin-top: 2px;
+}
+
+.awsd-sovereignty-icon svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.awsd-sovereignty-point p {
+  margin: 0;
+  color: #000000;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.awsd-sovereignty-point strong {
+  font-weight: 700;
+}
+
+.awsd-testimonial-section {
+  padding: 0 0 90px;
+  background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+}
+
+.awsd-testimonial-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(340px, 1.05fr);
+  gap: 34px;
+  align-items: center;
+  margin-top: 52px;
+  padding: 34px 28px 28px;
+  border: 1px solid rgba(148, 124, 255, 0.12);
+  border-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 16px 40px rgba(25, 41, 89, 0.05);
+  overflow: hidden;
+}
+
+.awsd-testimonial-copy {
+  max-width: 420px;
+  padding: 12px 0 12px 4px;
+}
+
+.awsd-testimonial-copy h3 {
+  margin: 0 0 14px;
+  color: #424242;
+  font-family: "DM Sans", sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.awsd-testimonial-copy p {
+  margin: 0 0 18px;
+  color: #8a8a8a;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.awsd-testimonial-copy strong {
+  display: block;
+  margin: 0 0 4px;
+  color: #4285f4;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.awsd-testimonial-copy span {
+  display: block;
+  color: #b0a6bf;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.awsd-testimonial-visual {
+  position: relative;
+  min-height: 330px;
+  display: grid;
+  align-items: center;
+  justify-items: end;
+}
+
+.awsd-testimonial-quote {
+  position: absolute;
+  top: 2px;
+  right: 14px;
+  width: 66px;
+  height: 66px;
+  color: #6d34ff;
+  z-index: 3;
+}
+
+.awsd-testimonial-quote svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: blue;
+}
+
+.awsd-testimonial-image-shell {
+  position: relative;
+  width: min(100%, 500px);
+  min-height: 330px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.awsd-testimonial-shape {
+  position: absolute;
+  inset: 26px 26px 18px 76px;
+  background: linear-gradient(135deg, rgba(160, 132, 255, 0.14), rgba(109, 52, 255, 0.06));
+  clip-path: polygon(8% 18%, 90% 0, 100% 80%, 22% 100%);
+}
+
+.awsd-testimonial-image-shell img {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 400px);
+  object-fit: contain;
+  filter: grayscale(1);
+}
+
+.awsd-testimonial-badge {
+  position: absolute;
+  left: 26px;
+  bottom: 18px;
+  z-index: 2;
+  min-width: 160px;
+  padding: 14px 14px 12px;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(26, 37, 88, 0.1);
+}
+
+.awsd-testimonial-badge-label {
+  margin: 0 0 8px;
+  color: #b6a9c9;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.awsd-testimonial-stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 6px;
+  color: #7f54ff;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.awsd-testimonial-badge strong {
+  display: block;
+  margin: 0 0 3px;
+  color: #8680aa;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.awsd-testimonial-badge span {
+  display: block;
+  color: #b4b0c0;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 9px;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.awsd-services-detail-section {
+  padding: 34px 0 90px;
+  background: #ffffff;
+}
+
+.awsd-services-detail-shell {
+  width: min(1280px, calc(100vw - 40px));
+}
+
+.awsd-services-detail-intro {
+  max-width: 980px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.awsd-services-detail-intro h2 {
+  max-width: 760px;
+  margin: 0 auto 18px;
+  color: #000000;
+  font-family: "DM Sans", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.awsd-services-detail-intro p {
+  max-width: 940px;
+  margin: 0 auto;
+  color: #000000;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.awsd-services-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 330px) minmax(0, 1fr);
+  align-items: start;
+  background: #ffffff;
+  gap: 0 46px;
+}
+
+.awsd-services-detail-nav {
+  display: grid;
+  align-content: start;
+  background: #ffffff;
+  border-top: 1px solid #d4deee;
+  position: sticky;
+  top: 118px;
+  align-self: start;
+}
+
+.awsd-services-detail-tab {
+  padding: 34px 18px 34px 0;
+  border: 0;
+  border-bottom: 1px solid #d4deee;
+  background: transparent;
+  color: #000000;
+  text-align: left;
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+
+.awsd-services-detail-tab.is-active {
+  color: #4285f4;
+}
+
+.awsd-services-detail-panels {
+  min-width: 0;
+  padding-left: 0;
+  display: grid;
+  gap: 22px;
+}
+
+.awsd-services-detail-panel {
+  min-height: 0;
+  padding: 42px 42px 34px;
+  background: #f8f8f8;
+  scroll-margin-top: 136px;
+}
+
+.awsd-services-detail-panel h3 {
+  margin: 0 0 18px;
+  color: #000000;
+  font-family: "DM Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.awsd-services-detail-panel p {
+  max-width: 860px;
+  margin: 0 0 14px;
+  color: #000000;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.62;
+}
+
+.awsd-services-detail-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.awsd-services-detail-bullet {
+  position: relative;
+  padding-left: 22px;
+}
+
+.awsd-services-detail-bullet::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4285f4;
+  transform: translateY(-50%);
+}
+
 .ssd-expertise-arrow {
   display: inline-flex;
   align-items: center;
@@ -12041,6 +12423,32 @@ body.aad-modal-open {
 }
 
 @media (max-width: 1100px) {
+  .awsd-services-detail-layout {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  .awsd-testimonial-card {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .awsd-testimonial-copy {
+    max-width: 100%;
+  }
+
+  .awsd-testimonial-visual {
+    justify-items: center;
+  }
+
+  .awsd-testimonial-badge {
+    left: 42px;
+  }
+
+  .awsd-sovereignty-points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 28px;
+  }
+
   .mysqld-expertise-layout {
     grid-template-columns: minmax(250px, 36%) minmax(0, 64%);
   }
@@ -12104,6 +12512,72 @@ body.aad-modal-open {
 }
 
 @media (max-width: 860px) {
+  .awsd-services-detail-section {
+    padding: 28px 0 74px;
+  }
+
+  .awsd-services-detail-intro h2 {
+    font-size: 34px;
+  }
+
+  .awsd-services-detail-intro p {
+    font-size: 16px;
+  }
+
+  .awsd-services-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .awsd-services-detail-nav {
+    border-top: 0;
+    position: static;
+    top: auto;
+  }
+
+  .awsd-services-detail-tab {
+    padding: 24px 0;
+    font-size: 18px;
+  }
+
+  .awsd-services-detail-panels {
+    gap: 18px;
+  }
+
+  .awsd-services-detail-panel {
+    min-height: 0;
+    padding: 30px 28px;
+  }
+
+  .awsd-testimonial-section {
+    padding-bottom: 74px;
+  }
+
+  .awsd-testimonial-card {
+    padding: 28px 22px 24px;
+  }
+
+  .awsd-testimonial-copy h3 {
+    font-size: 24px;
+  }
+
+  .awsd-testimonial-copy p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .section-pd.py-80.pt-0.awsd-sovereignty-section {
+    padding: 34px 0 72px;
+  }
+
+  .awsd-sovereignty-copy h2 {
+    font-size: 34px;
+  }
+
+  .awsd-sovereignty-copy p {
+    font-size: 16px;
+  }
+
   .mysqld-expertise-section {
     padding: 72px 0 82px;
   }
@@ -12308,6 +12782,103 @@ body.aad-modal-open {
 }
 
 @media (max-width: 640px) {
+  .awsd-services-detail-section {
+    padding: 22px 0 58px;
+  }
+
+  .awsd-services-detail-intro {
+    margin-bottom: 24px;
+  }
+
+  .awsd-services-detail-intro h2 {
+    font-size: 29px;
+    line-height: 1.12;
+  }
+
+  .awsd-services-detail-layout {
+    gap: 18px;
+  }
+
+  .awsd-services-detail-tab {
+    padding: 20px 0;
+    font-size: 17px;
+  }
+
+  .awsd-services-detail-panel {
+    padding: 24px 20px;
+  }
+
+  .awsd-services-detail-panel h3 {
+    font-size: 24px;
+  }
+
+  .awsd-services-detail-panel p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .awsd-testimonial-section {
+    padding-bottom: 58px;
+  }
+
+  .awsd-testimonial-card {
+    gap: 18px;
+    padding: 24px 18px 20px;
+  }
+
+  .awsd-testimonial-copy h3 {
+    font-size: 22px;
+  }
+
+  .awsd-testimonial-visual {
+    min-height: 270px;
+  }
+
+  .awsd-testimonial-quote {
+    top: 2px;
+    right: 6px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .awsd-testimonial-image-shell {
+    min-height: 270px;
+  }
+
+  .awsd-testimonial-shape {
+    inset: 24px 8px 12px 34px;
+  }
+
+  .awsd-testimonial-image-shell img {
+    width: min(100%, 310px);
+  }
+
+  .awsd-testimonial-badge {
+    left: 12px;
+    bottom: 10px;
+    min-width: 138px;
+    padding: 12px 12px 10px;
+  }
+
+  .section-pd.py-80.pt-0.awsd-sovereignty-section {
+    padding: 28px 0 58px;
+  }
+
+  .awsd-sovereignty-copy h2 {
+    font-size: 29px;
+    line-height: 1.12;
+  }
+
+  .awsd-sovereignty-points {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 34px;
+  }
+
+  .awsd-sovereignty-point p {
+    font-size: 16px;
+  }
+
   .mysqld-expertise-panel {
     min-height: 220px;
   }
