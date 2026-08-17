@@ -906,12 +906,13 @@ document.addEventListener("DOMContentLoaded", () => {
     syncExpertiseSlider();
   }
 
-  const ssdExpertiseShell = document.querySelector("[data-ssd-expertise]");
-  if (ssdExpertiseShell) {
+  const ssdExpertiseShells = Array.from(document.querySelectorAll("[data-ssd-expertise]"));
+  ssdExpertiseShells.forEach((ssdExpertiseShell) => {
+    const controlsRoot = ssdExpertiseShell.closest(".ssd-expertise-content") || ssdExpertiseShell;
     const track = ssdExpertiseShell.querySelector(".ssd-expertise-track");
     const cards = track ? Array.from(track.querySelectorAll(".ssd-expertise-card")) : [];
-    const prevButton = ssdExpertiseShell.querySelector('[data-direction="prev"]');
-    const nextButton = document.querySelector(".ssd-expertise-next");
+    const prevButton = controlsRoot.querySelector('[data-direction="prev"]');
+    const nextButton = controlsRoot.querySelector('[data-direction="next"]');
     let currentIndex = 0;
 
     const getVisibleCards = () => {
@@ -968,7 +969,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("resize", syncSsdExpertiseSlider, { passive: true });
     syncSsdExpertiseSlider();
-  }
+  });
 
   const wpdProjectsShell = document.querySelector("[data-wpd-projects]");
   if (wpdProjectsShell) {

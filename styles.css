@@ -866,7 +866,7 @@ textarea {
 .hero.is-ready .hero-reveal {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  margin-top: -50px;
+  margin-top: -20px;
 }
 
 .ssd-page .hero.is-ready .hero-reveal {
@@ -11137,6 +11137,32 @@ body.aad-modal-open {
   right: 85px;
   display: flex;
   gap: 12px;
+  z-index: 4;
+}
+
+.awsd-page .ssd-expertise-arrows {
+  position: absolute;
+  top: -12px;
+  right: -29px;
+  display: flex;
+  justify-content: flex-end;
+  width: fit-content;
+  margin: 0;
+  z-index: 8;
+}
+
+.awsd-page .ssd-expertise-carousel {
+  padding-top: 54px;
+}
+
+.awsd-page .ssd-expertise-viewport {
+  padding-right: 0;
+}
+
+.awsd-page .ssd-expertise-card {
+  flex: 0 0 calc((100vw - 530px) / 3);
+  min-width: calc((100vw - 530px) / 3);
+  max-width: calc((100vw - 530px) / 3);
 }
 
 .ssd-expertise-arrow {
@@ -11298,6 +11324,7 @@ body.aad-modal-open {
   font-weight: 700;
   line-height: 0.94;
   letter-spacing: -0.05em;
+  margin-top: -90px;
 }
 
 .awsd-hero-description {
@@ -11337,6 +11364,8 @@ body.aad-modal-open {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 24px 54px rgba(6, 10, 32, 0.24);
+  margin-left: -56px;
+  margin-right: 56px;
 }
 
 .awsd-hero-form h2 {
@@ -11442,6 +11471,105 @@ body.aad-modal-open {
   line-height: 1;
 }
 
+.awsd-brand-marquee {
+  position: relative;
+  z-index: 1;
+  margin-top: 52px;
+}
+
+.awsd-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.76);
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.awsd-brand-title::before,
+.awsd-brand-title::after {
+  content: "";
+  width: min(100%, 180px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.26),
+    rgba(255, 255, 255, 0.04)
+  );
+}
+
+.awsd-brand-strip {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 0;
+  width: 1785px;
+  margin-left: -73px;
+}
+
+.awsd-brand-strip::before,
+.awsd-brand-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: min(10vw, 100px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.awsd-brand-strip::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(3, 6, 19, 0.92), rgba(3, 6, 19, 0));
+}
+
+.awsd-brand-strip::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(6, 17, 54, 0.9), rgba(6, 17, 54, 0));
+}
+
+.awsd-brand-track {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  width: max-content;
+  animation: awsdBrandMarquee 24s linear infinite;
+}
+
+.awsd-brand-slide {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 144px;
+  min-height: 50px;
+  padding: 6px 10px;
+}
+
+.awsd-brand-slide img {
+  max-width: 100%;
+  max-height: 28px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.82;
+}
+
+@keyframes awsdBrandMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - 22px), 0, 0);
+  }
+}
+
 @media (max-width: 1100px) {
   .awsd-hero-grid {
     grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
@@ -11502,6 +11630,14 @@ body.aad-modal-open {
   .awsd-hero-form-wrap {
     justify-self: start;
     width: min(100%, 420px);
+  }
+
+  .awsd-brand-track {
+    gap: 34px;
+  }
+
+  .awsd-brand-slide {
+    min-width: 128px;
   }
 
   .awsd-hero::after {
@@ -11628,6 +11764,34 @@ body.aad-modal-open {
 
   .awsd-hero-form {
     padding: 20px 18px 22px;
+  }
+
+  .awsd-brand-marquee {
+    margin-top: 40px;
+  }
+
+  .awsd-brand-title {
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  .awsd-brand-title::before,
+  .awsd-brand-title::after {
+    width: min(100%, 80px);
+  }
+
+  .awsd-brand-track {
+    gap: 28px;
+  }
+
+  .awsd-brand-slide {
+    min-width: 112px;
+  }
+
+  .awsd-brand-slide img {
+    max-height: 24px;
   }
 
   .ssd-hero {
