@@ -11422,7 +11422,10 @@ body.aad-modal-open {
 
 .awsd-services-detail-section {
   padding: 34px 0 90px;
+  margin-bottom: 40px;
   background: #ffffff;
+  border: 1px solid #dbe5f4;
+  border-radius: 24px;
 }
 
 .awsd-services-detail-shell {
@@ -11465,28 +11468,15 @@ body.aad-modal-open {
 }
 
 .awsd-services-detail-visual {
-  padding-top: 22px;
+  align-self: center;
+  padding-top: 0;
 }
 
-.awsd-services-detail-visual-card {
-  position: relative;
-  min-height: 402px;
+.awsd-services-detail-visual-image {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: 20px;
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(13, 22, 84, 0.08), rgba(13, 22, 84, 0.18)),
-    radial-gradient(circle at 24% 22%, rgba(70, 146, 255, 0.24), transparent 22%),
-    url("/aws-services-detail-card.png") center center / cover no-repeat;
-  box-shadow: 0 18px 44px rgba(18, 39, 94, 0.08);
-}
-
-.awsd-services-detail-visual-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(6, 13, 54, 0.14), rgba(6, 13, 54, 0.46)),
-    linear-gradient(135deg, rgba(117, 173, 255, 0.12), rgba(255, 255, 255, 0));
 }
 
 .awsd-services-detail-nav {
@@ -11707,6 +11697,7 @@ body.aad-modal-open {
   position: absolute;
   inset: 0;
   background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.58) 32%, rgba(0, 0, 0, 0.18) 62%, rgba(0, 0, 0, 0) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.24) 100%),
     linear-gradient(110deg, rgba(255, 255, 255, 0.05) 12%, rgba(255, 255, 255, 0) 32%);
   pointer-events: none;
@@ -12475,8 +12466,8 @@ body.aad-modal-open {
     gap: 0 24px;
   }
 
-  .awsd-services-detail-visual-card {
-    min-height: 350px;
+  .awsd-services-detail-visual-image {
+    border-radius: 18px;
   }
 
   .awsd-services-detail-visual-label {
