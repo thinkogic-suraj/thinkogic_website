@@ -11782,6 +11782,159 @@ body.aad-modal-open {
   min-width: 220px;
 }
 
+.awsd-client-voices-section {
+  padding: 34px 0 88px;
+  background:
+    linear-gradient(180deg, #f7faff 0%, #eef4ff 100%);
+}
+
+.awsd-client-voices-shell {
+  width: min(1220px, calc(100vw - 40px));
+}
+
+.awsd-client-voices-heading {
+  max-width: 760px;
+  margin: 0 auto 34px;
+}
+
+.awsd-client-voices-heading h2 {
+  color: #111111;
+  font-family: "DM Sans", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+.awsd-client-voices-heading p {
+  color: #58606d;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.awsd-client-voices-stage {
+  position: relative;
+  padding: 42px 0 28px;
+}
+
+.awsd-client-voices-backdrop {
+  position: absolute;
+  inset: 0 6% 52px;
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 26px 54px rgba(37, 69, 133, 0.08);
+  pointer-events: none;
+}
+
+.awsd-client-voices-mark {
+  position: absolute;
+  color: rgba(43, 92, 221, 0.08);
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(5rem, 11vw, 8.5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.awsd-client-voices-mark-left {
+  top: 26px;
+  left: 34px;
+}
+
+.awsd-client-voices-mark-right {
+  right: 38px;
+  bottom: 8px;
+}
+
+.awsd-client-voices-viewport {
+  position: relative;
+  overflow: hidden;
+  padding: 36px 0 28px;
+}
+
+.awsd-client-voices-track {
+  display: flex;
+  align-items: center;
+  gap: var(--awsd-voices-gap, 22px);
+  will-change: transform;
+}
+
+.awsd-client-voice-card {
+  flex: 0 0 var(--awsd-voice-card-width, 290px);
+  width: var(--awsd-voice-card-width, 290px);
+  min-height: 270px;
+  padding: 24px 22px 22px;
+  border: 1px solid rgba(75, 111, 196, 0.1);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 42px rgba(26, 52, 110, 0.08);
+  transform: scale(calc(0.84 + (var(--voice-focus, 0) * 0.2)));
+  opacity: calc(0.48 + (var(--voice-focus, 0) * 0.52));
+  transition: transform 220ms ease, opacity 220ms ease, box-shadow 220ms ease;
+}
+
+.awsd-client-voice-card.is-focused {
+  box-shadow: 0 28px 52px rgba(26, 52, 110, 0.14);
+}
+
+.awsd-client-voice-avatar {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(38, 78, 171, 0.16);
+}
+
+.awsd-client-voice-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.awsd-client-voice-meta {
+  text-align: center;
+}
+
+.awsd-client-voice-meta strong {
+  display: block;
+  color: #111111;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.awsd-client-voice-meta span {
+  display: block;
+  margin-top: 5px;
+  color: #667085;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.awsd-client-voice-card p {
+  position: relative;
+  margin: 18px 0 0;
+  color: #444f63;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 15px;
+  line-height: 1.72;
+  text-align: center;
+}
+
+.awsd-client-voice-card p::after {
+  content: "”";
+  display: block;
+  margin-top: 10px;
+  color: rgba(51, 92, 191, 0.14);
+  font-family: "DM Sans", sans-serif;
+  font-size: 44px;
+  line-height: 0.7;
+}
+
 .ssd-expertise-arrow {
   display: inline-flex;
   align-items: center;
@@ -12664,6 +12817,28 @@ body.aad-modal-open {
     gap: 0 24px;
   }
 
+  .awsd-client-voices-section {
+    padding: 26px 0 72px;
+  }
+
+  .awsd-client-voices-heading h2 {
+    font-size: 34px;
+  }
+
+  .awsd-client-voices-stage {
+    padding-top: 30px;
+  }
+
+  .awsd-client-voices-backdrop {
+    inset: 0 2% 42px;
+    border-radius: 28px;
+  }
+
+  .awsd-client-voice-card {
+    min-height: 250px;
+    padding: 22px 20px 20px;
+  }
+
   .awsd-case-study-showcase {
     grid-template-columns: 1fr;
   }
@@ -13049,6 +13224,66 @@ body.aad-modal-open {
 @media (max-width: 640px) {
   .awsd-services-detail-section {
     padding: 22px 0 58px;
+  }
+
+  .awsd-client-voices-section {
+    padding: 20px 0 56px;
+  }
+
+  .awsd-client-voices-shell {
+    width: min(100vw - 20px, 100%);
+  }
+
+  .awsd-client-voices-heading {
+    margin-bottom: 20px;
+  }
+
+  .awsd-client-voices-heading h2 {
+    font-size: 29px;
+    line-height: 1.12;
+  }
+
+  .awsd-client-voices-heading p {
+    font-size: 16px;
+    line-height: 1.68;
+  }
+
+  .awsd-client-voices-stage {
+    padding: 18px 0 12px;
+  }
+
+  .awsd-client-voices-backdrop {
+    inset: 0 0 28px;
+    border-radius: 24px;
+  }
+
+  .awsd-client-voices-mark-left {
+    top: 18px;
+    left: 18px;
+  }
+
+  .awsd-client-voices-mark-right {
+    right: 18px;
+    bottom: 2px;
+  }
+
+  .awsd-client-voices-viewport {
+    padding: 28px 0 18px;
+  }
+
+  .awsd-client-voice-card {
+    min-height: 236px;
+    padding: 20px 18px 18px;
+    border-radius: 20px;
+  }
+
+  .awsd-client-voice-meta strong {
+    font-size: 17px;
+  }
+
+  .awsd-client-voice-card p {
+    font-size: 14px;
+    line-height: 1.68;
   }
 
   .awsd-case-studies-section {

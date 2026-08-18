@@ -370,6 +370,165 @@ document.querySelectorAll("[data-awsd-case-study-showcase]").forEach((showcase) 
   syncStudy();
 });
 
+document.querySelectorAll("[data-awsd-voices]").forEach((shell) => {
+  const viewport = shell.querySelector(".awsd-client-voices-viewport");
+  const track = shell.querySelector(".awsd-client-voices-track");
+  const baseCards = track ? Array.from(track.children) : [];
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let frameId = 0;
+  let lastFrameTime = 0;
+  let travel = 0;
+  let loopWidth = 0;
+  let centerInset = 0;
+  let baseOffset = 0;
+
+  if (!viewport || !track || baseCards.length === 0) {
+    return;
+  }
+
+  const getGap = () => {
+    if (window.matchMedia("(max-width: 640px)").matches) {
+      return 16;
+    }
+
+    if (window.matchMedia("(max-width: 860px)").matches) {
+      return 18;
+    }
+
+    return 22;
+  };
+
+  const getVisibleCards = () => {
+    if (window.matchMedia("(max-width: 640px)").matches) {
+      return 1.18;
+    }
+
+    if (window.matchMedia("(max-width: 860px)").matches) {
+      return 2.15;
+    }
+
+    return 3.35;
+  };
+
+  const syncFocusState = () => {
+    const viewportRect = viewport.getBoundingClientRect();
+    const viewportCenter = viewportRect.left + viewportRect.width / 2;
+    let bestCard = null;
+    let bestFocus = -1;
+
+    track.querySelectorAll(".awsd-client-voice-card").forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + rect.width / 2;
+      const distance = Math.abs(cardCenter - viewportCenter);
+      const focus = Math.max(0, 1 - distance / (viewportRect.width * 0.46));
+      card.style.setProperty("--voice-focus", focus.toFixed(3));
+
+      if (focus > bestFocus) {
+        bestFocus = focus;
+        bestCard = card;
+      }
+    });
+
+    track.querySelectorAll(".awsd-client-voice-card").forEach((card) => {
+      card.classList.toggle("is-focused", card === bestCard);
+    });
+  };
+
+  const syncMetrics = () => {
+    const gap = getGap();
+    const visibleCards = getVisibleCards();
+    const availableWidth = viewport.clientWidth;
+    const cardWidth = Math.max(220, (availableWidth - gap * (visibleCards - 1)) / visibleCards);
+
+    shell.style.setProperty("--awsd-voices-gap", `${gap}px`);
+    shell.style.setProperty("--awsd-voice-card-width", `${cardWidth}px`);
+
+    loopWidth = baseCards.length * cardWidth + gap * Math.max(baseCards.length - 1, 0);
+    centerInset = (availableWidth - cardWidth) / 2;
+    baseOffset = loopWidth - centerInset;
+    travel = loopWidth > 0 ? travel % loopWidth : 0;
+    track.style.transform = `translate3d(${-(baseOffset + travel)}px, 0, 0)`;
+    syncFocusState();
+  };
+
+  const buildLoop = () => {
+    track.querySelectorAll("[data-clone='true']").forEach((clone) => clone.remove());
+
+    for (let cycle = 0; cycle < 3; cycle += 1) {
+      baseCards.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.dataset.clone = "true";
+        clone.setAttribute("aria-hidden", "true");
+        clone.querySelector("img")?.setAttribute("alt", "");
+        track.appendChild(clone);
+      });
+    }
+  };
+
+  const step = (timestamp) => {
+    if (lastFrameTime === 0) {
+      lastFrameTime = timestamp;
+    }
+
+    const delta = (timestamp - lastFrameTime) / 1000;
+    lastFrameTime = timestamp;
+
+    if (!reducedMotionQuery.matches && loopWidth > 0) {
+      travel += 34 * delta;
+      if (travel >= loopWidth) {
+        travel -= loopWidth;
+      }
+      track.style.transform = `translate3d(${-(baseOffset + travel)}px, 0, 0)`;
+      syncFocusState();
+    }
+
+    frameId = window.requestAnimationFrame(step);
+  };
+
+  const start = () => {
+    if (frameId) {
+      return;
+    }
+
+    lastFrameTime = 0;
+    frameId = window.requestAnimationFrame(step);
+  };
+
+  const stop = () => {
+    if (!frameId) {
+      return;
+    }
+
+    window.cancelAnimationFrame(frameId);
+    frameId = 0;
+  };
+
+  const refresh = () => {
+    syncMetrics();
+    if (loopWidth > 0) {
+      travel = 0;
+      track.style.transform = `translate3d(${-baseOffset}px, 0, 0)`;
+      syncFocusState();
+    }
+
+    if (reducedMotionQuery.matches) {
+      stop();
+    } else {
+      start();
+    }
+  };
+
+  buildLoop();
+  refresh();
+  window.addEventListener("resize", refresh, { passive: true });
+
+  if (typeof reducedMotionQuery.addEventListener === "function") {
+    reducedMotionQuery.addEventListener("change", refresh);
+  } else if (typeof reducedMotionQuery.addListener === "function") {
+    reducedMotionQuery.addListener(refresh);
+  }
+});
+
 // Mega Menu Dynamic Hover Logic
 const megaCategories = document.querySelectorAll("#mega-categories li");
 const megaPanes = document.querySelectorAll(".mega-content-pane");
