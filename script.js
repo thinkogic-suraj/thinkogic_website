@@ -268,6 +268,108 @@ document.querySelectorAll("[data-awsd-services-tabs]").forEach((section) => {
   });
 });
 
+document.querySelectorAll("[data-awsd-case-study-showcase]").forEach((showcase) => {
+  const title = showcase.querySelector("[data-awsd-case-study-title]");
+  const challenge = showcase.querySelector("[data-awsd-case-study-challenge]");
+  const solution = showcase.querySelector("[data-awsd-case-study-solution]");
+  const impact = showcase.querySelector("[data-awsd-case-study-impact]");
+  const link = showcase.querySelector("[data-awsd-case-study-link]");
+  const image = showcase.querySelector("[data-awsd-case-study-image]");
+  const current = showcase.querySelector("[data-awsd-case-study-current]");
+  const total = showcase.querySelector("[data-awsd-case-study-total]");
+  const shell = showcase.closest(".awsd-case-studies-shell");
+  const prevButton = shell?.querySelector("[data-awsd-case-study-prev]");
+  const nextButton = shell?.querySelector("[data-awsd-case-study-next]");
+
+  if (!title || !challenge || !solution || !impact || !link || !image || !current || !total) {
+    return;
+  }
+
+  const studies = [
+    {
+      title: "AWS Cloud Modernization",
+      challenge:
+        "The client needed to modernize cloud operations, improve infrastructure visibility, and support scalable digital growth without increasing operational complexity.",
+      solution:
+        "We designed a secure AWS architecture with resilient workloads, centralized monitoring, and cloud optimization strategies tailored for long-term scalability.",
+      impact: [
+        "Improved cloud performance and workload reliability",
+        "Stronger visibility across infrastructure and operations",
+        "Better scalability for business-critical digital services",
+      ],
+      image: "/assets/images/aws-services-detail-visual.png",
+      imageAlt: "AWS cloud modernization showcase",
+      href: "/index.html#clients",
+      linkLabel: "Explore Full Case Study",
+    },
+    {
+      title: "AWS Data & Analytics Transformation",
+      challenge:
+        "The business needed a scalable analytics environment that could unify data sources, improve reporting speed, and make operational insights easier to access.",
+      solution:
+        "We built a resilient AWS data pipeline architecture with governed storage, streamlined processing flows, and reporting-ready analytics services.",
+      impact: [
+        "Faster reporting and decision-making cycles",
+        "Improved reliability across cloud data workflows",
+        "Higher analytics performance for growing workloads",
+      ],
+      image: "https://thinkogic.com/wp-content/uploads/2024/01/mcgm_banner_image-1024x576.png",
+      imageAlt: "AWS data and analytics case study",
+      href: "/index.html#clients",
+      linkLabel: "Explore Full Case Study",
+    },
+    {
+      title: "Secure AWS Migration Strategy",
+      challenge:
+        "The client wanted to move critical workloads to AWS while reducing migration risk, maintaining continuity, and building a stronger cloud governance model.",
+      solution:
+        "Our team created a phased AWS migration roadmap with secure deployment foundations, optimized workload placement, and operational readiness planning.",
+      impact: [
+        "Smoother migration for core business systems",
+        "Stronger security and governance across the cloud estate",
+        "Improved scalability for future digital initiatives",
+      ],
+      image: "https://thinkogic.com/wp-content/uploads/2024/01/smarti_banner_image-1024x576.png",
+      imageAlt: "AWS migration and modernization case study",
+      href: "/index.html#clients",
+      linkLabel: "Explore Full Case Study",
+    },
+  ];
+
+  let activeIndex = 0;
+
+  const syncStudy = () => {
+    const study = studies[activeIndex];
+    title.textContent = study.title;
+    challenge.textContent = study.challenge;
+    solution.textContent = study.solution;
+    impact.innerHTML = "";
+    study.impact.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      impact.appendChild(li);
+    });
+    link.textContent = study.linkLabel;
+    link.setAttribute("href", study.href);
+    image.setAttribute("src", study.image);
+    image.setAttribute("alt", study.imageAlt);
+    current.textContent = String(activeIndex + 1).padStart(2, "0");
+    total.textContent = String(studies.length).padStart(2, "0");
+  };
+
+  prevButton?.addEventListener("click", () => {
+    activeIndex = (activeIndex - 1 + studies.length) % studies.length;
+    syncStudy();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    activeIndex = (activeIndex + 1) % studies.length;
+    syncStudy();
+  });
+
+  syncStudy();
+});
+
 // Mega Menu Dynamic Hover Logic
 const megaCategories = document.querySelectorAll("#mega-categories li");
 const megaPanes = document.querySelectorAll(".mega-content-pane");
