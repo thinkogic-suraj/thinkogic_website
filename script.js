@@ -200,10 +200,23 @@ if (expertiseSection) {
 document.querySelectorAll("[data-awsd-services-tabs]").forEach((section) => {
   const tabs = Array.from(section.querySelectorAll("[data-awsd-service-tab]"));
   const panels = Array.from(section.querySelectorAll("[data-awsd-service-panel]"));
+  const panelsWrap = section.querySelector(".awsd-services-detail-panels");
+  const nav = section.querySelector(".awsd-services-detail-nav");
 
   if (!tabs.length || !panels.length) {
     return;
   }
+
+  const syncAwsdNotch = (activeTab) => {
+    if (!panelsWrap || !nav || !activeTab || window.matchMedia("(max-width: 860px)").matches) {
+      return;
+    }
+
+    const navRect = nav.getBoundingClientRect();
+    const tabRect = activeTab.getBoundingClientRect();
+    const notchTop = tabRect.top - navRect.top + tabRect.height / 2;
+    panelsWrap.style.setProperty("--awsd-notch-top", `${notchTop}px`);
+  };
 
   const activateServiceTab = (id) => {
     tabs.forEach((tab) => {
@@ -211,29 +224,24 @@ document.querySelectorAll("[data-awsd-services-tabs]").forEach((section) => {
       tab.classList.toggle("is-active", isActive);
       tab.setAttribute("aria-selected", String(isActive));
       tab.tabIndex = isActive ? 0 : -1;
+
+      if (isActive) {
+        syncAwsdNotch(tab);
+      }
     });
 
     panels.forEach((panel) => {
       const isActive = panel.dataset.awsdServicePanel === id;
       panel.classList.toggle("is-active", isActive);
+      panel.hidden = !isActive;
     });
   };
-
-  const getScrollOffset = () => (window.matchMedia("(max-width: 860px)").matches ? 92 : 138);
 
   tabs.forEach((tab, index) => {
     tab.tabIndex = tab.classList.contains("is-active") ? 0 : -1;
 
     tab.addEventListener("click", () => {
-      const targetPanel = panels.find(
-        (panel) => panel.dataset.awsdServicePanel === tab.dataset.awsdServiceTab
-      );
-
-      if (targetPanel) {
-        const targetTop = targetPanel.getBoundingClientRect().top + window.scrollY - getScrollOffset();
-        window.scrollTo({ top: targetTop, behavior: "smooth" });
-        activateServiceTab(tab.dataset.awsdServiceTab);
-      }
+      activateServiceTab(tab.dataset.awsdServiceTab);
     });
 
     tab.addEventListener("keydown", (event) => {
@@ -245,41 +253,18 @@ document.querySelectorAll("[data-awsd-services-tabs]").forEach((section) => {
       const direction = event.key === "ArrowDown" ? 1 : -1;
       const nextIndex = (index + direction + tabs.length) % tabs.length;
       tabs[nextIndex].focus();
-
-      const targetPanel = panels.find(
-        (panel) => panel.dataset.awsdServicePanel === tabs[nextIndex].dataset.awsdServiceTab
-      );
-
-      if (targetPanel) {
-        const targetTop = targetPanel.getBoundingClientRect().top + window.scrollY - getScrollOffset();
-        window.scrollTo({ top: targetTop, behavior: "smooth" });
-        activateServiceTab(tabs[nextIndex].dataset.awsdServiceTab);
-      }
+      activateServiceTab(tabs[nextIndex].dataset.awsdServiceTab);
     });
   });
 
-  const panelObserver = new IntersectionObserver(
-    (entries) => {
-      const visibleEntries = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-      if (!visibleEntries.length) {
-        return;
-      }
-
-      const activePanel = visibleEntries[0].target;
-      activateServiceTab(activePanel.dataset.awsdServicePanel);
-    },
-    {
-      root: null,
-      rootMargin: "-18% 0px -55% 0px",
-      threshold: [0.2, 0.35, 0.5, 0.7]
-    }
+  activateServiceTab(
+    tabs.find((tab) => tab.classList.contains("is-active"))?.dataset.awsdServiceTab ??
+      tabs[0].dataset.awsdServiceTab
   );
 
-  panels.forEach((panel) => {
-    panelObserver.observe(panel);
+  window.addEventListener("resize", () => {
+    const activeTab = tabs.find((tab) => tab.classList.contains("is-active"));
+    syncAwsdNotch(activeTab);
   });
 });
 
