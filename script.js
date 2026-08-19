@@ -423,11 +423,9 @@ document.querySelectorAll("[data-awsd-voices]").forEach((shell) => {
     const gap = getGap();
     const visibleCards = getVisibleCards();
     const viewportStyles = window.getComputedStyle(viewport);
-    const trackStyles = window.getComputedStyle(track);
     const paddingLeft = Number.parseFloat(viewportStyles.paddingLeft || "0");
     const paddingRight = Number.parseFloat(viewportStyles.paddingRight || "0");
-    const trackOffset = Math.abs(Number.parseFloat(trackStyles.marginLeft || "0"));
-    const availableWidth = viewport.clientWidth - paddingLeft - paddingRight - trackOffset;
+    const availableWidth = viewport.clientWidth - paddingLeft - paddingRight;
     const cardWidth = Math.max(210, (availableWidth - gap * (visibleCards - 1)) / visibleCards);
 
     shell.style.setProperty("--awsd-voices-gap", `${gap}px`);
