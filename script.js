@@ -437,10 +437,12 @@ document.querySelectorAll("[data-awsd-voices]").forEach((shell) => {
 
     if (prevButton) {
       prevButton.disabled = currentIndex <= 0;
+      prevButton.classList.toggle("is-blinking", currentIndex >= getMaxIndex() && getMaxIndex() > 0);
     }
 
     if (nextButton) {
       nextButton.disabled = currentIndex >= getMaxIndex();
+      nextButton.classList.toggle("is-blinking", currentIndex < getMaxIndex());
     }
 
     syncFocusState();

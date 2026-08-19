@@ -11855,12 +11855,12 @@ body.aad-modal-open {
 
 .awsd-client-voices-nav {
   position: absolute;
-  top: 50%;
+  top: 29px;
+  bottom: 108px;
   left: -24px;
   right: -24px;
   z-index: 2;
   display: block;
-  transform: translateY(-50%);
   pointer-events: none;
 }
 
@@ -11901,10 +11901,27 @@ body.aad-modal-open {
   box-shadow: 0 8px 18px rgba(66, 133, 244, 0.16);
 }
 
+.awsd-client-voices-arrow.is-blinking {
+  animation: awsdClientVoicesBlink 1.2s ease-in-out infinite;
+}
+
 .awsd-client-voices-arrow:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   box-shadow: none;
+}
+
+@keyframes awsdClientVoicesBlink {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.08);
+  }
+
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 8px rgba(66, 133, 244, 0.06);
+  }
 }
 
 .awsd-client-voices-viewport {
@@ -11913,6 +11930,7 @@ body.aad-modal-open {
   overflow: hidden;
   margin: 0 3%;
   padding: 36px 18px 108px;
+  margin-top: -22px;
 }
 
 .awsd-client-voices-track {
@@ -11926,10 +11944,11 @@ body.aad-modal-open {
 }
 
 .awsd-client-voice-card {
+  position: relative;
   flex: 0 0 var(--awsd-voice-card-width, 290px);
   width: var(--awsd-voice-card-width, 290px);
   min-height: 270px;
-  padding: 24px 22px 22px;
+  padding: 52px 22px 22px;
   border: 1px solid rgba(75, 111, 196, 0.1);
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.96);
@@ -11937,6 +11956,20 @@ body.aad-modal-open {
   transform: none;
   opacity: 1;
   transition: opacity 320ms ease, box-shadow 320ms ease;
+}
+
+.awsd-client-voice-quote {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  line-height: 0;
+}
+
+.awsd-client-voice-quote svg {
+  display: block;
+  width: 26px;
+  height: 18px;
+  margin-top: -24px;
 }
 
 .awsd-client-voice-avatar {
@@ -11988,13 +12021,7 @@ body.aad-modal-open {
 }
 
 .awsd-client-voice-card p::after {
-  content: "”";
-  display: block;
-  margin-top: 10px;
-  color: #1f34ff;
-  font-family: "DM Sans", sans-serif;
-  font-size: 44px;
-  line-height: 0.7;
+  content: none;
 }
 
 .awsd-client-voice-stars {
