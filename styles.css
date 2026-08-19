@@ -11786,6 +11786,7 @@ body.aad-modal-open {
   padding: 34px 0 88px;
   background:
     linear-gradient(180deg, #f7faff 0%, #eef4ff 100%);
+  height: 720px;
 }
 
 .awsd-client-voices-shell {
@@ -11806,6 +11807,16 @@ body.aad-modal-open {
   letter-spacing: -0.04em;
 }
 
+.awsd-client-voices-heading h2::after {
+  content: "";
+  display: block;
+  width: 92px;
+  height: 3px;
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: #4285f4;
+}
+
 .awsd-client-voices-heading p {
   color: #58606d;
   font-family: "Red Hat Display", sans-serif;
@@ -11815,25 +11826,21 @@ body.aad-modal-open {
 
 .awsd-client-voices-stage {
   position: relative;
-  padding: 42px 0 28px;
+  padding: 42px 0 36px;
+  margin-top: -72px;
 }
 
 .awsd-client-voices-backdrop {
   position: absolute;
-  inset: 0 6% 52px;
-  border-radius: 34px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 26px 54px rgba(37, 69, 133, 0.08);
+  inset: 0 3% 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   pointer-events: none;
 }
 
 .awsd-client-voices-mark {
-  position: absolute;
-  color: rgba(43, 92, 221, 0.08);
-  font-family: "DM Sans", sans-serif;
-  font-size: clamp(5rem, 11vw, 8.5rem);
-  font-weight: 700;
-  line-height: 1;
+  display: none;
 }
 
 .awsd-client-voices-mark-left {
@@ -11846,17 +11853,76 @@ body.aad-modal-open {
   bottom: 8px;
 }
 
+.awsd-client-voices-nav {
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  right: -24px;
+  z-index: 2;
+  display: block;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.awsd-client-voices-arrow {
+  position: absolute;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(66, 133, 244, 0.72);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #4285f4;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: none;
+  pointer-events: auto;
+  transform: translateY(-50%);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease;
+}
+
+.awsd-client-voices-arrow[data-awsd-voices-prev] {
+  left: 0;
+}
+
+.awsd-client-voices-arrow[data-awsd-voices-next] {
+  right: 0;
+}
+
+.awsd-client-voices-arrow:hover,
+.awsd-client-voices-arrow:focus-visible {
+  transform: translateY(-50%) scale(1.04);
+  box-shadow: 0 8px 18px rgba(66, 133, 244, 0.16);
+}
+
+.awsd-client-voices-arrow:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 .awsd-client-voices-viewport {
   position: relative;
+  z-index: 1;
   overflow: hidden;
-  padding: 36px 0 28px;
+  margin: 0 3%;
+  padding: 36px 18px 108px;
 }
 
 .awsd-client-voices-track {
   display: flex;
   align-items: center;
   gap: var(--awsd-voices-gap, 22px);
+  transition: transform 560ms cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: transform;
+  margin-left: 20px;
+  margin-top: 15px;
 }
 
 .awsd-client-voice-card {
@@ -11865,16 +11931,12 @@ body.aad-modal-open {
   min-height: 270px;
   padding: 24px 22px 22px;
   border: 1px solid rgba(75, 111, 196, 0.1);
-  border-radius: 24px;
+  border-radius: 5px;
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 18px 42px rgba(26, 52, 110, 0.08);
-  transform: scale(calc(0.84 + (var(--voice-focus, 0) * 0.2)));
-  opacity: calc(0.48 + (var(--voice-focus, 0) * 0.52));
-  transition: transform 220ms ease, opacity 220ms ease, box-shadow 220ms ease;
-}
-
-.awsd-client-voice-card.is-focused {
-  box-shadow: 0 28px 52px rgba(26, 52, 110, 0.14);
+  box-shadow: none;
+  transform: none;
+  opacity: 1;
+  transition: opacity 320ms ease, box-shadow 320ms ease;
 }
 
 .awsd-client-voice-avatar {
@@ -11929,10 +11991,24 @@ body.aad-modal-open {
   content: "”";
   display: block;
   margin-top: 10px;
-  color: rgba(51, 92, 191, 0.14);
+  color: #1f34ff;
   font-family: "DM Sans", sans-serif;
   font-size: 44px;
   line-height: 0.7;
+}
+
+.awsd-client-voice-stars {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 18px;
+  color: #f4b400;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.awsd-client-voice-stars .is-empty {
+  color: #b8c0d4;
 }
 
 .ssd-expertise-arrow {
@@ -12826,12 +12902,22 @@ body.aad-modal-open {
   }
 
   .awsd-client-voices-stage {
-    padding-top: 30px;
+    padding: 30px 0 34px;
   }
 
   .awsd-client-voices-backdrop {
-    inset: 0 2% 42px;
+    inset: 0 2% 0;
     border-radius: 28px;
+  }
+
+  .awsd-client-voices-nav {
+    top: 18px;
+    right: 24px;
+  }
+
+  .awsd-client-voices-viewport {
+    margin: 0 2%;
+    padding: 30px 16px 96px;
   }
 
   .awsd-client-voice-card {
@@ -13249,12 +13335,29 @@ body.aad-modal-open {
   }
 
   .awsd-client-voices-stage {
-    padding: 18px 0 12px;
+    padding: 18px 0 28px;
   }
 
   .awsd-client-voices-backdrop {
-    inset: 0 0 28px;
+    inset: 0 0 0;
     border-radius: 24px;
+  }
+
+  .awsd-client-voices-nav {
+    top: 16px;
+    right: 16px;
+    gap: 12px;
+  }
+
+  .awsd-client-voices-arrow {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .awsd-client-voices-viewport {
+    margin: 0;
+    padding: 28px 14px 86px;
   }
 
   .awsd-client-voices-mark-left {
@@ -13265,10 +13368,6 @@ body.aad-modal-open {
   .awsd-client-voices-mark-right {
     right: 18px;
     bottom: 2px;
-  }
-
-  .awsd-client-voices-viewport {
-    padding: 28px 0 18px;
   }
 
   .awsd-client-voice-card {
